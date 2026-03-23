@@ -1,0 +1,9 @@
+{
+  "name": "pmu-expert",
+  "version": "1.0.0",
+  "description": "PMU Expert — Courses hippiques en direct",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
