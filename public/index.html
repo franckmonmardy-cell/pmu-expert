@@ -101,6 +101,15 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;ma
 .sp{height:78px;}
 .sec-t{font-family:'Bebas Neue';font-size:13px;letter-spacing:2px;color:var(--muted);margin:8px 0 6px;display:flex;align-items:center;gap:6px;}
 .sec-t::after{content:'';flex:1;height:1px;background:var(--border);}
+.result-banner{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(201,168,76,.4);border-radius:10px;padding:10px 13px;margin:8px 0;}
+.result-title{font-family:'Bebas Neue';font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;}
+.result-nums{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.result-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:16px;font-weight:700;}
+.rn1{background:#ffd700;color:#000;}
+.rn2{background:#c0c0c0;color:#000;}
+.rn3{background:#cd7f32;color:#000;}
+.rn4{background:rgba(201,168,76,.2);color:var(--gold);border:1px solid var(--gold);}
+.rn5{background:rgba(201,168,76,.1);color:var(--muted);border:1px solid var(--border);}
 </style>
 </head>
 <body>
@@ -311,6 +320,19 @@ function renderParticipants(container,parts,reu,course){
       <div class="part-ia ${iaCls}">${iaScore}</div>
     </div>`;
   });
+
+  // Résultats si disponibles
+  const arrivee=parts.filter(p=>p.ordreArrivee).map(p=>({num:p.numPmu||p.numero,ordre:p.ordreArrivee,nom:p.nom||'?'})).sort((a,b)=>a.ordre-b.ordre);
+  if(arrivee.length>0){
+    html+=`<div class="result-banner">
+      <div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
+      <div class="result-nums">
+        ${arrivee.slice(0,5).map((p,i)=>`<div class="result-num ${i===0?'rn1':i===1?'rn2':i===2?'rn3':i===3?'rn4':'rn5'}" title="${p.nom}">${p.num}</div>`).join('')}
+      </div>
+      <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono';margin-top:6px;line-height:1.7;">${arrivee.slice(0,5).map((p,i)=>`${i===0?'🥇':i===1?'🥈':i===2?'🥉':i===3?'4️⃣':'5️⃣'} N°${p.num} ${p.nom}`).join('<br>')}</div>
+    </div>`;
+  }
+
   html+=`<div style="padding:8px 13px;"><button onclick="analyseFromCard('R${reu}C${course}')" style="width:100%;padding:7px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:6px;color:var(--gold);font-family:'Share Tech Mono';font-size:9px;cursor:pointer;">🤖 ANALYSER AVEC IA</button></div>`;
   container.innerHTML=html;
 }
@@ -362,7 +384,6 @@ function analyseFromCard(courseRef){
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(201,168,76,.08);border-bottom:1px solid var(--border);">
           <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--gold2)">💛 COUPLÉ GAGNANT</div>
           <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">2 premiers dans l'ordre</div></div>
-          <div style="font-family:'Bebas Neue';font-size:11px;color:var(--gold)">ORDRE</div>
         </div>
         <div style="padding:12px 13px;">
           <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
@@ -377,7 +398,6 @@ function analyseFromCard(courseRef){
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(129,199,132,.06);border-bottom:1px solid var(--border);">
           <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--accent)">💚 COUPLÉ PLACÉ</div>
           <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">2 premiers ordre ou désordre</div></div>
-          <div style="font-family:'Bebas Neue';font-size:11px;color:var(--accent)">DÉSORDRE ✓</div>
         </div>
         <div style="padding:12px 13px;">
           <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
@@ -389,25 +409,25 @@ function analyseFromCard(courseRef){
         </div>
       </div>`;
       html+=`<div style="background:var(--card);border:1px solid rgba(66,165,245,.3);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(66,165,245,.06);border-bottom:1px solid var(--border);">
-          <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--blue2)">🥉 TIERCÉ</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">3 premiers — ordre ou désordre</div></div>
+        <div style="padding:10px 13px;background:rgba(66,165,245,.06);border-bottom:1px solid var(--border);">
+          <div style="font-family:'Bebas Neue';font-size:15px;color:var(--blue2)">🥉 TIERCÉ</div>
+          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">3 premiers — ordre ou désordre</div>
         </div>
         <div style="padding:12px 13px;">
           <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px;">
-            ${top3.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:${i===0?'#ffd700':i===1?'#c0c0c0':'#cd7f32'};color:#000;border:2px solid ${i===0?'#ffd700':i===1?'#c0c0c0':'#cd7f32'};">${n}</div>${i<2?'<span style="font-size:12px;color:var(--muted)">-</span>':''}`).join('')}
+            ${top3.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:${i===0?'#ffd700':i===1?'#c0c0c0':'#cd7f32'};color:#000;">${n}</div>${i<2?'<span style="color:var(--muted)">-</span>':''}`).join('')}
           </div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono';line-height:1.8;">${top3.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`${i===0?'🥇':i===1?'🥈':'🥉'} N°${n} ${p?.nom||'?'}${cote?' — Cote '+cote.toFixed(1):''}`;}).join('<br>')}</div>
+          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono';line-height:1.8;">${top3.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`${i===0?'🥇':i===1?'🥈':'🥉'} N°${n} ${p?.nom||'?'}${cote?' — '+cote.toFixed(1):''}`;}).join('<br>')}</div>
         </div>
       </div>`;
       html+=`<div style="background:var(--card);border:1px solid rgba(255,143,0,.3);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(255,143,0,.06);border-bottom:1px solid var(--border);">
-          <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--orange)">4️⃣ QUARTÉ+</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">4 premiers — ordre ou désordre</div></div>
+        <div style="padding:10px 13px;background:rgba(255,143,0,.06);border-bottom:1px solid var(--border);">
+          <div style="font-family:'Bebas Neue';font-size:15px;color:var(--orange)">4️⃣ QUARTÉ+</div>
+          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">4 premiers — ordre ou désordre</div>
         </div>
         <div style="padding:12px 13px;">
           <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px;">
-            ${top4.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:rgba(255,143,0,.2);color:var(--orange);border:2px solid var(--orange);">${n}</div>${i<3?'<span style="font-size:12px;color:var(--muted)">-</span>':''}`).join('')}
+            ${top4.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:rgba(255,143,0,.2);color:var(--orange);border:2px solid var(--orange);">${n}</div>${i<3?'<span style="color:var(--muted)">-</span>':''}`).join('')}
           </div>
           <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono'">${top4.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`N°${n} ${p?.nom||'?'}${cote?' ('+cote.toFixed(1)+')':''}`;}).join(' · ')}</div>
         </div>
@@ -426,6 +446,29 @@ function analyseFromCard(courseRef){
           <div style="margin-top:8px;font-size:9px;color:var(--gold);font-family:'Share Tech Mono'">🟡 = Bases sûres • ○ = Outsiders</div>
         </div>
       </div>`;
+
+      // Résultats et comparaison IA
+      const arrivee=parts.filter(p=>p.ordreArrivee).map(p=>({num:p.numPmu||p.numero,ordre:p.ordreArrivee,nom:p.nom||'?'})).sort((a,b)=>a.ordre-b.ordre);
+      if(arrivee.length>0){
+        html+=`<div class="sec-t">🏁 RÉSULTAT OFFICIEL</div>
+        <div class="result-banner" style="margin-bottom:12px;">
+          <div class="result-title">ARRIVÉE DU QUINTÉ+</div>
+          <div class="result-nums">${arrivee.slice(0,5).map((p,i)=>`<div class="result-num ${i===0?'rn1':i===1?'rn2':i===2?'rn3':i===3?'rn4':'rn5'}">${p.num}</div>`).join('')}</div>
+          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono';margin-top:6px;line-height:1.8;">${arrivee.slice(0,5).map((p,i)=>`${i===0?'🥇':i===1?'🥈':i===2?'🥉':i===3?'4️⃣':'5️⃣'} N°${p.num} ${p.nom}`).join('<br>')}</div>
+        </div>`;
+        const realTop5=arrivee.slice(0,5).map(p=>p.num);
+        const hits=top5.filter(n=>realTop5.includes(n));
+        html+=`<div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:10px 13px;margin-bottom:12px;">
+          <div style="font-family:'Bebas Neue';font-size:13px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">📊 COMPARAISON IA vs RÉSULTAT</div>
+          <div style="font-size:11px;font-family:'Share Tech Mono';line-height:2;">
+            ${top5.map(n=>realTop5.includes(n)?`<span style="color:var(--green2)">N°${n}✅</span>`:`<span style="color:var(--red2)">N°${n}❌</span>`).join(' ')}<br>
+            <span style="color:${hits.length>=4?'var(--green2)':hits.length>=3?'var(--orange)':'var(--red2)'}">
+              ${hits.length}/5 trouvés ${hits.length>=4?'🎉 Excellent!':hits.length>=3?'👍 Bon résultat!':hits.length>=2?'🤔 Passable':'😔 À améliorer'}
+            </span>
+          </div>
+        </div>`;
+      }
+
       html+=`<button onclick="quickAI('quinte')" style="width:100%;padding:11px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;color:var(--gold);font-family:'Share Tech Mono';font-size:11px;cursor:pointer;margin-bottom:12px;">🤖 ANALYSE IA APPROFONDIE</button>`;
       document.getElementById('quinteContent').innerHTML=html;
     })
@@ -447,10 +490,10 @@ function renderIAList(){
 function quickAI(type){
   const ctx=ALL_COURSES.slice(0,12).map(c=>`R${c.reunion}C${c.numOrdre} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, ${c.distance||'?'}m, départ:${formatTime(c.heureDepart)})`).join('\n');
   let q='';
-  if(type==='quinte'&&QUINTE_COURSE)q=`Analyse le Quinté+ "${QUINTE_COURSE.libelle}" à ${QUINTE_COURSE.hippodrome?.libelleCourt||''} (${QUINTE_COURSE.discipline||''}, ${QUINTE_COURSE.distance||'?'}m). Donne Couplé Gagnant, Couplé Placé, Tiercé, Quarté et Quinté+ avec numéros conseillés et justification.`;
-  else if(type==='tierce')q=`Quelle est la meilleure course pour un Tiercé aujourd'hui?\n${ctx}\nDonne ta sélection de 3 chevaux avec justification.`;
-  else if(type==='gagnant')q=`Quels sont les meilleurs favoris d'aujourd'hui?\n${ctx}`;
-  else q=`Quels outsiders surveiller aujourd'hui?\n${ctx}`;
+  if(type==='quinte'&&QUINTE_COURSE)q=`Analyse le Quinté+ "${QUINTE_COURSE.libelle}" à ${QUINTE_COURSE.hippodrome?.libelleCourt||''} (${QUINTE_COURSE.discipline||''}, ${QUINTE_COURSE.distance||'?'}m). Donne Couplé Gagnant, Couplé Placé, Tiercé, Quarté et Quinté+ avec numéros et justification.`;
+  else if(type==='tierce')q=`Meilleure course pour un Tiercé aujourd'hui?\n${ctx}`;
+  else if(type==='gagnant')q=`Meilleurs favoris d'aujourd'hui?\n${ctx}`;
+  else q=`Outsiders à surveiller aujourd'hui?\n${ctx}`;
   document.getElementById('aiInp').value=q;
   askAI();
 }
@@ -463,18 +506,17 @@ async function askAI(){
   try{
     const res=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
-        system:`Tu es PMU Expert hippique. Programme du jour:\n${ctx}\nDonne pour chaque analyse: Couplé Gagnant, Couplé Placé, Tiercé, Quarté, Quinté+ avec numéros. En français, sois précis et concis.`,
+        system:`Tu es PMU Expert hippique. Programme du jour:\n${ctx}\nDonne: Couplé Gagnant, Couplé Placé, Tiercé, Quarté, Quinté+ avec numéros. En français, concis.`,
         messages:[{role:"user",content:q}]})});
     const d=await res.json();
     t.style.display='none';
     o.innerHTML=(d.content?.[0]?.text||"Indisponible.").replace(/\n/g,'<br>');
     o.classList.add('v');
-  }catch(e){t.style.display='none';o.innerHTML='⚠️ Erreur IA: '+e.message;o.classList.add('v');}
+  }catch(e){t.style.display='none';o.innerHTML='⚠️ Erreur: '+e.message;o.classList.add('v');}
   inp.value='';
 }
 
 document.getElementById('aiInp').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();askAI();}});
-
 function setBadge(txt,type){const b=document.getElementById('apiBadge'),c={g:'var(--green2)',r:'var(--red2)',o:'var(--orange)'};b.textContent=txt;b.style.color=c[type];b.style.borderColor=c[type]+'55';b.style.background=c[type]+'18';}
 function sw(id,tabEl,navEl){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.getElementById('pg-'+id).classList.add('on');if(tabEl){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));tabEl.classList.add('on');}if(navEl){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));navEl.classList.add('on');}}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('v');setTimeout(()=>t.classList.remove('v'),2500);}
