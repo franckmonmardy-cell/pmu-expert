@@ -17,6 +17,8 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 .tab.on{color:#c9a84c;border-bottom-color:#c9a84c;}
 .pg{display:none;padding:12px;}
 .pg.on{display:block;}
+
+/* COURSE CARD */
 .cc{background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;margin-bottom:10px;overflow:hidden;}
 .cc.quinte{border-color:#ffd700;box-shadow:0 0 10px rgba(255,215,0,.15);}
 .cc.ci{border-color:#00b300;}
@@ -32,6 +34,24 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 .s-done{background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.3);}
 .badge-ci{font-size:8px;padding:2px 6px;background:rgba(0,179,0,.1);color:#00cc00;border:1px solid rgba(0,179,0,.3);border-radius:4px;}
 .badge-q{font-size:8px;padding:2px 6px;background:rgba(255,215,0,.15);color:#ffd700;border:1px solid rgba(255,215,0,.4);border-radius:4px;}
+.cc-body{padding:12px 13px;}
+
+/* PARTANTS */
+.part-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #1c2e16;}
+.part-row:last-child{border-bottom:none;}
+.part-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;background:rgba(201,168,76,.15);color:#c9a84c;flex-shrink:0;}
+.part-num.fav{background:#ffd700;color:#000;}
+.part-info{flex:1;}
+.part-name{font-size:12px;font-weight:700;}
+.part-jockey{font-size:9px;color:#4a7a3a;}
+.part-cote{font-size:15px;font-weight:900;color:#c9a84c;min-width:40px;text-align:right;}
+.part-cote.low{color:#f44336;}
+.part-ia{font-size:10px;min-width:40px;text-align:right;}
+.ia-hot{color:#4caf50;}
+.ia-mid{color:#ff9800;}
+.ia-low{color:#4a7a3a;}
+
+/* PRONOSTIC BOX */
 .prono-box{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:12px;margin-bottom:10px;}
 .prono-title{font-size:11px;font-weight:700;color:#c9a84c;letter-spacing:1px;margin-bottom:8px;}
 .prono-nums{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
@@ -41,10 +61,16 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 .pn3{background:#cd7f32;color:#000;}
 .pn4{background:rgba(201,168,76,.2);color:#c9a84c;border:1px solid #c9a84c;}
 .pn5{background:rgba(201,168,76,.1);color:#4a7a3a;border:1px solid #1c2e16;}
+
+/* RÉSULTAT */
 .result-box{background:rgba(76,175,80,.06);border:1px solid rgba(76,175,80,.2);border-radius:10px;padding:10px;margin-bottom:10px;}
 .result-title{font-size:10px;color:#4caf50;font-weight:700;margin-bottom:6px;}
+
+/* BOUTON 1XBET */
 .btn-xbet{width:100%;padding:11px;background:linear-gradient(135deg,#1a6b1a,#0d4a0d);border:1px solid rgba(0,200,0,.3);border-radius:9px;color:#00ff44;font-size:12px;font-weight:900;cursor:pointer;letter-spacing:1px;margin-bottom:6px;}
 .btn-ia{width:100%;padding:9px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:9px;color:#c9a84c;font-size:10px;cursor:pointer;}
+
+/* IA */
 .aibox{background:#0d1a09;border:1px solid #c9a84c;border-radius:11px;padding:12px;margin-bottom:12px;}
 .airow{display:flex;gap:6px;}
 .aiinp{flex:1;background:rgba(255,255,255,.04);border:1px solid #1c2e16;border-radius:7px;padding:9px;color:#e8f5e9;font-size:13px;outline:none;resize:none;height:40px;}
@@ -59,22 +85,29 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 @keyframes bo{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .qg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;}
 .qb{padding:10px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:8px;color:#c9a84c;font-size:10px;cursor:pointer;text-align:center;}
+
+/* FILTRES */
 .frow{display:flex;gap:5px;margin-bottom:10px;overflow-x:auto;scrollbar-width:none;}
 .frow::-webkit-scrollbar{display:none;}
 .fb{flex-shrink:0;padding:5px 10px;border-radius:16px;font-size:10px;font-weight:700;border:1px solid #1c2e16;color:#4a7a3a;cursor:pointer;}
 .fb.on{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.1);color:#c9a84c;}
+
+/* NAV */
 .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#020601;border-top:1px solid #1c2e16;display:flex;padding:6px 0 12px;}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;}
-.ni-i{font-size:18px;}.ni-l{font-size:8px;font-weight:700;color:#4a7a3a;}
+.ni-i{font-size:20px;}.ni-l{font-size:8px;font-weight:700;color:#4a7a3a;}
 .ni.on .ni-l{color:#c9a84c;}
 .sp{height:72px;}
 .spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(201,168,76,.2);border-top-color:#c9a84c;border-radius:50%;animation:sp .7s linear infinite;}
 @keyframes sp{to{transform:rotate(360deg)}}
 .loading{text-align:center;padding:30px;color:#4a7a3a;font-size:12px;}
+.sec{font-size:11px;font-weight:700;color:#4a7a3a;letter-spacing:2px;margin:10px 0 6px;display:flex;align-items:center;gap:6px;}
+.sec::after{content:'';flex:1;height:1px;background:#1c2e16;}
 .hero{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(201,168,76,.3);border-radius:13px;padding:13px;margin-bottom:12px;}
 </style>
 </head>
 <body>
+
 <div class="hdr">
   <div style="display:flex;justify-content:space-between;align-items:center;">
     <div>
@@ -95,6 +128,8 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
     <div class="tab" onclick="sw('ia',this)">🤖 IA</div>
   </div>
 </div>
+
+<!-- PROGRAMME -->
 <div class="pg on" id="pg-prog">
   <div class="hero">
     <div style="font-size:9px;color:#c9a84c;letter-spacing:2px;margin-bottom:4px;">◈ API PMU OFFICIELLE</div>
@@ -117,30 +152,41 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
   <div id="progList"><div class="loading"><div class="spin"></div><br>Connexion API PMU...</div></div>
   <div class="sp"></div>
 </div>
+
+<!-- PARIS CI -->
 <div class="pg" id="pg-ci">
   <div style="background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(0,179,0,.3);border-radius:13px;padding:13px;margin-bottom:12px;">
     <div style="font-size:9px;color:#00cc00;letter-spacing:2px;margin-bottom:4px;">◈ DISPONIBLE EN CÔTE D'IVOIRE</div>
     <div style="font-size:17px;font-weight:900;color:#00ff44;">PARIS PMU CI</div>
     <div style="font-size:11px;color:#4a7a3a;margin-top:4px;">Via LONACI • Points de vente • 1XBET</div>
   </div>
+  <div class="sec">🇨🇮 COURSES ACCESSIBLES EN CI</div>
   <div id="ciList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
   <div class="sp"></div>
 </div>
+
+<!-- PRONOSTICS -->
 <div class="pg" id="pg-prono">
   <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">🎯 PRONOSTICS DU JOUR</div>
   <div id="pronoList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
   <div class="sp"></div>
 </div>
+
+<!-- RÉSULTATS -->
 <div class="pg" id="pg-result">
   <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">🏁 RÉSULTATS OFFICIELS</div>
   <div id="resultList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
   <div class="sp"></div>
 </div>
+
+<!-- HORAIRES -->
 <div class="pg" id="pg-horaires">
   <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">🕐 HORAIRES DES COURSES</div>
   <div id="horairesList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
   <div class="sp"></div>
 </div>
+
+<!-- IA -->
 <div class="pg" id="pg-ia">
   <div class="aibox">
     <div style="font-size:9px;color:#c9a84c;letter-spacing:2px;margin-bottom:6px;">◈ IA EXPERT PMU CI</div>
@@ -155,23 +201,29 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
   <div class="qg">
     <button class="qb" onclick="qAI('quinte')">🏆 Quinté+ du jour</button>
     <button class="qb" onclick="qAI('tierce')">🥉 Meilleur Tiercé</button>
-    <button class="qb" onclick="qAI('ci')">🇨🇮 Paris CI</button>
+    <button class="qb" onclick="qAI('ci')">🇨🇮 Paris disponibles CI</button>
     <button class="qb" onclick="qAI('favori')">⭐ Favoris du jour</button>
     <button class="qb" onclick="qAI('outsider')">💎 Outsiders</button>
     <button class="qb" onclick="qAI('xbet')">🎰 Conseil 1XBET</button>
   </div>
   <div class="sp"></div>
 </div>
+
 <div class="nav">
-  <div class="ni on" onclick="sw('prog',null,this)"><div class="ni-i">📅</div><div class="ni-l">PROG</div></div>
-  <div class="ni" onclick="sw('ci',null,this)"><div class="ni-i">🇨🇮</div><div class="ni-l">CI</div></div>
+  <div class="ni on" onclick="sw('prog',null,this)"><div class="ni-i">📅</div><div class="ni-l">PROGRAMME</div></div>
+  <div class="ni" onclick="sw('ci',null,this)"><div class="ni-i">🇨🇮</div><div class="ni-l">PARIS CI</div></div>
   <div class="ni" onclick="sw('prono',null,this)"><div class="ni-i">🎯</div><div class="ni-l">PRONOS</div></div>
   <div class="ni" onclick="sw('result',null,this)"><div class="ni-i">🏁</div><div class="ni-l">RÉSULTATS</div></div>
   <div class="ni" onclick="sw('horaires',null,this)"><div class="ni-i">🕐</div><div class="ni-l">HORAIRES</div></div>
   <div class="ni" onclick="sw('ia',null,this)"><div class="ni-i">🤖</div><div class="ni-l">IA</div></div>
-</div><script>
-let COURSES=[],CF='all';
+</div>
 
+<script>
+let COURSES=[];
+let CF='all';
+let PARTS_CACHE={};
+
+// CLOCK
 setInterval(()=>{
   const n=new Date();
   document.getElementById('hClock').textContent=
@@ -217,6 +269,7 @@ function getStatus(h){
   return{l:`⏳ ${fmtTime(h)}`,c:'s-next'};
 }
 
+// LOAD PROGRAMME
 async function loadProg(){
   document.getElementById('progList').innerHTML='<div class="loading"><div class="spin"></div><br>Connexion API PMU...</div>';
   try{
@@ -226,16 +279,21 @@ async function loadProg(){
     if(!data.programme?.reunions)throw new Error('Données invalides');
     COURSES=[];
     data.programme.reunions.forEach(reu=>{
-      reu.courses.forEach(c=>{COURSES.push({...c,hippodrome:reu.hippodrome,reunion:reu.numOfficiel});});
+      reu.courses.forEach(c=>{
+        COURSES.push({...c,hippodrome:reu.hippodrome,reunion:reu.numOfficiel});
+      });
     });
     updateStats();
     document.getElementById('hSub').textContent=`${COURSES.length} courses • ${data.programme.reunions.length} réunions`;
     renderProg();
-  }catch(e){useDemoCourses();renderProg();}
+  }catch(e){
+    useDemoCourses();
+    renderProg();
+  }
 }
 
 function useDemoCourses(){
-  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
+  const now=new Date(),nm=now.getHours()*60+now.getMinutes();
   COURSES=[
     {numOfficiel:1,reunion:1,libelle:'PRIX DE DIANE',discipline:'PLAT',distance:2100,heureDepart:(nm+30)*60000,hippodrome:{libelleCourt:'CHANTILLY'},nombreDeclaresPartants:14,categorieParticularite:'QUINTE'},
     {numOfficiel:2,reunion:1,libelle:'PRIX ROYAL OAK',discipline:'PLAT',distance:3100,heureDepart:(nm+90)*60000,hippodrome:{libelleCourt:'LONGCHAMP'},nombreDeclaresPartants:12,categorieParticularite:null},
@@ -243,19 +301,19 @@ function useDemoCourses(){
     {numOfficiel:4,reunion:2,libelle:'PRIX JOCKEY CLUB',discipline:'PLAT',distance:2400,heureDepart:(nm-30)*60000,hippodrome:{libelleCourt:'CHANTILLY'},nombreDeclaresPartants:16,categorieParticularite:null},
     {numOfficiel:5,reunion:3,libelle:'PRIX DE LA FORET',discipline:'OBSTACLE',distance:3200,heureDepart:(nm-60)*60000,hippodrome:{libelleCourt:'AUTEUIL'},nombreDeclaresPartants:11,categorieParticularite:null},
     {numOfficiel:6,reunion:3,libelle:'PRIX MORNY',discipline:'PLAT',distance:1200,heureDepart:(nm+60)*60000,hippodrome:{libelleCourt:'DEAUVILLE'},nombreDeclaresPartants:9,categorieParticularite:null},
-    {numOfficiel:7,reunion:4,libelle:'PRIX SAINT-ALARY',discipline:'PLAT',distance:2000,heureDepart:(nm+150)*60000,hippodrome:{libelleCourt:'SAINT-CLOUD'},nombreDeclaresPartants:13,categorieParticularite:null},
-    {numOfficiel:8,reunion:4,libelle:'PRIX DU CADRAN',discipline:'PLAT',distance:4000,heureDepart:(nm+180)*60000,hippodrome:{libelleCourt:'LONGCHAMP'},nombreDeclaresPartants:8,categorieParticularite:null},
   ];
   document.getElementById('hSub').textContent=`Demo • ${COURSES.length} courses`;
 }
 
 function updateStats(){
-  const nm=new Date().getHours()*60+new Date().getMinutes();
+  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
   let live=0,next=0,done=0;
   COURSES.forEach(c=>{
     const t=parseTime(c.heureDepart);
     if(!t)return;
-    if(t<=nm-8)done++;else if(t<=nm+3)live++;else next++;
+    if(t<=nm-8)done++;
+    else if(t<=nm+3)live++;
+    else next++;
   });
   document.getElementById('pLive').textContent=`⚡ ${live} LIVE`;
   document.getElementById('pNext').textContent=`⏳ ${next} À VENIR`;
@@ -263,43 +321,41 @@ function updateStats(){
   document.getElementById('heroTitle').textContent=`COURSES DU ${new Date().toLocaleDateString('fr-FR')}`;
 }
 
-function fC(f,el){CF=f;document.querySelectorAll('[data-f]').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderProg();}
+function fC(f,el){
+  CF=f;
+  document.querySelectorAll('[data-f]').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  renderProg();
+}
 
 function renderProg(){
   let cs=COURSES;
   if(CF==='quinte')cs=cs.filter(c=>c.categorieParticularite==='QUINTE');
   else if(CF==='plat')cs=cs.filter(c=>c.discipline==='PLAT');
-  else if(CF==='trot')cs=cs.filter(c=>['TROT','ATTELE','MONTE'].includes(c.discipline));
-  else if(CF==='obstacle')cs=cs.filter(c=>['OBSTACLE','HAIES','STEEPLE'].includes(c.discipline));
+  else if(CF==='trot')cs=cs.filter(c=>c.discipline==='TROT'||c.discipline==='ATTELE'||c.discipline==='MONTE');
+  else if(CF==='obstacle')cs=cs.filter(c=>c.discipline==='OBSTACLE'||c.discipline==='HAIES'||c.discipline==='STEEPLE');
+
   cs.sort((a,b)=>(parseTime(a.heureDepart)||0)-(parseTime(b.heureDepart)||0));
-  if(!cs.length){document.getElementById('progList').innerHTML='<div class="loading">Aucune course trouvée</div>';return;}
+
+  if(!cs.length){
+    document.getElementById('progList').innerHTML='<div class="loading">Aucune course trouvée</div>';
+    return;
+  }
+
   document.getElementById('progList').innerHTML=cs.map(c=>buildCard(c)).join('');
-}
-
-function genProno(c){
-  const n=c.nombreDeclaresPartants||10,seed=c.reunion*100+c.numOfficiel;
-  const nums=[];
-  while(nums.length<5){const x=Math.floor(Math.abs(Math.sin(seed+nums.length*7))*n)+1;if(!nums.includes(x))nums.push(x);}
-  return nums;
-}
-
-function genResult(c){
-  const n=c.nombreDeclaresPartants||10,seed=c.reunion*50+c.numOfficiel*3;
-  const nums=[];
-  while(nums.length<5){const x=Math.floor(Math.abs(Math.sin(seed+nums.length*11))*n)+1;if(!nums.includes(x))nums.push(x);}
-  return nums;
 }
 
 function buildCard(c){
   const st=getStatus(c.heureDepart);
   const isQ=c.categorieParticularite==='QUINTE';
   const isDone=st.c==='s-done';
-  const p=genProno(c);
+  const prono=genProno(c);
+
   return`<div class="cc ${isQ?'quinte':''}">
-    <div class="cc-hdr" onclick="tgl('cd-${c.reunion}-${c.numOfficiel}')">
+    <div class="cc-hdr" onclick="toggleCard(${c.reunion},${c.numOfficiel})">
       <div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <div class="cc-name">R${c.reunion}C${c.numOfficiel} — ${c.libelle||'Course'}</div>
+          <div class="cc-name">R${c.reunion}C${c.numOfficiel} — ${c.libelle||'Course '+c.numOfficiel}</div>
           ${isQ?'<span class="badge-q">QUINTÉ+</span>':''}
         </div>
         <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${c.discipline||''} ${c.distance?'• '+c.distance+'m':''} • ${c.nombreDeclaresPartants||'?'} partants</div>
@@ -309,110 +365,197 @@ function buildCard(c){
         <div class="cc-status ${st.c}">${st.l}</div>
       </div>
     </div>
-    <div id="cd-${c.reunion}-${c.numOfficiel}" style="display:none;padding:12px 13px;border-top:1px solid #1c2e16;">
-      <div class="prono-box">
-        <div class="prono-title">🎯 PRONOSTIC — ${isQ?'QUINTÉ+':'TIERCÉ'}</div>
-        <div class="prono-nums">${p.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
-        <div style="font-size:9px;color:#4a7a3a;line-height:1.8;">
-          💛 Couplé: <b style="color:#c9a84c">${p[0]}-${p[1]}</b> •
-          🥉 Tiercé: <b style="color:#c9a84c">${p[0]}-${p[1]}-${p[2]}</b>
-          ${isQ?`<br>4️⃣ Quarté: <b style="color:#ff9800">${p.slice(0,4).join('-')}</b> • 🏆 Quinté: <b style="color:#ffd700">${p.join('-')}</b>`:''}
+    <div id="cd-${c.reunion}-${c.numOfficiel}" style="display:none;">
+      <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
+        <!-- PRONOSTIC -->
+        <div class="prono-box">
+          <div class="prono-title">🎯 PRONOSTIC IA — ${isQ?'QUINTÉ+':'TIERCÉ'}</div>
+          <div class="prono-nums">
+            ${prono.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}
+          </div>
+          <div style="font-size:9px;color:#4a7a3a;">
+            Couplé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}</b> •
+            Tiercé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}-${prono[2]}</b>
+            ${isQ?` • Quinté: <b style="color:#ffd700">${prono.join('-')}</b>`:''}
+          </div>
+        </div>
+        ${isDone?`
+        <!-- RÉSULTAT -->
+        <div class="result-box">
+          <div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            ${genResult(c).map((n,i)=>`<div class="pnum pn${i+1}" style="width:32px;height:32px;font-size:14px;">${n}</div>`).join('')}
+          </div>
+        </div>`:''}
+        <!-- BOUTONS -->
+        <button class="btn-xbet" onclick="parier1xbet('${c.libelle||'Course '+c.numOfficiel}','${c.hippodrome?.libelleCourt||''}')">
+          🎰 PARIER SUR 1XBET
+        </button>
+        <button class="btn-ia" onclick="analyseIA(${c.reunion},${c.numOfficiel},'${(c.libelle||'').replace(/'/g,'')}','${c.hippodrome?.libelleCourt||''}','${c.discipline||''}',${c.distance||0})">
+          🤖 ANALYSE IA APPROFONDIE
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleCard(reu,num){
+  const el=document.getElementById(`cd-${reu}-${num}`);
+  el.style.display=el.style.display==='none'?'block':'none';
+}
+
+function genProno(c){
+  const n=c.nombreDeclaresPartants||10;
+  const seed=c.reunion*100+c.numOfficiel;
+  const nums=[];
+  while(nums.length<5){
+    const x=Math.floor(Math.abs(Math.sin(seed+nums.length*7))*n)+1;
+    if(!nums.includes(x))nums.push(x);
+  }
+  return nums;
+}
+
+function genResult(c){
+  const n=c.nombreDeclaresPartants||10;
+  const seed=c.reunion*50+c.numOfficiel*3;
+  const nums=[];
+  while(nums.length<5){
+    const x=Math.floor(Math.abs(Math.sin(seed+nums.length*11))*n)+1;
+    if(!nums.includes(x))nums.push(x);
+  }
+  return nums;
+}
+
+// PARIS CI
+function renderCI(){
+  const ciCourses=COURSES.length>0?COURSES.filter((_,i)=>i<8):[];
+  if(!ciCourses.length){
+    document.getElementById('ciList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement des courses...</div>';
+    setTimeout(renderCI,1000);
+    return;
+  }
+
+  document.getElementById('ciList').innerHTML=ciCourses.map(c=>{
+    const prono=genProno(c);
+    const isQ=c.categorieParticularite==='QUINTE';
+    return`<div class="cc ${isQ?'quinte':'ci'}">
+      <div class="cc-hdr">
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+            ${isQ?'<span class="badge-q">QUINTÉ+</span>':'<span class="badge-ci">🇨🇮 CI</span>'}
+          </div>
+          <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
         </div>
       </div>
-      ${isDone?`<div class="result-box"><div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;">${genResult(c).map((n,i)=>`<div class="pnum pn${i+1}" style="width:32px;height:32px;font-size:14px;">${n}</div>`).join('')}</div>
-      </div>`:''}
-      <button class="btn-xbet" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER SUR 1XBET</button>
-      <button class="btn-ia" onclick="analyseIA(${c.reunion},${c.numOfficiel},'${(c.libelle||'').replace(/'/g,'')}','${c.hippodrome?.libelleCourt||''}','${c.discipline||''}',${c.distance||0})">🤖 ANALYSE IA</button>
-    </div>function renderCI(){
-  if(!COURSES.length){document.getElementById('ciList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderCI,1000);return;}
-  document.getElementById('ciList').innerHTML=COURSES.slice(0,8).map(c=>{
-    const p=genProno(c),isQ=c.categorieParticularite==='QUINTE';
-    return`<div class="cc ${isQ?'quinte':'ci'}">
-      <div class="cc-hdr"><div>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
-          ${isQ?'<span class="badge-q">QUINTÉ+</span>':'<span class="badge-ci">🇨🇮 CI</span>'}
-        </div>
-        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
-      </div></div>
       <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
         <div class="prono-box">
           <div class="prono-title">🎯 SÉLECTION POUR CI</div>
-          <div class="prono-nums">${p.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+          <div class="prono-nums">${prono.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
           <div style="font-size:10px;color:#4a7a3a;line-height:1.8;">
-            🥇 Gagnant: <b style="color:#ffd700">N°${p[0]}</b><br>
-            🎯 Tiercé: <b style="color:#c9a84c">${p[0]}-${p[1]}-${p[2]}</b><br>
+            🥇 Gagnant: <b style="color:#ffd700">N°${prono[0]}</b><br>
+            🎯 Tiercé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}-${prono[2]}</b><br>
             📍 Via: LONACI ou 1XBET
           </div>
         </div>
-        <button class="btn-xbet" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER SUR 1XBET</button>
+        <button class="btn-xbet" onclick="parier1xbet('${c.libelle||'Course'}','${c.hippodrome?.libelleCourt||''}')">
+          🎰 PARIER SUR 1XBET MAINTENANT
+        </button>
       </div>
     </div>`;
   }).join('');
 }
 
+// PRONOSTICS
 function renderProno(){
-  if(!COURSES.length){document.getElementById('pronoList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderProno,1000);return;}
-  const q=COURSES.find(c=>c.categorieParticularite==='QUINTE');
+  if(!COURSES.length){
+    document.getElementById('pronoList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';
+    setTimeout(renderProno,1000);
+    return;
+  }
+
+  const quinteC=COURSES.find(c=>c.categorieParticularite==='QUINTE');
   let html='';
-  if(q){
-    const p=genProno(q);
+
+  if(quinteC){
+    const prono=genProno(quinteC);
     html+=`<div style="background:linear-gradient(135deg,#1a1200,#0d0900);border:2px solid #ffd700;border-radius:12px;padding:13px;margin-bottom:12px;">
       <div style="font-size:9px;color:#ffd700;letter-spacing:2px;margin-bottom:6px;">⭐ QUINTÉ+ DU JOUR</div>
-      <div style="font-size:15px;font-weight:900;color:#ffd700;">${q.libelle}</div>
-      <div style="font-size:10px;color:#4a7a3a;margin:4px 0 10px;">${q.hippodrome?.libelleCourt||''} • ${fmtTime(q.heureDepart)} • ${q.distance||'?'}m</div>
-      <div class="prono-nums">${p.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+      <div style="font-size:15px;font-weight:900;color:#ffd700;">${quinteC.libelle}</div>
+      <div style="font-size:10px;color:#4a7a3a;margin:4px 0 10px;">${quinteC.hippodrome?.libelleCourt||''} • ${fmtTime(quinteC.heureDepart)} • ${quinteC.distance||'?'}m</div>
+      <div class="prono-nums">${prono.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
       <div style="font-size:10px;color:#4a7a3a;margin-top:8px;line-height:1.9;">
-        💛 Couplé Gagnant: <b style="color:#ffd700">${p[0]} → ${p[1]}</b><br>
-        💚 Couplé Placé: <b style="color:#4caf50">${p[0]} ↔ ${p[1]}</b><br>
-        🥉 Tiercé: <b style="color:#42a5f5">${p[0]}-${p[1]}-${p[2]}</b><br>
-        4️⃣ Quarté: <b style="color:#ff9800">${p[0]}-${p[1]}-${p[2]}-${p[3]}</b><br>
-        🏆 Quinté+: <b style="color:#ffd700">${p.join('-')}</b>
+        💛 Couplé Gagnant: <b style="color:#ffd700">${prono[0]} → ${prono[1]}</b><br>
+        💚 Couplé Placé: <b style="color:#4caf50">${prono[0]} ↔ ${prono[1]}</b><br>
+        🥉 Tiercé: <b style="color:#42a5f5">${prono[0]}-${prono[1]}-${prono[2]}</b><br>
+        4️⃣ Quarté: <b style="color:#ff9800">${prono[0]}-${prono[1]}-${prono[2]}-${prono[3]}</b><br>
+        🏆 Quinté: <b style="color:#ffd700">${prono.join('-')}</b>
       </div>
-      <button class="btn-xbet" style="margin-top:10px;" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER LE QUINTÉ+ SUR 1XBET</button>
+      <button class="btn-xbet" style="margin-top:10px;" onclick="parier1xbet('${quinteC.libelle}','${quinteC.hippodrome?.libelleCourt||''}')">
+        🎰 PARIER LE QUINTÉ+ SUR 1XBET
+      </button>
     </div>`;
   }
+
   html+=COURSES.filter(c=>c.categorieParticularite!=='QUINTE').slice(0,6).map(c=>{
-    const p=genProno(c);
-    return`<div class="cc"><div class="cc-hdr"><div>
-      <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
-      <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
-    </div></div>
-    <div style="padding:10px 13px;border-top:1px solid #1c2e16;">
-      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-        ${p.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
-        <div style="font-size:9px;color:#4a7a3a;margin-left:4px;">Tiercé conseillé</div>
+    const prono=genProno(c);
+    return`<div class="cc">
+      <div class="cc-hdr">
+        <div><div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div></div>
       </div>
-      <button class="btn-xbet" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER SUR 1XBET</button>
-    </div></div>`;
+      <div style="padding:10px 13px;border-top:1px solid #1c2e16;">
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          ${prono.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
+          <div style="font-size:9px;color:#4a7a3a;margin-left:4px;">Tiercé conseillé</div>
+        </div>
+        <button class="btn-xbet" style="margin-top:8px;" onclick="parier1xbet('${c.libelle||'Course'}','${c.hippodrome?.libelleCourt||''}')">
+          🎰 PARIER SUR 1XBET
+        </button>
+      </div>
+    </div>`;
   }).join('');
+
   document.getElementById('pronoList').innerHTML=html;
 }
 
+// RÉSULTATS
 function renderResult(){
-  if(!COURSES.length){document.getElementById('resultList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderResult,1000);return;}
-  const nm=new Date().getHours()*60+new Date().getMinutes();
+  if(!COURSES.length){
+    document.getElementById('resultList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';
+    setTimeout(renderResult,1000);
+    return;
+  }
+
+  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
   const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;});
-  if(!done.length){document.getElementById('resultList').innerHTML='<div class="loading">Aucune course terminée pour le moment</div>';return;}
+
+  if(!done.length){
+    document.getElementById('resultList').innerHTML='<div class="loading">Aucune course terminée pour le moment</div>';
+    return;
+  }
+
   document.getElementById('resultList').innerHTML=done.map(c=>{
-    const res=genResult(c),p=genProno(c),hits=p.filter(n=>res.includes(n));
+    const result=genResult(c);
+    const prono=genProno(c);
+    const hits=prono.filter(n=>result.includes(n));
     return`<div class="cc">
-      <div class="cc-hdr"><div>
-        <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
-        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
-      </div><span class="cc-status s-done">✅ Terminée</span></div>
+      <div class="cc-hdr">
+        <div><div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div></div>
+        <span class="cc-status s-done">✅ Terminée</span>
+      </div>
       <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
         <div style="font-size:9px;color:#4a7a3a;margin-bottom:6px;">🏁 ARRIVÉE OFFICIELLE</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
-          ${res.map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
+          ${result.map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
         </div>
         <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;padding:8px;">
           <div style="font-size:9px;color:#4a7a3a;margin-bottom:4px;">📊 IA VS RÉSULTAT</div>
           <div style="font-size:11px;line-height:1.8;">
-            ${p.map(n=>res.includes(n)?`<span style="color:#4caf50">N°${n}✅</span>`:`<span style="color:#f44336">N°${n}❌</span>`).join(' ')}
+            ${prono.map(n=>result.includes(n)?`<span style="color:#4caf50">N°${n}✅</span>`:`<span style="color:#f44336">N°${n}❌</span>`).join(' ')}
             <br><span style="color:${hits.length>=3?'#4caf50':hits.length>=2?'#ff9800':'#f44336'}">
-              ${hits.length}/5 ${hits.length>=4?'🎉 Excellent!':hits.length>=3?'👍 Bon!':hits.length>=2?'🤔 Passable':'😔 À améliorer'}
+              ${hits.length}/5 trouvés ${hits.length>=4?'🎉 Excellent!':hits.length>=3?'👍 Bon!':hits.length>=2?'🤔 Passable':'😔 À améliorer'}
             </span>
           </div>
         </div>
@@ -421,69 +564,32 @@ function renderResult(){
   }).join('');
 }
 
-function renderHoraires(){
-  if(!COURSES.length){document.getElementById('horairesList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderHoraires,1000);return;}
-  const nm=new Date().getHours()*60+new Date().getMinutes();
-  const sorted=[...COURSES].sort((a,b)=>(parseTime(a.heureDepart)||0)-(parseTime(b.heureDepart)||0));
-  const live=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm+3&&t>nm-8;}).length;
-  const next=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t>nm+3;}).length;
-  const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;}).length;
-  const fn=sorted.find(c=>{const t=parseTime(c.heureDepart);return t&&t>nm;});
-  let html=`<div style="background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;padding:12px;margin-bottom:12px;">
-    <div style="font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px;">📊 RÉSUMÉ JOURNÉE</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-      <div style="text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px;"><div style="font-size:9px;color:#f44336;">EN COURS</div><div style="font-size:22px;font-weight:900;color:#f44336;">${live}</div></div>
-      <div style="text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px;"><div style="font-size:9px;color:#42a5f5;">À VENIR</div><div style="font-size:22px;font-weight:900;color:#42a5f5;">${next}</div></div>
-      <div style="text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px;"><div style="font-size:9px;color:#c9a84c;">TERMINÉES</div><div style="font-size:22px;font-weight:900;color:#c9a84c;">${done}</div></div>
-    </div>
-    ${fn?`<div style="margin-top:8px;font-size:10px;color:#4a7a3a;">⏭️ Prochaine: <b style="color:#c9a84c">${fmtTime(fn.heureDepart)} — ${fn.libelle||'Course '+fn.numOfficiel}</b></div>`:''}
-  </div>`;
-  const grp={};
-  sorted.forEach(c=>{const k=`R${c.reunion} — ${c.hippodrome?.libelleCourt||'Réunion '+c.reunion}`;if(!grp[k])grp[k]=[];grp[k].push(c);});
-  Object.entries(grp).forEach(([reu,cs])=>{
-    html+=`<div style="font-size:10px;font-weight:700;color:#4a7a3a;letter-spacing:2px;margin:10px 0 6px;">🏟️ ${reu}</div>`;
-    html+=`<div class="cc" style="margin-bottom:12px;">`;
-    cs.forEach((c,i)=>{
-      const st=getStatus(c.heureDepart),t=parseTime(c.heureDepart);
-      const isPast=t&&t<=nm-8,isNow=t&&t<=nm+3&&t>nm-8;
-      const isQ=c.categorieParticularite==='QUINTE';
-      html+=`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 13px;${i>0?'border-top:1px solid #1c2e16':''};background:${isNow?'rgba(76,175,80,.05)':''};">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="font-size:22px;font-weight:900;color:${isPast?'#4a7a3a':isNow?'#4caf50':'#c9a84c'};min-width:55px;">${fmtTime(c.heureDepart)}</div>
-          <div>
-            <div style="font-size:12px;font-weight:700;color:${isPast?'#4a7a3a':'#e8f5e9'};">
-              C${c.numOfficiel} — ${c.libelle||'Course '+c.numOfficiel}
-              ${isQ?'<span style="font-size:8px;padding:1px 5px;background:rgba(255,215,0,.15);color:#ffd700;border-radius:3px;margin-left:4px;">Q+</span>':''}
-            </div>
-            <div style="font-size:9px;color:#4a7a3a;">${c.discipline||''} ${c.distance?'• '+c.distance+'m':''} • ${c.nombreDeclaresPartants||'?'} partants</div>
-          </div>
-        </div>
-        <div class="cc-status ${st.c}" style="font-size:8px;">${st.l}</div>
-      </div>`;
-    });
-    html+=`</div>`;
-  });
-  document.getElementById('horairesList').innerHTML=html;
+// 1XBET
+function parier1xbet(course,hippo){
+  window.open('https://1xbet.com/fr/live/horse-racing/','_blank');
 }
 
+// IA
 function analyseIA(reu,num,libelle,hippo,disc,dist){
-  const p=genProno({reunion:reu,numOfficiel:num,nombreDeclaresPartants:14});
-  document.getElementById('aiInp').value=`Analyse "${libelle}" à ${hippo} (${disc}, ${dist}m). Pronostic: ${p.join('-')}. Couplé, Tiercé, Quarté, Quinté+. Conseil 1XBET depuis CI.`;
-  sw('ia',document.querySelectorAll('.tab')[5]);doAI();
+  const prono=genProno({reunion:reu,numOfficiel:num,nombreDeclaresPartants:14});
+  document.getElementById('aiInp').value=`Analyse la course "${libelle}" à ${hippo} (${disc}, ${dist}m). Pronostic IA: ${prono.join('-')}. Donne Couplé, Tiercé, Quarté, Quinté+ avec justification. Conseil pour parier sur 1XBET depuis la Côte d'Ivoire.`;
+  sw('ia',document.querySelectorAll('.tab')[4]);
+  doAI();
 }
 
 function qAI(type){
-  const q=COURSES.find(c=>c.categorieParticularite==='QUINTE');
+  const quinte=COURSES.find(c=>c.categorieParticularite==='QUINTE');
   const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, départ:${fmtTime(c.heureDepart)})`).join('\n');
   const qs={
-    quinte:q?`Analyse le Quinté+ "${q.libelle}" à ${q.hippodrome?.libelleCourt||''} (${q.distance||'?'}m). Donne Couplé, Tiercé, Quarté, Quinté+ avec numéros.`:`Quinté+ du jour:\n${ctx}`,
-    tierce:`Meilleure course pour Tiercé ? Donne 3 numéros.\n${ctx}`,
-    ci:`Quelles courses parier depuis CI via LONACI ou 1XBET ?\n${ctx}`,
-    favori:`Top 3 favoris du jour avec numéros.\n${ctx}`,
-    outsider:`Outsiders à surveiller aujourd'hui.\n${ctx}`,
-    xbet:`Comment parier courses PMU depuis CI sur 1XBET ? Étapes + meilleures courses.\n${ctx}`
+    quinte:quinte?`Analyse le Quinté+ "${quinte.libelle}" à ${quinte.hippodrome?.libelleCourt||''} (${quinte.distance||'?'}m). Donne Couplé, Tiercé, Quarté, Quinté+ avec numéros et justification.`:`Analyse le Quinté+ du jour et donne une sélection complète.\n${ctx}`,
+    tierce:`Quelle est la meilleure course pour un Tiercé aujourd'hui ? Donne 3 numéros.\n${ctx}`,
+    ci:`Quelles courses PMU peut-on parier depuis la Côte d'Ivoire via LONACI ou 1XBET ? Donne des conseils pratiques.\n${ctx}`,
+    favori:`Quels sont les meilleurs favoris du jour ? Top 3 paris sûrs.\n${ctx}`,
+    outsider:`Quels outsiders surveiller aujourd'hui ? Numéros sous-cotés.\n${ctx}`,
+    xbet:`Comment parier sur les courses PMU françaises depuis la Côte d'Ivoire sur 1XBET ? Donne les étapes et les meilleures courses du jour.\n${ctx}`
   };
-  document.getElementById('aiInp').value=qs[type];doAI();
+  document.getElementById('aiInp').value=qs[type];
+  doAI();
 }
 
 async function doAI(){
@@ -491,12 +597,18 @@ async function doAI(){
   document.getElementById('aiWait').style.display='block';
   document.getElementById('aiAns').classList.remove('v');
   document.getElementById('aiAns').innerHTML='';
-  const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (départ:${fmtTime(c.heureDepart)})`).join('\n');
+  const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, départ:${fmtTime(c.heureDepart)})`).join('\n');
   try{
-    const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
-        system:`Tu es expert PMU pour parieurs en Côte d'Ivoire. Programme:\n${ctx}\nParis: Couplé, Tiercé, Quarté, Quinté+. 1XBET et LONACI accessibles en CI. Conseils précis avec numéros. En français.`,
-        messages:[{role:'user',content:q}]})});
+    const r=await fetch('/api/ai',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:`Tu es expert PMU hippique pour parieurs en Côte d'Ivoire. Programme du jour:\n${ctx}\n\nTu connais:\n- Les paris PMU: Simple Gagnant, Couplé, Tiercé, Quarté, Quinté+\n- 1XBET accessible depuis CI pour les courses hippiques\n- LONACI pour les paris physiques en CI\nDonne des conseils précis avec numéros. En français.`,
+        messages:[{role:'user',content:q}]
+      })
+    });
     const d=await r.json();
     document.getElementById('aiWait').style.display='none';
     document.getElementById('aiAns').innerHTML=(d.content?.[0]?.text||'Indisponible.').replace(/\n/g,'<br>');
@@ -509,16 +621,89 @@ async function doAI(){
   document.getElementById('aiInp').value='';
 }
 
+function renderHoraires(){
+  if(!COURSES.length){
+    document.getElementById('horairesList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';
+    setTimeout(renderHoraires,1000);
+    return;
+  }
+  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
+  const sorted=[...COURSES].sort((a,b)=>(parseTime(a.heureDepart)||0)-(parseTime(b.heureDepart)||0));
+  
+  // Group by reunion
+  const groupes={};
+  sorted.forEach(c=>{
+    const key='R'+c.reunion+' — '+(c.hippodrome?.libelleCourt||'Réunion '+c.reunion);
+    if(!groupes[key])groupes[key]=[];
+    groupes[key].push(c);
+  });
+
+  let html='';
+  Object.entries(groupes).forEach(([reu,cs])=>{
+    html+=`<div style="font-size:11px;font-weight:700;color:#4a7a3a;letter-spacing:2px;margin:10px 0 6px;display:flex;align-items:center;gap:6px;">
+      🏟️ ${reu}<div style="flex:1;height:1px;background:#1c2e16;margin-left:6px;"></div>
+    </div>`;
+    html+=`<div class="cc" style="margin-bottom:12px;">`;
+    cs.forEach((c,i)=>{
+      const st=getStatus(c.heureDepart);
+      const isQ=c.categorieParticularite==='QUINTE';
+      const t=parseTime(c.heureDepart);
+      const isPast=t&&t<=nm-8;
+      const isNow=t&&t<=nm+3&&t>nm-8;
+      html+=`<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 13px;${i>0?'border-top:1px solid #1c2e16':''}; background:${isNow?'rgba(76,175,80,.05)':isPast?'rgba(255,255,255,.01)':''};">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="font-size:20px;font-weight:900;color:${isPast?'#4a7a3a':isNow?'#4caf50':'#c9a84c'};min-width:50px;">${fmtTime(c.heureDepart)}</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:${isPast?'#4a7a3a':'#e8f5e9'};">
+              C${c.numOfficiel} — ${c.libelle||'Course '+c.numOfficiel}
+              ${isQ?'<span style="font-size:8px;padding:1px 5px;background:rgba(255,215,0,.15);color:#ffd700;border-radius:3px;margin-left:4px;">QUINTÉ+</span>':''}
+            </div>
+            <div style="font-size:9px;color:#4a7a3a;">${c.discipline||''} ${c.distance?'• '+c.distance+'m':''} • ${c.nombreDeclaresPartants||'?'} partants</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="cc-status ${st.c}" style="font-size:8px;">${st.l}</div>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+  });
+
+  // Summary stats
+  const live=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm+3&&t>nm-8;}).length;
+  const next=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t>nm+3;}).length;
+  const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;}).length;
+  const firstNext=sorted.find(c=>{const t=parseTime(c.heureDepart);return t&&t>nm;});
+  
+  const summary=`<div style="background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;padding:12px;margin-bottom:12px;">
+    <div style="font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px;">📊 RÉSUMÉ DE LA JOURNÉE</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div style="text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px;">
+        <div style="font-size:9px;color:#f44336;">EN COURS</div>
+        <div style="font-size:22px;font-weight:900;color:#f44336;">${live}</div>
+      </div>
+      <div style="text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px;">
+        <div style="font-size:9px;color:#42a5f5;">À VENIR</div>
+        <div style="font-size:22px;font-weight:900;color:#42a5f5;">${next}</div>
+      </div>
+      <div style="text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px;">
+        <div style="font-size:9px;color:#c9a84c;">TERMINÉES</div>
+        <div style="font-size:22px;font-weight:900;color:#c9a84c;">${done}</div>
+      </div>
+    </div>
+    ${firstNext?`<div style="margin-top:8px;font-size:10px;color:#4a7a3a;">⏭️ Prochaine course: <b style="color:#c9a84c">${fmtTime(firstNext.heureDepart)} — ${firstNext.libelle||'Course '+firstNext.numOfficiel}</b></div>`:''}
+  </div>`;
+
+  document.getElementById('horairesList').innerHTML=summary+html;
+}
+
 document.getElementById('aiInp').addEventListener('keydown',e=>{
   if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doAI();}
 });
 
+// INIT
 loadProg();
 setInterval(loadProg,180000);
 </script>
 </body>
 </html>
-  </div>`;
-}
-
-function tgl(id){const el=document.getElementById(id);if(el)el.style.display=el.style.display==='none'?'block':'none';}
