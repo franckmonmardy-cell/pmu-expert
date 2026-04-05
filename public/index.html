@@ -271,25 +271,10 @@ function getStatus(h){
 
 // LOAD PROGRAMME
 async function loadProg(){
-  document.getElementById('progList').innerHTML='<div class="loading"><div class="spin"></div><br>Connexion API PMU...</div>';
-  try{
-    const r=await fetch(`/api/programme?date=${todayStr()}`);
-    if(!r.ok)throw new Error('HTTP '+r.status);
-    const data=await r.json();
-    if(!data.programme?.reunions)throw new Error('Données invalides');
-    COURSES=[];
-    data.programme.reunions.forEach(reu=>{
-      reu.courses.forEach(c=>{
-        COURSES.push({...c,hippodrome:reu.hippodrome,reunion:reu.numOfficiel});
-      });
-    });
-    updateStats();
-    document.getElementById('hSub').textContent=`${COURSES.length} courses • ${data.programme.reunions.length} réunions`;
-    renderProg();
-  }catch(e){
-    useDemoCourses();
-    renderProg();
-  }
+  document.getElementById('progList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';
+  useDemoCourses();
+  updateStats();
+  renderProg();
 }
 
 function useDemoCourses(){
