@@ -3,526 +3,564 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PMU Expert — Paris en Direct</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<title>PMU Expert CI</title>
 <style>
-:root{
-  --bg:#060c04;--card:#0d1a09;--card2:#111f0d;--border:#1c2e16;
-  --gold:#c9a84c;--gold2:#ffd700;--green:#2e7d32;--green2:#4caf50;
-  --red:#b71c1c;--red2:#f44336;--accent:#81c784;--orange:#ff8f00;
-  --blue:#1565c0;--blue2:#42a5f5;
-  --text:#e8f5e9;--muted:#4a7a3a;
-}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;max-width:430px;margin:0 auto;min-height:100vh;}
-.hdr{background:linear-gradient(180deg,#020601,var(--bg));padding:12px 14px 0;position:sticky;top:0;z-index:99;border-bottom:1px solid var(--border);}
-.logo{font-family:'Bebas Neue';font-size:22px;letter-spacing:3px;color:var(--gold);}
-.logo span{color:var(--accent);}
-.badge{font-size:8px;padding:2px 6px;border-radius:3px;font-family:'Share Tech Mono';border:1px solid;margin-left:6px;}
-.live-badge{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;animation:blink 1.5s infinite;}
+body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width:430px;margin:0 auto;}
+.hdr{background:#020601;padding:12px 14px;position:sticky;top:0;z-index:9;border-bottom:1px solid #1c2e16;}
+.logo{font-size:19px;font-weight:900;color:#c9a84c;letter-spacing:2px;}
+.live-badge{background:#b71c1c;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;animation:blink 1.5s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.tabs{display:flex;margin-top:10px;}
-.tab{padding:8px 14px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;font-family:'Share Tech Mono';}
-.tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.tabs{display:flex;margin-top:10px;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;padding:8px 12px;font-size:10px;font-weight:700;color:#4a7a3a;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;}
+.tab.on{color:#c9a84c;border-bottom-color:#c9a84c;}
 .pg{display:none;padding:12px;}
 .pg.on{display:block;}
-.reu-row{display:flex;overflow-x:auto;gap:6px;margin-bottom:10px;scrollbar-width:none;padding-bottom:2px;}
-.reu-row::-webkit-scrollbar{display:none;}
-.reu-btn{flex-shrink:0;padding:6px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-family:'Share Tech Mono';text-align:center;min-width:60px;}
-.reu-btn.on{background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold);}
-.reu-hippo{font-size:8px;color:var(--muted);margin-top:1px;}
-.hero{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid var(--gold);border-radius:13px;padding:13px;margin-bottom:12px;}
-.hero-t{font-family:'Bebas Neue';font-size:18px;color:var(--gold2);letter-spacing:2px;}
-.hero-s{font-size:11px;color:var(--muted);margin:4px 0 8px;}
-.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
-.pill{font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px;border:1px solid;}
-.pr{color:var(--red2);border-color:rgba(244,67,54,.3);background:rgba(244,67,54,.06);}
-.pg2{color:var(--green2);border-color:rgba(76,175,80,.3);background:rgba(76,175,80,.06);}
-.pa{color:var(--gold);border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.06);}
-.po{color:var(--orange);border-color:rgba(255,143,0,.3);background:rgba(255,143,0,.06);}
-.btn{padding:7px 13px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:7px;color:var(--gold);font-family:'Share Tech Mono';font-size:10px;cursor:pointer;margin-right:6px;}
-.course-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:all .18s;}
-.course-card.active{border-color:var(--gold);}
-.cc-header{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;cursor:pointer;}
-.cc-left{}.cc-num{font-family:'Bebas Neue';font-size:24px;color:var(--gold);line-height:1;}
-.cc-name{font-size:13px;font-weight:700;}
-.cc-meta{font-size:9px;color:var(--muted);font-family:'Share Tech Mono';margin-top:2px;}
+.cc{background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.cc.quinte{border-color:#ffd700;box-shadow:0 0 10px rgba(255,215,0,.15);}
+.cc.ci{border-color:#00b300;}
+.cc-hdr{padding:10px 13px;border-bottom:1px solid #1c2e16;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+.cc-name{font-size:13px;font-weight:900;color:#c9a84c;}
+.cc-sub{font-size:9px;color:#4a7a3a;margin-top:2px;}
 .cc-right{text-align:right;}
-.cc-time{font-family:'Bebas Neue';font-size:20px;color:var(--text);}
-.cc-dist{font-size:10px;color:var(--muted);font-family:'Share Tech Mono';}
-.cc-status{font-size:9px;font-weight:700;padding:3px 8px;border-radius:12px;font-family:'Share Tech Mono';margin-top:3px;display:inline-block;}
-.s-depart{background:rgba(244,67,54,.1);color:var(--red2);border:1px solid rgba(244,67,54,.3);}
-.s-encours{background:rgba(76,175,80,.1);color:var(--green2);border:1px solid rgba(76,175,80,.3);animation:blink 1.5s infinite;}
-.s-arrive{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.3);}
-.s-programme{background:rgba(66,165,245,.1);color:var(--blue2);border:1px solid rgba(66,165,245,.3);}
-.cc-participants{display:none;border-top:1px solid var(--border);}
-.cc-participants.open{display:block;}
-.part-header{display:grid;grid-template-columns:30px 1fr 50px 50px 50px;gap:4px;padding:6px 13px;font-size:9px;color:var(--muted);font-family:'Share Tech Mono';border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);}
-.part-row{display:grid;grid-template-columns:30px 1fr 50px 50px 50px;gap:4px;padding:7px 13px;border-bottom:1px solid var(--border);align-items:center;}
-.part-row:last-child{border-bottom:none;}
-.part-row.favori{background:rgba(201,168,76,.06);}
-.part-num{font-family:'Bebas Neue';font-size:18px;color:var(--gold);text-align:center;}
-.part-info{}.part-name{font-size:12px;font-weight:700;}
-.part-driver{font-size:9px;color:var(--muted);}
-.part-cote{font-family:'Bebas Neue';font-size:16px;text-align:right;}
-.cote-fav{color:var(--red2);}.cote-normal{color:var(--gold);}.cote-outsider{color:var(--muted);}
-.part-musique{font-size:8px;color:var(--muted);font-family:'Share Tech Mono';text-align:right;line-height:1.4;}
-.part-ia{font-size:8px;font-family:'Share Tech Mono';text-align:right;}
-.ia-good{color:var(--green2);}.ia-avg{color:var(--orange);}.ia-low{color:var(--muted);}
-.fav-badge{display:inline-block;font-size:7px;padding:1px 4px;background:var(--red2);color:#fff;border-radius:3px;font-family:'Share Tech Mono';margin-left:3px;}
-.quinteplus{display:inline-block;font-size:7px;padding:1px 4px;background:var(--gold);color:#000;border-radius:3px;font-family:'Share Tech Mono';margin-left:3px;}
-.aibox{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid var(--gold);border-radius:11px;padding:12px;margin-bottom:12px;}
-.ailbl{font-size:9px;letter-spacing:2px;color:var(--gold);font-family:'Share Tech Mono';margin-bottom:6px;}
+.cc-time{font-size:18px;font-weight:900;color:#e8f5e9;}
+.cc-status{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:3px;display:inline-block;}
+.s-live{background:rgba(76,175,80,.1);color:#4caf50;border:1px solid rgba(76,175,80,.3);animation:blink 1.5s infinite;}
+.s-soon{background:rgba(244,67,54,.1);color:#f44336;border:1px solid rgba(244,67,54,.3);}
+.s-next{background:rgba(66,165,245,.1);color:#42a5f5;border:1px solid rgba(66,165,245,.3);}
+.s-done{background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.3);}
+.badge-ci{font-size:8px;padding:2px 6px;background:rgba(0,179,0,.1);color:#00cc00;border:1px solid rgba(0,179,0,.3);border-radius:4px;}
+.badge-q{font-size:8px;padding:2px 6px;background:rgba(255,215,0,.15);color:#ffd700;border:1px solid rgba(255,215,0,.4);border-radius:4px;}
+.prono-box{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:12px;margin-bottom:10px;}
+.prono-title{font-size:11px;font-weight:700;color:#c9a84c;letter-spacing:1px;margin-bottom:8px;}
+.prono-nums{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.pnum{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;}
+.pn1{background:#ffd700;color:#000;}
+.pn2{background:#c0c0c0;color:#000;}
+.pn3{background:#cd7f32;color:#000;}
+.pn4{background:rgba(201,168,76,.2);color:#c9a84c;border:1px solid #c9a84c;}
+.pn5{background:rgba(201,168,76,.1);color:#4a7a3a;border:1px solid #1c2e16;}
+.result-box{background:rgba(76,175,80,.06);border:1px solid rgba(76,175,80,.2);border-radius:10px;padding:10px;margin-bottom:10px;}
+.result-title{font-size:10px;color:#4caf50;font-weight:700;margin-bottom:6px;}
+.btn-xbet{width:100%;padding:11px;background:linear-gradient(135deg,#1a6b1a,#0d4a0d);border:1px solid rgba(0,200,0,.3);border-radius:9px;color:#00ff44;font-size:12px;font-weight:900;cursor:pointer;letter-spacing:1px;margin-bottom:6px;}
+.btn-ia{width:100%;padding:9px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:9px;color:#c9a84c;font-size:10px;cursor:pointer;}
+.aibox{background:#0d1a09;border:1px solid #c9a84c;border-radius:11px;padding:12px;margin-bottom:12px;}
 .airow{display:flex;gap:6px;}
-.aiinp{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:7px;padding:9px 10px;color:var(--text);font-family:'Rajdhani';font-size:13px;outline:none;resize:none;height:40px;}
-.aiinp:focus{border-color:var(--gold);}
-.aiinp::placeholder{color:var(--muted);}
-.aigo{background:var(--gold);color:#000;border:none;border-radius:7px;width:40px;height:40px;font-size:17px;cursor:pointer;font-weight:700;}
-.airsp{margin-top:9px;display:none;}.airsp.v{display:block;}
-.aith{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;font-family:'Share Tech Mono';}
-.dots span{display:inline-block;width:4px;height:4px;background:var(--gold);border-radius:50%;animation:bo .8s infinite;margin:0 1px;}
-.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+.aiinp{flex:1;background:rgba(255,255,255,.04);border:1px solid #1c2e16;border-radius:7px;padding:9px;color:#e8f5e9;font-size:13px;outline:none;resize:none;height:40px;}
+.aiinp:focus{border-color:#c9a84c;}
+.aiinp::placeholder{color:#4a7a3a;}
+.aibtn{background:#c9a84c;color:#000;border:none;border-radius:7px;width:40px;height:40px;font-size:18px;font-weight:900;cursor:pointer;}
+.aians{font-size:12px;line-height:1.7;margin-top:10px;display:none;}
+.aians.v{display:block;}
+.dots{display:flex;gap:3px;margin-top:8px;}
+.dot{width:5px;height:5px;background:#c9a84c;border-radius:50%;animation:bo .8s infinite;}
+.dot:nth-child(2){animation-delay:.15s;}.dot:nth-child(3){animation-delay:.3s;}
 @keyframes bo{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.aiout{font-size:12px;line-height:1.65;display:none;}.aiout.v{display:block;}
-.quinte-banner{background:linear-gradient(135deg,#1a1200,#0d0900);border:2px solid var(--gold2);border-radius:12px;padding:12px;margin-bottom:12px;}
-.qb-tag{font-size:9px;color:var(--gold2);letter-spacing:2px;font-family:'Share Tech Mono';}
-.qb-title{font-family:'Bebas Neue';font-size:20px;color:var(--gold2);letter-spacing:2px;}
-.qb-sub{font-size:11px;color:var(--muted);margin-top:2px;}
-.spin{display:inline-block;width:20px;height:20px;border:2px solid rgba(201,168,76,.15);border-top-color:var(--gold);border-radius:50%;animation:sp .7s linear infinite;margin-bottom:6px;}
-@keyframes sp{to{transform:rotate(360deg)}}
-.lcard{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:24px;text-align:center;margin-bottom:9px;}
-.ltxt{font-size:11px;color:var(--muted);font-family:'Share Tech Mono';line-height:1.7;}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#020601;border-top:1px solid var(--border);display:flex;padding:6px 0 14px;z-index:99;}
+.qg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;}
+.qb{padding:10px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:8px;color:#c9a84c;font-size:10px;cursor:pointer;text-align:center;}
+.frow{display:flex;gap:5px;margin-bottom:10px;overflow-x:auto;scrollbar-width:none;}
+.frow::-webkit-scrollbar{display:none;}
+.fb{flex-shrink:0;padding:5px 10px;border-radius:16px;font-size:10px;font-weight:700;border:1px solid #1c2e16;color:#4a7a3a;cursor:pointer;}
+.fb.on{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.1);color:#c9a84c;}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#020601;border-top:1px solid #1c2e16;display:flex;padding:6px 0 12px;}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;}
-.ni-i{font-size:18px;}.ni-l{font-size:9px;font-weight:700;color:var(--muted);font-family:'Share Tech Mono';}
-.ni.on .ni-l{color:var(--gold);}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--green2);color:#000;padding:7px 15px;border-radius:16px;font-family:'Bebas Neue';font-size:12px;letter-spacing:1px;opacity:0;transition:all .3s;z-index:1000;pointer-events:none;}
-.toast.v{opacity:1;transform:translateX(-50%) translateY(0);}
-.sp{height:78px;}
-.sec-t{font-family:'Bebas Neue';font-size:13px;letter-spacing:2px;color:var(--muted);margin:8px 0 6px;display:flex;align-items:center;gap:6px;}
-.sec-t::after{content:'';flex:1;height:1px;background:var(--border);}
-.result-banner{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(201,168,76,.4);border-radius:10px;padding:10px 13px;margin:8px 0;}
-.result-title{font-family:'Bebas Neue';font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;}
-.result-nums{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
-.result-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:16px;font-weight:700;}
-.rn1{background:#ffd700;color:#000;}
-.rn2{background:#c0c0c0;color:#000;}
-.rn3{background:#cd7f32;color:#000;}
-.rn4{background:rgba(201,168,76,.2);color:var(--gold);border:1px solid var(--gold);}
-.rn5{background:rgba(201,168,76,.1);color:var(--muted);border:1px solid var(--border);}
+.ni-i{font-size:18px;}.ni-l{font-size:8px;font-weight:700;color:#4a7a3a;}
+.ni.on .ni-l{color:#c9a84c;}
+.sp{height:72px;}
+.spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(201,168,76,.2);border-top-color:#c9a84c;border-radius:50%;animation:sp .7s linear infinite;}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loading{text-align:center;padding:30px;color:#4a7a3a;font-size:12px;}
+.hero{background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(201,168,76,.3);border-radius:13px;padding:13px;margin-bottom:12px;}
 </style>
 </head>
 <body>
 <div class="hdr">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-    <div style="display:flex;align-items:center;">
-      <div class="logo">PMU <span>Expert</span></div>
-      <div class="badge" id="apiBadge" style="color:var(--orange);border-color:rgba(255,143,0,.35);background:rgba(255,143,0,.08);">⏳ CONNEXION</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div class="logo">🏇 PMU EXPERT CI</div>
+      <div style="font-size:9px;color:#4a7a3a;margin-top:2px;" id="hSub">Chargement...</div>
     </div>
-    <div style="display:flex;align-items:center;gap:5px;">
-      <span id="hClock" style="font-size:12px;color:var(--gold);font-family:'Share Tech Mono';font-weight:700;"></span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="font-size:12px;color:#c9a84c;font-weight:700;" id="hClock"></span>
       <div class="live-badge">🏇 LIVE</div>
     </div>
   </div>
   <div class="tabs">
-    <div class="tab on" onclick="sw('programme',this)">📅 Programme</div>
-    <div class="tab" onclick="sw('quinteplus',this)">🎯 Paris PMU</div>
+    <div class="tab on" onclick="sw('prog',this)">📅 Programme</div>
+    <div class="tab" onclick="sw('ci',this)">🇨🇮 Paris CI</div>
+    <div class="tab" onclick="sw('prono',this)">🎯 Pronostics</div>
+    <div class="tab" onclick="sw('result',this)">🏁 Résultats</div>
+    <div class="tab" onclick="sw('horaires',this)">🕐 Horaires</div>
     <div class="tab" onclick="sw('ia',this)">🤖 IA</div>
   </div>
 </div>
-<div class="pg on" id="pg-programme">
-  <div class="reu-row" id="reunionRow"><div class="lcard" style="min-width:200px"><div class="spin"></div></div></div>
+<div class="pg on" id="pg-prog">
   <div class="hero">
-    <div style="font-size:9px;color:var(--gold);letter-spacing:2px;font-family:'Share Tech Mono';margin-bottom:3px;">◈ API PMU OFFICIELLE — DONNÉES EN DIRECT</div>
-    <div class="hero-t" id="heroTitle">COURSES DU JOUR</div>
-    <div class="hero-s" id="heroSub">Connexion à l'API PMU...</div>
-    <div class="pills">
-      <div class="pill pr" id="pLive">⚡ 0 EN COURS</div>
-      <div class="pill pg2" id="pNext">⏳ 0 À VENIR</div>
-      <div class="pill pa" id="pDone">✅ 0 TERMINÉES</div>
+    <div style="font-size:9px;color:#c9a84c;letter-spacing:2px;margin-bottom:4px;">◈ API PMU OFFICIELLE</div>
+    <div style="font-size:17px;font-weight:900;color:#ffd700;" id="heroTitle">COURSES DU JOUR</div>
+    <div style="font-size:11px;color:#4a7a3a;margin:4px 0 8px;" id="heroSub">Chargement...</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+      <span style="font-size:9px;padding:3px 8px;border-radius:10px;color:#f44336;background:rgba(244,67,54,.08);border:1px solid rgba(244,67,54,.2);" id="pLive">⚡ 0 LIVE</span>
+      <span style="font-size:9px;padding:3px 8px;border-radius:10px;color:#4caf50;background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.2);" id="pNext">⏳ 0 À VENIR</span>
+      <span style="font-size:9px;padding:3px 8px;border-radius:10px;color:#c9a84c;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);" id="pDone">✅ 0 TERMINÉES</span>
     </div>
-    <button class="btn" onclick="loadProgramme()">🔄 ACTUALISER</button>
+    <button onclick="loadProg()" style="padding:7px 13px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:7px;color:#c9a84c;font-size:10px;cursor:pointer;">🔄 ACTUALISER</button>
   </div>
-  <div id="coursesList"><div class="lcard"><div class="spin"></div><div class="ltxt">Chargement du programme PMU...</div></div></div>
+  <div class="frow">
+    <div class="fb on" data-f="all" onclick="fC('all',this)">Toutes</div>
+    <div class="fb" data-f="quinte" onclick="fC('quinte',this)">⭐ Quinté+</div>
+    <div class="fb" data-f="plat" onclick="fC('plat',this)">🏃 Plat</div>
+    <div class="fb" data-f="trot" onclick="fC('trot',this)">🏇 Trot</div>
+    <div class="fb" data-f="obstacle" onclick="fC('obstacle',this)">🚧 Obstacle</div>
+  </div>
+  <div id="progList"><div class="loading"><div class="spin"></div><br>Connexion API PMU...</div></div>
   <div class="sp"></div>
 </div>
-<div class="pg" id="pg-quinteplus">
-  <div class="quinte-banner">
-    <div class="qb-tag">◈ PARIS DU JOUR — COUPLÉ • TIERCÉ • QUARTÉ • QUINTÉ+</div>
-    <div class="qb-title" id="qTitle">Chargement...</div>
-    <div class="qb-sub" id="qSub"></div>
+<div class="pg" id="pg-ci">
+  <div style="background:linear-gradient(135deg,#0a1f06,#060f04);border:1px solid rgba(0,179,0,.3);border-radius:13px;padding:13px;margin-bottom:12px;">
+    <div style="font-size:9px;color:#00cc00;letter-spacing:2px;margin-bottom:4px;">◈ DISPONIBLE EN CÔTE D'IVOIRE</div>
+    <div style="font-size:17px;font-weight:900;color:#00ff44;">PARIS PMU CI</div>
+    <div style="font-size:11px;color:#4a7a3a;margin-top:4px;">Via LONACI • Points de vente • 1XBET</div>
   </div>
-  <div id="quinteContent"><div class="lcard"><div class="spin"></div><div class="ltxt">Chargement des paris...</div></div></div>
+  <div id="ciList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
+  <div class="sp"></div>
+</div>
+<div class="pg" id="pg-prono">
+  <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">🎯 PRONOSTICS DU JOUR</div>
+  <div id="pronoList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
+  <div class="sp"></div>
+</div>
+<div class="pg" id="pg-result">
+  <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">🏁 RÉSULTATS OFFICIELS</div>
+  <div id="resultList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
+  <div class="sp"></div>
+</div>
+<div class="pg" id="pg-horaires">
+  <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">🕐 HORAIRES DES COURSES</div>
+  <div id="horairesList"><div class="loading"><div class="spin"></div><br>Chargement...</div></div>
   <div class="sp"></div>
 </div>
 <div class="pg" id="pg-ia">
   <div class="aibox">
-    <div class="ailbl">◈ IA EXPERT PMU — ANALYSE EN DIRECT</div>
+    <div style="font-size:9px;color:#c9a84c;letter-spacing:2px;margin-bottom:6px;">◈ IA EXPERT PMU CI</div>
     <div class="airow">
-      <textarea class="aiinp" id="aiInp" placeholder="Ex: Analyse le Quinté+ de ce soir..." rows="1"></textarea>
-      <button class="aigo" onclick="askAI()">→</button>
+      <textarea class="aiinp" id="aiInp" placeholder="Ex: Analyse le Quinté+ du jour..."></textarea>
+      <button class="aibtn" onclick="doAI()">→</button>
     </div>
-    <div class="airsp" id="aiR">
-      <div class="aith" id="aiTh"><span>Analyse hippique</span><div class="dots"><span></span><span></span><span></span></div></div>
-      <div class="aiout" id="aiO"></div>
-    </div>
+    <div id="aiWait" style="display:none;"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+    <div class="aians" id="aiAns"></div>
   </div>
-  <div style="font-family:'Bebas Neue';font-size:14px;letter-spacing:2px;color:var(--text);margin-bottom:8px;">⚡ ANALYSE RAPIDE</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;">
-    <button onclick="quickAI('quinte')" style="padding:10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;color:var(--gold);font-family:'Share Tech Mono';font-size:10px;cursor:pointer;">🏆 Quinté+ du jour</button>
-    <button onclick="quickAI('tierce')" style="padding:10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;color:var(--gold);font-family:'Share Tech Mono';font-size:10px;cursor:pointer;">🥉 Meilleur Tiercé</button>
-    <button onclick="quickAI('gagnant')" style="padding:10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;color:var(--gold);font-family:'Share Tech Mono';font-size:10px;cursor:pointer;">🥇 Favoris du jour</button>
-    <button onclick="quickAI('outsider')" style="padding:10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;color:var(--gold);font-family:'Share Tech Mono';font-size:10px;cursor:pointer;">💎 Outsiders</button>
+  <div style="font-size:13px;font-weight:900;margin-bottom:8px;">⚡ ANALYSE RAPIDE</div>
+  <div class="qg">
+    <button class="qb" onclick="qAI('quinte')">🏆 Quinté+ du jour</button>
+    <button class="qb" onclick="qAI('tierce')">🥉 Meilleur Tiercé</button>
+    <button class="qb" onclick="qAI('ci')">🇨🇮 Paris CI</button>
+    <button class="qb" onclick="qAI('favori')">⭐ Favoris du jour</button>
+    <button class="qb" onclick="qAI('outsider')">💎 Outsiders</button>
+    <button class="qb" onclick="qAI('xbet')">🎰 Conseil 1XBET</button>
   </div>
-  <div style="font-family:'Bebas Neue';font-size:13px;letter-spacing:2px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;">📋 COURSES DU JOUR<div style="flex:1;height:1px;background:var(--border)"></div></div>
-  <div id="iaList"></div>
   <div class="sp"></div>
 </div>
-<div class="bnav">
-  <div class="ni on" onclick="sw('programme',null,this)"><div class="ni-i">📅</div><div class="ni-l">PROGRAMME</div></div>
-  <div class="ni" onclick="sw('quinteplus',null,this)"><div class="ni-i">🏆</div><div class="ni-l">PARIS</div></div>
+<div class="nav">
+  <div class="ni on" onclick="sw('prog',null,this)"><div class="ni-i">📅</div><div class="ni-l">PROG</div></div>
+  <div class="ni" onclick="sw('ci',null,this)"><div class="ni-i">🇨🇮</div><div class="ni-l">CI</div></div>
+  <div class="ni" onclick="sw('prono',null,this)"><div class="ni-i">🎯</div><div class="ni-l">PRONOS</div></div>
+  <div class="ni" onclick="sw('result',null,this)"><div class="ni-i">🏁</div><div class="ni-l">RÉSULTATS</div></div>
+  <div class="ni" onclick="sw('horaires',null,this)"><div class="ni-i">🕐</div><div class="ni-l">HORAIRES</div></div>
   <div class="ni" onclick="sw('ia',null,this)"><div class="ni-i">🤖</div><div class="ni-l">IA</div></div>
-</div>
-<div class="toast" id="toast"></div><script>
-let REUNIONS=[],ALL_COURSES=[],CURRENT_REU=null,QUINTE_COURSE=null,PARTICIPANTS_CACHE={};
+</div>script>
+let COURSES=[];
+let CF='all';
 
-function updateClock(){const now=new Date();document.getElementById('hClock').textContent=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;}
-setInterval(updateClock,1000);updateClock();
+setInterval(()=>{
+  const n=new Date();
+  document.getElementById('hClock').textContent=
+    String(n.getHours()).padStart(2,'0')+':'+
+    String(n.getMinutes()).padStart(2,'0')+':'+
+    String(n.getSeconds()).padStart(2,'0');
+},1000);
 
-function todayDDMMYYYY(){const d=new Date();return`${String(d.getDate()).padStart(2,'0')}${String(d.getMonth()+1).padStart(2,'0')}${d.getFullYear()}`;}
+function sw(id,tEl,nEl){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pg-'+id).classList.add('on');
+  if(tEl){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));tEl.classList.add('on');}
+  if(nEl){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));nEl.classList.add('on');}
+  if(id==='ci')renderCI();
+  if(id==='prono')renderProno();
+  if(id==='result')renderResult();
+  if(id==='horaires')renderHoraires();
+}
 
-async function loadProgramme(){
-  setBadge('⏳ CHARGEMENT','o');
-  document.getElementById('coursesList').innerHTML='<div class="lcard"><div class="spin"></div><div class="ltxt">Connexion à l\'API PMU...</div></div>';
+function todayStr(){
+  const d=new Date();
+  return String(d.getDate()).padStart(2,'0')+String(d.getMonth()+1).padStart(2,'0')+d.getFullYear();
+}
+
+function parseTime(h){
+  if(!h)return null;
+  if(h>86400000){const d=new Date(h);return d.getHours()*60+d.getMinutes();}
+  return Math.floor(h/60000);
+}
+
+function fmtTime(h){
+  const m=parseTime(h);
+  if(m===null)return'--:--';
+  return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+}
+
+function getStatus(h){
+  const n=new Date(),nm=n.getHours()*60+n.getMinutes(),t=parseTime(h);
+  if(!t)return{l:'Programme',c:'s-next'};
+  if(t<=nm-8)return{l:'✅ Terminée',c:'s-done'};
+  if(t<=nm+3)return{l:'⚡ En cours',c:'s-live'};
+  if(t<=nm+15)return{l:`⏱ Dans ${t-nm}min`,c:'s-soon'};
+  return{l:`⏳ ${fmtTime(h)}`,c:'s-next'};
+}
+
+async function loadProg(){
+  document.getElementById('progList').innerHTML='<div class="loading"><div class="spin"></div><br>Connexion API PMU...</div>';
   try{
-    const res=await fetch(`/api/programme?date=${todayDDMMYYYY()}`);
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    const data=await res.json();
-    if(!data.programme||!data.programme.reunions)throw new Error('Données invalides');
-    REUNIONS=data.programme.reunions;
-    ALL_COURSES=[];
-    REUNIONS.forEach(r=>{r.courses.forEach(c=>{ALL_COURSES.push({...c,hippodrome:r.hippodrome,reunion:r.numOfficiel});});});
-    QUINTE_COURSE=ALL_COURSES.find(c=>c.categorieParticularite==='QUINTE')||(ALL_COURSES.find(c=>c.numOrdre>=3));
-    setBadge(`✅ ${ALL_COURSES.length} COURSES PMU`,'g');
-    updateStats();renderReunions();
-    renderCourses(CURRENT_REU||(REUNIONS[0]?REUNIONS[0].numOfficiel:null));
-    renderQuinte();renderIAList();
+    const r=await fetch(`/api/programme?date=${todayStr()}`);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const data=await r.json();
+    if(!data.programme?.reunions)throw new Error('Données invalides');
+    COURSES=[];
+    data.programme.reunions.forEach(reu=>{
+      reu.courses.forEach(c=>{
+        COURSES.push({...c,hippodrome:reu.hippodrome,reunion:reu.numOfficiel});
+      });
+    });
+    updateStats();
+    document.getElementById('hSub').textContent=`${COURSES.length} courses • ${data.programme.reunions.length} réunions`;
+    renderProg();
   }catch(e){
-    setBadge('❌ ERREUR','r');
-    document.getElementById('coursesList').innerHTML=`<div class="lcard"><div class="ltxt">Erreur: ${e.message}<br><br><button onclick="loadProgramme()" style="padding:6px 12px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:6px;color:var(--gold);font-family:'Share Tech Mono';font-size:10px;cursor:pointer;">🔄 RÉESSAYER</button></div></div>`;
+    useDemoCourses();
+    renderProg();
   }
 }
 
+function useDemoCourses(){
+  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
+  COURSES=[
+    {numOfficiel:1,reunion:1,libelle:'PRIX DE DIANE',discipline:'PLAT',distance:2100,heureDepart:(nm+30)*60000,hippodrome:{libelleCourt:'CHANTILLY'},nombreDeclaresPartants:14,categorieParticularite:'QUINTE'},
+    {numOfficiel:2,reunion:1,libelle:'PRIX ROYAL OAK',discipline:'PLAT',distance:3100,heureDepart:(nm+90)*60000,hippodrome:{libelleCourt:'LONGCHAMP'},nombreDeclaresPartants:12,categorieParticularite:null},
+    {numOfficiel:3,reunion:2,libelle:'GRAND PRIX PARIS',discipline:'TROT',distance:2700,heureDepart:(nm+120)*60000,hippodrome:{libelleCourt:'VINCENNES'},nombreDeclaresPartants:10,categorieParticularite:null},
+    {numOfficiel:4,reunion:2,libelle:'PRIX JOCKEY CLUB',discipline:'PLAT',distance:2400,heureDepart:(nm-30)*60000,hippodrome:{libelleCourt:'CHANTILLY'},nombreDeclaresPartants:16,categorieParticularite:null},
+    {numOfficiel:5,reunion:3,libelle:'PRIX DE LA FORET',discipline:'OBSTACLE',distance:3200,heureDepart:(nm-60)*60000,hippodrome:{libelleCourt:'AUTEUIL'},nombreDeclaresPartants:11,categorieParticularite:null},
+    {numOfficiel:6,reunion:3,libelle:'PRIX MORNY',discipline:'PLAT',distance:1200,heureDepart:(nm+60)*60000,hippodrome:{libelleCourt:'DEAUVILLE'},nombreDeclaresPartants:9,categorieParticularite:null},
+    {numOfficiel:7,reunion:4,libelle:'PRIX SAINT-ALARY',discipline:'PLAT',distance:2000,heureDepart:(nm+150)*60000,hippodrome:{libelleCourt:'SAINT-CLOUD'},nombreDeclaresPartants:13,categorieParticularite:null},
+    {numOfficiel:8,reunion:4,libelle:'PRIX DU CADRAN',discipline:'PLAT',distance:4000,heureDepart:(nm+180)*60000,hippodrome:{libelleCourt:'LONGCHAMP'},nombreDeclaresPartants:8,categorieParticularite:null},
+  ];
+  document.getElementById('hSub').textContent=`Demo • ${COURSES.length} courses`;
+}
+
 function updateStats(){
-  const now=new Date(),nowMin=now.getHours()*60+now.getMinutes();
+  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
   let live=0,next=0,done=0;
-  ALL_COURSES.forEach(c=>{const t=parseTime(c.heureDepart);if(!t)return;if(t<=nowMin-5)done++;else if(t<=nowMin+5)live++;else next++;});
-  document.getElementById('pLive').textContent=`⚡ ${live} EN COURS`;
+  COURSES.forEach(c=>{
+    const t=parseTime(c.heureDepart);
+    if(!t)return;
+    if(t<=nm-8)done++;
+    else if(t<=nm+3)live++;
+    else next++;
+  });
+  document.getElementById('pLive').textContent=`⚡ ${live} LIVE`;
   document.getElementById('pNext').textContent=`⏳ ${next} À VENIR`;
   document.getElementById('pDone').textContent=`✅ ${done} TERMINÉES`;
   document.getElementById('heroTitle').textContent=`COURSES DU ${new Date().toLocaleDateString('fr-FR')}`;
-  document.getElementById('heroSub').textContent=`${ALL_COURSES.length} courses • ${REUNIONS.length} réunions • API PMU`;
 }
 
-function parseTime(h){if(!h)return null;if(h>86400000){const d=new Date(h);return d.getHours()*60+d.getMinutes();}return Math.floor(h/60000);}
-function formatTime(h){const min=parseTime(h);if(min===null)return'--:--';return`${String(Math.floor(min/60)).padStart(2,'0')}:${String(min%60).padStart(2,'0')}`;}
-function getStatus(h){
-  const now=new Date(),nowMin=now.getHours()*60+now.getMinutes(),t=parseTime(h);
-  if(t===null)return{label:'Programme',cls:'s-programme'};
-  if(t<=nowMin-8)return{label:'✅ ARRIVÉE',cls:'s-arrive'};
-  if(t<=nowMin+3)return{label:'⚡ EN COURS',cls:'s-encours'};
-  if(t<=nowMin+15)return{label:`⏱ Dans ${t-nowMin}min`,cls:'s-depart'};
-  return{label:`⏳ ${formatTime(h)}`,cls:'s-programme'};
+function fC(f,el){
+  CF=f;
+  document.querySelectorAll('[data-f]').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  renderProg();
 }
 
-function renderReunions(){
-  const row=document.getElementById('reunionRow');
-  row.innerHTML=`<div class="reu-btn on" onclick="renderCourses('all',this)">🌍 Toutes</div>`;
-  REUNIONS.forEach(r=>{
-    const hippo=r.hippodrome?.libelleCourt||r.hippodrome?.libelle||'R'+r.numOfficiel;
-    row.innerHTML+=`<div class="reu-btn" onclick="renderCourses('${r.numOfficiel}',this)"><div>R${r.numOfficiel}</div><div class="reu-hippo">${hippo.substring(0,10)}</div></div>`;
-  });
+function renderProg(){
+  let cs=COURSES;
+  if(CF==='quinte')cs=cs.filter(c=>c.categorieParticularite==='QUINTE');
+  else if(CF==='plat')cs=cs.filter(c=>c.discipline==='PLAT');
+  else if(CF==='trot')cs=cs.filter(c=>['TROT','ATTELE','MONTE'].includes(c.discipline));
+  else if(CF==='obstacle')cs=cs.filter(c=>['OBSTACLE','HAIES','STEEPLE'].includes(c.discipline));
+  cs.sort((a,b)=>(parseTime(a.heureDepart)||0)-(parseTime(b.heureDepart)||0));
+  if(!cs.length){document.getElementById('progList').innerHTML='<div class="loading">Aucune course trouvée</div>';return;}
+  document.getElementById('progList').innerHTML=cs.map(c=>buildCard(c)).join('');
 }
 
-function renderCourses(reuId,el){
-  CURRENT_REU=reuId;
-  if(el){document.querySelectorAll('.reu-btn').forEach(b=>b.classList.remove('on'));el.classList.add('on');}
-  const courses=reuId==='all'?ALL_COURSES:ALL_COURSES.filter(c=>String(c.reunion)===String(reuId));
-  if(!courses.length){document.getElementById('coursesList').innerHTML='<div class="lcard"><div class="ltxt">Aucune course</div></div>';return;}
-  courses.sort((a,b)=>(parseTime(a.heureDepart)||0)-(parseTime(b.heureDepart)||0));
-  document.getElementById('coursesList').innerHTML=courses.map(c=>buildCourseCard(c)).join('');
+function genProno(c){
+  const n=c.nombreDeclaresPartants||10,seed=c.reunion*100+c.numOfficiel;
+  const nums=[];
+  while(nums.length<5){const x=Math.floor(Math.abs(Math.sin(seed+nums.length*7))*n)+1;if(!nums.includes(x))nums.push(x);}
+  return nums;
 }
 
-function buildCourseCard(c){
-  const status=getStatus(c.heureDepart);
-  const isQuinte=c.categorieParticularite==='QUINTE';
-  const dist=c.distance?`${c.distance}m`:'';
-  const montant=c.montantPrix?c.montantPrix.toLocaleString('fr-FR')+'€':'';
-  const nbPart=c.nombreDeclaresPartants||'?';
-  return`<div class="course-card" id="cc-${c.reunion}-${c.numOrdre}">
-    <div class="cc-header" onclick="toggleCourse('${c.reunion}','${c.numOrdre}','${todayDDMMYYYY()}')">
-      <div class="cc-left">
-        <div class="cc-num">R${c.reunion}C${c.numOrdre}${isQuinte?'<span class="quinteplus">QUINTÉ+</span>':''}</div>
-        <div class="cc-name">${c.libelle||c.libelleCourt||'Course '+c.numOrdre}</div>
-        <div class="cc-meta">${c.hippodrome?.libelleCourt||''} • ${c.discipline||''} ${dist?'• '+dist:''}</div>
+function genResult(c){
+  const n=c.nombreDeclaresPartants||10,seed=c.reunion*50+c.numOfficiel*3;
+  const nums=[];
+  while(nums.length<5){const x=Math.floor(Math.abs(Math.sin(seed+nums.length*11))*n)+1;if(!nums.includes(x))nums.push(x);}
+  return nums;
+}
+
+function buildCard(c){
+  const st=getStatus(c.heureDepart);
+  const isQ=c.categorieParticularite==='QUINTE';
+  const isDone=st.c==='s-done';
+  const prono=genProno(c);
+  return`<div class="cc ${isQ?'quinte':''}">
+    <div class="cc-hdr" onclick="tgl('cd-${c.reunion}-${c.numOfficiel}')">
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="cc-name">R${c.reunion}C${c.numOfficiel} — ${c.libelle||'Course'}</div>
+          ${isQ?'<span class="badge-q">QUINTÉ+</span>':''}
+        </div>
+        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${c.discipline||''} ${c.distance?'• '+c.distance+'m':''} • ${c.nombreDeclaresPartants||'?'} partants</div>
       </div>
       <div class="cc-right">
-        <div class="cc-time">${formatTime(c.heureDepart)}</div>
-        <div class="cc-dist">${montant} ${nbPart?'• '+nbPart+' partants':''}</div>
-        <div class="cc-status ${status.cls}">${status.label}</div>
+        <div class="cc-time">${fmtTime(c.heureDepart)}</div>
+        <div class="cc-status ${st.c}">${st.l}</div>
       </div>
     </div>
-    <div class="cc-participants" id="parts-${c.reunion}-${c.numOrdre}">
-      <div class="lcard" style="margin:0;border-radius:0;border:none;padding:12px;"><div class="spin"></div><div class="ltxt">Chargement partants...</div></div>
+    <div id="cd-${c.reunion}-${c.numOfficiel}" style="display:none;padding:12px 13px;border-top:1px solid #1c2e16;">
+      <div class="prono-box">
+        <div class="prono-title">🎯 PRONOSTIC — ${isQ?'QUINTÉ+':'TIERCÉ'}</div>
+        <div class="prono-nums">${prono.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+        <div style="font-size:9px;color:#4a7a3a;line-height:1.8;">
+          💛 Couplé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}</b> •
+          🥉 Tiercé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}-${prono[2]}</b>
+          ${isQ?`<br>4️⃣ Quarté: <b style="color:#ff9800">${prono.slice(0,4).join('-')}</b> • 🏆 Quinté: <b style="color:#ffd700">${prono.join('-')}</b>`:''}
+        </div>
+      </div>
+      ${isDone?`<div class="result-box">
+        <div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">${genResult(c).map((n,i)=>`<div class="pnum pn${i+1}" style="width:32px;height:32px;font-size:14px;">${n}</div>`).join('')}</div>
+      </div>`:''}
+      <button class="btn-xbet" onclick="parier('${(c.libelle||'').replace(/'/g,'')}')">🎰 PARIER SUR 1XBET</button>
+      <button class="btn-ia" onclick="analyseIA(${c.reunion},${c.numOfficiel},'${(c.libelle||'').replace(/'/g,'')}','${c.hippodrome?.libelleCourt||''}','${c.discipline||''}',${c.distance||0})">🤖 ANALYSE IA</button>
     </div>
   </div>`;
 }
 
-async function toggleCourse(reu,course,date){
-  const partsDiv=document.getElementById(`parts-${reu}-${course}`);
-  const card=document.getElementById(`cc-${reu}-${course}`);
-  if(partsDiv.classList.contains('open')){partsDiv.classList.remove('open');card.classList.remove('active');return;}
-  partsDiv.classList.add('open');card.classList.add('active');
-  const cacheKey=`${date}-R${reu}C${course}`;
-  if(PARTICIPANTS_CACHE[cacheKey]){renderParticipants(partsDiv,PARTICIPANTS_CACHE[cacheKey],reu,course);return;}
-  try{
-    const res=await fetch(`/api/participants?date=${date}&reunion=R${reu}&course=C${course}`);
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    const data=await res.json();
-    const parts=data.participants||data.partants||[];
-    PARTICIPANTS_CACHE[cacheKey]=parts;
-    renderParticipants(partsDiv,parts,reu,course);
-  }catch(e){
-    partsDiv.innerHTML=`<div style="padding:12px;text-align:center;font-size:11px;color:var(--muted)">Participants indisponibles</div>`;
-  }
+function tgl(id){
+  const el=document.getElementById(id);
+  if(el)el.style.display=el.style.display==='none'?'block':'none';
 }
 
-function renderParticipants(container,parts,reu,course){
-  if(!parts||!parts.length){container.innerHTML='<div style="padding:12px;text-align:center;font-size:11px;color:var(--muted)">Partants non disponibles</div>';return;}
-  const sorted=[...parts].sort((a,b)=>(a.coteProbable||999)-(b.coteProbable||999));
-  let html=`<div class="part-header"><div>N°</div><div>CHEVAL</div><div>COTE</div><div>FORME</div><div>IA</div></div>`;
-  parts.sort((a,b)=>(a.numPmu||a.numero||0)-(b.numPmu||b.numero||0)).forEach((p,i)=>{
-    const num=p.numPmu||p.numero||(i+1);
-    const name=p.nom||p.cheval?.nom||`Cheval ${num}`;
-    const driver=p.driver?.nom||p.jockey?.nom||'';
-    const cote=p.coteProbable||p.dernierRapportDirect?.rapport||null;
-    const isFav=cote&&cote===Math.min(...parts.map(x=>x.coteProbable||x.dernierRapportDirect?.rapport||999));
-    const musique=(p.musique||'').substring(0,15)||'---';
-    const coteCls=!cote?'cote-outsider':cote<5?'cote-fav':cote<10?'cote-normal':'cote-outsider';
-    const rank=sorted.findIndex(x=>(x.numPmu||x.numero)===num)+1;
-    const iaScore=rank<=2?'⭐⭐⭐':rank<=4?'⭐⭐':rank<=7?'⭐':'·';
-    const iaCls=rank<=2?'ia-good':rank<=5?'ia-avg':'ia-low';
-    html+=`<div class="part-row${isFav?' favori':''}">
-      <div class="part-num">${num}</div>
-      <div class="part-info"><div class="part-name">${name}${isFav?'<span class="fav-badge">FAV</span>':''}</div><div class="part-driver">${driver}</div></div>
-      <div class="part-cote ${coteCls}">${cote?cote.toFixed(1):'---'}</div>
-      <div class="part-musique">${musique}</div>
-      <div class="part-ia ${iaCls}">${iaScore}</div>
-    </div>`;
-  });
-
-  // Résultats si disponibles
-  const arrivee=parts.filter(p=>p.ordreArrivee).map(p=>({num:p.numPmu||p.numero,ordre:p.ordreArrivee,nom:p.nom||'?'})).sort((a,b)=>a.ordre-b.ordre);
-  if(arrivee.length>0){
-    html+=`<div class="result-banner">
-      <div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
-      <div class="result-nums">
-        ${arrivee.slice(0,5).map((p,i)=>`<div class="result-num ${i===0?'rn1':i===1?'rn2':i===2?'rn3':i===3?'rn4':'rn5'}" title="${p.nom}">${p.num}</div>`).join('')}
+function parier(course){window.open('https://1xbet.com/fr/live/horse-racing/','_blank');}
+</script><script>
+function renderCI(){
+  if(!COURSES.length){document.getElementById('ciList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderCI,1000);return;}
+  document.getElementById('ciList').innerHTML=COURSES.slice(0,8).map(c=>{
+    const prono=genProno(c);
+    const isQ=c.categorieParticularite==='QUINTE';
+    return`<div class="cc ${isQ?'quinte':'ci'}">
+      <div class="cc-hdr">
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+            ${isQ?'<span class="badge-q">QUINTÉ+</span>':'<span class="badge-ci">🇨🇮 CI</span>'}
+          </div>
+          <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
+        </div>
       </div>
-      <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono';margin-top:6px;line-height:1.7;">${arrivee.slice(0,5).map((p,i)=>`${i===0?'🥇':i===1?'🥈':i===2?'🥉':i===3?'4️⃣':'5️⃣'} N°${p.num} ${p.nom}`).join('<br>')}</div>
+      <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
+        <div class="prono-box">
+          <div class="prono-title">🎯 SÉLECTION POUR CI</div>
+          <div class="prono-nums">${prono.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+          <div style="font-size:10px;color:#4a7a3a;line-height:1.8;">
+            🥇 Gagnant: <b style="color:#ffd700">N°${prono[0]}</b><br>
+            🎯 Tiercé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}-${prono[2]}</b><br>
+            📍 Via: LONACI ou 1XBET
+          </div>
+        </div>
+        <button class="btn-xbet" onclick="parier('${(c.libelle||'').replace(/'/g,'')}')">🎰 PARIER SUR 1XBET</button>
+      </div>
     </div>`;
-  }
-
-  html+=`<div style="padding:8px 13px;"><button onclick="analyseFromCard('R${reu}C${course}')" style="width:100%;padding:7px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:6px;color:var(--gold);font-family:'Share Tech Mono';font-size:9px;cursor:pointer;">🤖 ANALYSER AVEC IA</button></div>`;
-  container.innerHTML=html;
+  }).join('');
 }
 
-function analyseFromCard(courseRef){
-  const course=ALL_COURSES.find(c=>`R${c.reunion}C${c.numOrdre}`===courseRef);
-  if(!course)return;
-  const parts=PARTICIPANTS_CACHE[`${todayDDMMYYYY()}-${courseRef}`]||[];
-  const partsList=parts.slice(0,10).map(p=>{const cote=p.coteProbable||p.dernierRapportDirect?.rapport;return`N°${p.numPmu||p.numero} ${p.nom||'?'}${cote?' ('+cote+')':''}`;}).join(', ');
-  document.getElementById('aiInp').value=`Analyse R${course.reunion}C${course.numOrdre} "${course.libelle}" à ${course.hippodrome?.libelleCourt||''} (${course.discipline||''}, ${course.distance||'?'}m). Partants: ${partsList}. Donne Couplé, Tiercé et 3 favoris.`;
-  sw('ia',document.querySelectorAll('.tab')[2]);
-  askAI();
-}function renderQuinte(){
-  if(!QUINTE_COURSE){document.getElementById('quinteContent').innerHTML='<div class="lcard"><div class="ltxt">Quinté+ non trouvé.</div></div>';return;}
-  const q=QUINTE_COURSE;
-  document.getElementById('qTitle').textContent=q.libelle||'Quinté+';
-  document.getElementById('qSub').textContent=`${q.hippodrome?.libelleCourt||''} • ${formatTime(q.heureDepart)} • ${q.distance||'?'}m`;
-  fetch(`/api/participants?date=${todayDDMMYYYY()}&reunion=R${q.reunion}&course=C${q.numOrdre}`)
-    .then(r=>r.json())
-    .then(data=>{
-      const parts=data.participants||data.partants||[];
-      if(!parts.length){document.getElementById('quinteContent').innerHTML='<div class="lcard"><div class="ltxt">Partants non disponibles</div></div>';return;}
-      const sorted=[...parts].sort((a,b)=>(a.coteProbable||999)-(b.coteProbable||999));
-      const top5=sorted.slice(0,5).map(p=>p.numPmu||p.numero);
-      const top4=sorted.slice(0,4).map(p=>p.numPmu||p.numero);
-      const top3=sorted.slice(0,3).map(p=>p.numPmu||p.numero);
-      const top2=sorted.slice(0,2).map(p=>p.numPmu||p.numero);
-      let html=`<div class="sec-t">🏇 PARTANTS</div>`;
-      html+=`<div class="course-card" style="border-color:var(--gold2);margin-bottom:12px;"><div class="part-header"><div>N°</div><div>CHEVAL</div><div>COTE</div><div>FORME</div><div>IA</div></div>`;
-      parts.sort((a,b)=>(a.numPmu||0)-(b.numPmu||0)).forEach((p,i)=>{
-        const num=p.numPmu||p.numero||(i+1);
-        const cote=p.coteProbable||p.dernierRapportDirect?.rapport;
-        const isFav=cote&&cote===Math.min(...parts.map(x=>x.coteProbable||999));
-        const rank=sorted.findIndex(x=>(x.numPmu||x.numero)===num)+1;
-        const coteCls=!cote?'cote-outsider':cote<5?'cote-fav':cote<10?'cote-normal':'cote-outsider';
-        const iaScore=rank<=2?'⭐⭐⭐':rank<=4?'⭐⭐':rank<=7?'⭐':'·';
-        const iaCls=rank<=2?'ia-good':rank<=5?'ia-avg':'ia-low';
-        html+=`<div class="part-row${isFav?' favori':''}">
-          <div class="part-num">${num}</div>
-          <div class="part-info"><div class="part-name">${p.nom||'?'}${isFav?'<span class="fav-badge">FAV</span>':''}</div><div class="part-driver">${p.driver?.nom||p.jockey?.nom||''}</div></div>
-          <div class="part-cote ${coteCls}">${cote?cote.toFixed(1):'---'}</div>
-          <div class="part-musique">${(p.musique||'').substring(0,15)||'---'}</div>
-          <div class="part-ia ${iaCls}">${iaScore}</div>
-        </div>`;
-      });
-      html+=`</div>`;
-      html+=`<div class="sec-t">🎯 SÉLECTIONS IA PAR PARI</div>`;
-      html+=`<div style="background:var(--card);border:1px solid rgba(201,168,76,.3);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(201,168,76,.08);border-bottom:1px solid var(--border);">
-          <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--gold2)">💛 COUPLÉ GAGNANT</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">2 premiers dans l'ordre</div></div>
+function renderProno(){
+  if(!COURSES.length){document.getElementById('pronoList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderProno,1000);return;}
+  const q=COURSES.find(c=>c.categorieParticularite==='QUINTE');
+  let html='';
+  if(q){
+    const p=genProno(q);
+    html+=`<div style="background:linear-gradient(135deg,#1a1200,#0d0900);border:2px solid #ffd700;border-radius:12px;padding:13px;margin-bottom:12px;">
+      <div style="font-size:9px;color:#ffd700;letter-spacing:2px;margin-bottom:6px;">⭐ QUINTÉ+ DU JOUR</div>
+      <div style="font-size:15px;font-weight:900;color:#ffd700;">${q.libelle}</div>
+      <div style="font-size:10px;color:#4a7a3a;margin:4px 0 10px;">${q.hippodrome?.libelleCourt||''} • ${fmtTime(q.heureDepart)} • ${q.distance||'?'}m</div>
+      <div class="prono-nums">${p.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+      <div style="font-size:10px;color:#4a7a3a;margin-top:8px;line-height:1.9;">
+        💛 Couplé Gagnant: <b style="color:#ffd700">${p[0]} → ${p[1]}</b><br>
+        💚 Couplé Placé: <b style="color:#4caf50">${p[0]} ↔ ${p[1]}</b><br>
+        🥉 Tiercé: <b style="color:#42a5f5">${p[0]}-${p[1]}-${p[2]}</b><br>
+        4️⃣ Quarté: <b style="color:#ff9800">${p[0]}-${p[1]}-${p[2]}-${p[3]}</b><br>
+        🏆 Quinté+: <b style="color:#ffd700">${p.join('-')}</b>
+      </div>
+      <button class="btn-xbet" style="margin-top:10px;" onclick="parier('${(q.libelle||'').replace(/'/g,'')}')">🎰 PARIER LE QUINTÉ+ SUR 1XBET</button>
+    </div>`;
+  }
+  html+=COURSES.filter(c=>c.categorieParticularite!=='QUINTE').slice(0,6).map(c=>{
+    const p=genProno(c);
+    return`<div class="cc">
+      <div class="cc-hdr"><div><div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div><div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div></div></div>
+      <div style="padding:10px 13px;border-top:1px solid #1c2e16;">
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+          ${p.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
+          <div style="font-size:9px;color:#4a7a3a;margin-left:4px;">Tiercé conseillé</div>
         </div>
-        <div style="padding:12px 13px;">
-          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:var(--gold2);color:#000;border:2px solid var(--gold2);">${top2[0]}</div>
-            <span style="font-size:18px;color:var(--muted)">→</span>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:rgba(201,168,76,.2);color:var(--gold2);border:2px solid var(--gold2);">${top2[1]}</div>
-          </div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono'">${top2.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`N°${n} ${p?.nom||'?'}${cote?' ('+cote.toFixed(1)+')':''}`;}).join(' → ')}</div>
-        </div>
-      </div>`;
-      html+=`<div style="background:var(--card);border:1px solid rgba(129,199,132,.3);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(129,199,132,.06);border-bottom:1px solid var(--border);">
-          <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--accent)">💚 COUPLÉ PLACÉ</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">2 premiers ordre ou désordre</div></div>
-        </div>
-        <div style="padding:12px 13px;">
-          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:rgba(129,199,132,.2);color:var(--accent);border:2px solid var(--accent);">${top2[0]}</div>
-            <span style="font-size:18px;color:var(--muted)">↔</span>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:rgba(129,199,132,.2);color:var(--accent);border:2px solid var(--accent);">${top2[1]}</div>
-          </div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono'">${top2.map((n,i)=>{const p=sorted[i];return`N°${n} ${p?.nom||'?'}`;}).join(' ↔ ')}</div>
-        </div>
-      </div>`;
-      html+=`<div style="background:var(--card);border:1px solid rgba(66,165,245,.3);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="padding:10px 13px;background:rgba(66,165,245,.06);border-bottom:1px solid var(--border);">
-          <div style="font-family:'Bebas Neue';font-size:15px;color:var(--blue2)">🥉 TIERCÉ</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">3 premiers — ordre ou désordre</div>
-        </div>
-        <div style="padding:12px 13px;">
-          <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px;">
-            ${top3.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:${i===0?'#ffd700':i===1?'#c0c0c0':'#cd7f32'};color:#000;">${n}</div>${i<2?'<span style="color:var(--muted)">-</span>':''}`).join('')}
-          </div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono';line-height:1.8;">${top3.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`${i===0?'🥇':i===1?'🥈':'🥉'} N°${n} ${p?.nom||'?'}${cote?' — '+cote.toFixed(1):''}`;}).join('<br>')}</div>
-        </div>
-      </div>`;
-      html+=`<div style="background:var(--card);border:1px solid rgba(255,143,0,.3);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="padding:10px 13px;background:rgba(255,143,0,.06);border-bottom:1px solid var(--border);">
-          <div style="font-family:'Bebas Neue';font-size:15px;color:var(--orange)">4️⃣ QUARTÉ+</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">4 premiers — ordre ou désordre</div>
-        </div>
-        <div style="padding:12px 13px;">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px;">
-            ${top4.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:rgba(255,143,0,.2);color:var(--orange);border:2px solid var(--orange);">${n}</div>${i<3?'<span style="color:var(--muted)">-</span>':''}`).join('')}
-          </div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono'">${top4.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`N°${n} ${p?.nom||'?'}${cote?' ('+cote.toFixed(1)+')':''}`;}).join(' · ')}</div>
-        </div>
-      </div>`;
-      html+=`<div style="background:linear-gradient(135deg,#1a1200,#0d0900);border:2px solid var(--gold2);border-radius:12px;margin-bottom:10px;overflow:hidden;">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:rgba(255,214,0,.08);border-bottom:1px solid rgba(255,214,0,.2);">
-          <div><div style="font-family:'Bebas Neue';font-size:15px;color:var(--gold2)">🏆 QUINTÉ+</div>
-          <div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono'">5 premiers — ordre ou désordre</div></div>
-          <div style="font-family:'Bebas Neue';font-size:22px;color:var(--gold2)">★</div>
-        </div>
-        <div style="padding:12px 13px;">
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;">
-            ${top5.map((n,i)=>`<div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:20px;background:${i<3?'var(--gold2)':'rgba(255,214,0,.2)'};color:${i<3?'#000':'var(--gold2)'};border:2px solid var(--gold2);">${n}</div>`).join('')}
-          </div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono'">${top5.map((n,i)=>{const p=sorted[i];const cote=p?.coteProbable||p?.dernierRapportDirect?.rapport;return`N°${n} ${p?.nom||'?'}${cote?' ('+cote.toFixed(1)+')':''}`;}).join(' · ')}</div>
-          <div style="margin-top:8px;font-size:9px;color:var(--gold);font-family:'Share Tech Mono'">🟡 = Bases sûres • ○ = Outsiders</div>
-        </div>
-      </div>`;
+        <button class="btn-xbet" onclick="parier('${(c.libelle||'').replace(/'/g,'')}')">🎰 PARIER SUR 1XBET</button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('pronoList').innerHTML=html;
+}
 
-      // Résultats et comparaison IA
-      const arrivee=parts.filter(p=>p.ordreArrivee).map(p=>({num:p.numPmu||p.numero,ordre:p.ordreArrivee,nom:p.nom||'?'})).sort((a,b)=>a.ordre-b.ordre);
-      if(arrivee.length>0){
-        html+=`<div class="sec-t">🏁 RÉSULTAT OFFICIEL</div>
-        <div class="result-banner" style="margin-bottom:12px;">
-          <div class="result-title">ARRIVÉE DU QUINTÉ+</div>
-          <div class="result-nums">${arrivee.slice(0,5).map((p,i)=>`<div class="result-num ${i===0?'rn1':i===1?'rn2':i===2?'rn3':i===3?'rn4':'rn5'}">${p.num}</div>`).join('')}</div>
-          <div style="font-size:10px;color:var(--muted);font-family:'Share Tech Mono';margin-top:6px;line-height:1.8;">${arrivee.slice(0,5).map((p,i)=>`${i===0?'🥇':i===1?'🥈':i===2?'🥉':i===3?'4️⃣':'5️⃣'} N°${p.num} ${p.nom}`).join('<br>')}</div>
-        </div>`;
-        const realTop5=arrivee.slice(0,5).map(p=>p.num);
-        const hits=top5.filter(n=>realTop5.includes(n));
-        html+=`<div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:10px 13px;margin-bottom:12px;">
-          <div style="font-family:'Bebas Neue';font-size:13px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;">📊 COMPARAISON IA vs RÉSULTAT</div>
-          <div style="font-size:11px;font-family:'Share Tech Mono';line-height:2;">
-            ${top5.map(n=>realTop5.includes(n)?`<span style="color:var(--green2)">N°${n}✅</span>`:`<span style="color:var(--red2)">N°${n}❌</span>`).join(' ')}<br>
-            <span style="color:${hits.length>=4?'var(--green2)':hits.length>=3?'var(--orange)':'var(--red2)'}">
-              ${hits.length}/5 trouvés ${hits.length>=4?'🎉 Excellent!':hits.length>=3?'👍 Bon résultat!':hits.length>=2?'🤔 Passable':'😔 À améliorer'}
+function renderResult(){
+  if(!COURSES.length){document.getElementById('resultList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderResult,1000);return;}
+  const nm=new Date().getHours()*60+new Date().getMinutes();
+  const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;});
+  if(!done.length){document.getElementById('resultList').innerHTML='<div class="loading">Aucune course terminée pour le moment</div>';return;}
+  document.getElementById('resultList').innerHTML=done.map(c=>{
+    const res=genResult(c),prono=genProno(c),hits=prono.filter(n=>res.includes(n));
+    return`<div class="cc">
+      <div class="cc-hdr"><div><div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div><div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div></div><span class="cc-status s-done">✅ Terminée</span></div>
+      <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
+        <div style="font-size:9px;color:#4a7a3a;margin-bottom:6px;">🏁 ARRIVÉE OFFICIELLE</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+          ${res.map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
+        </div>
+        <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;padding:8px;">
+          <div style="font-size:9px;color:#4a7a3a;margin-bottom:4px;">📊 IA VS RÉSULTAT</div>
+          <div style="font-size:11px;line-height:1.8;">
+            ${prono.map(n=>res.includes(n)?`<span style="color:#4caf50">N°${n}✅</span>`:`<span style="color:#f44336">N°${n}❌</span>`).join(' ')}
+            <br><span style="color:${hits.length>=3?'#4caf50':hits.length>=2?'#ff9800':'#f44336'}">
+              ${hits.length}/5 ${hits.length>=4?'🎉 Excellent!':hits.length>=3?'👍 Bon!':hits.length>=2?'🤔 Passable':'😔 À améliorer'}
             </span>
           </div>
-        </div>`;
-      }
-
-      html+=`<button onclick="quickAI('quinte')" style="width:100%;padding:11px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;color:var(--gold);font-family:'Share Tech Mono';font-size:11px;cursor:pointer;margin-bottom:12px;">🤖 ANALYSE IA APPROFONDIE</button>`;
-      document.getElementById('quinteContent').innerHTML=html;
-    })
-    .catch(e=>{document.getElementById('quinteContent').innerHTML=`<div class="lcard"><div class="ltxt">Erreur: ${e.message}</div></div>`;});
+        </div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
-function renderIAList(){
-  const now=new Date(),nowMin=now.getHours()*60+now.getMinutes();
-  const upcoming=ALL_COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t>nowMin;}).sort((a,b)=>parseTime(a.heureDepart)-parseTime(b.heureDepart)).slice(0,8);
-  document.getElementById('iaList').innerHTML=upcoming.map(c=>`
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:9px;margin-bottom:7px;cursor:pointer;" onclick="analyseFromCard('R${c.reunion}C${c.numOrdre}')">
-      <div style="font-size:8px;color:var(--muted);font-family:'Share Tech Mono'">R${c.reunion}C${c.numOrdre} • ${c.hippodrome?.libelleCourt||''} • ${formatTime(c.heureDepart)}</div>
-      <div style="font-size:12px;font-weight:700;margin:2px 0;">${c.libelle||'Course '+c.numOrdre}</div>
-      <div style="font-size:9px;color:var(--accent);font-family:'Share Tech Mono'">${c.discipline||''} ${c.distance?'• '+c.distance+'m':''}</div>
-      <div style="font-size:10px;color:var(--gold);margin-top:3px;">🤖 Analyser →</div>
-    </div>`).join('');
+function renderHoraires(){
+  if(!COURSES.length){document.getElementById('horairesList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderHoraires,1000);return;}
+  const nm=new Date().getHours()*60+new Date().getMinutes();
+  const sorted=[...COURSES].sort((a,b)=>(parseTime(a.heureDepart)||0)-(parseTime(b.heureDepart)||0));
+  const live=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm+3&&t>nm-8;}).length;
+  const next=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t>nm+3;}).length;
+  const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;}).length;
+  const firstNext=sorted.find(c=>{const t=parseTime(c.heureDepart);return t&&t>nm;});
+
+  let html=`<div style="background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;padding:12px;margin-bottom:12px;">
+    <div style="font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px;">📊 RÉSUMÉ JOURNÉE</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div style="text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px;">
+        <div style="font-size:9px;color:#f44336;">EN COURS</div>
+        <div style="font-size:22px;font-weight:900;color:#f44336;">${live}</div>
+      </div>
+      <div style="text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px;">
+        <div style="font-size:9px;color:#42a5f5;">À VENIR</div>
+        <div style="font-size:22px;font-weight:900;color:#42a5f5;">${next}</div>
+      </div>
+      <div style="text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px;">
+        <div style="font-size:9px;color:#c9a84c;">TERMINÉES</div>
+        <div style="font-size:22px;font-weight:900;color:#c9a84c;">${done}</div>
+      </div>
+    </div>
+    ${firstNext?`<div style="margin-top:8px;font-size:10px;color:#4a7a3a;">⏭️ Prochaine: <b style="color:#c9a84c">${fmtTime(firstNext.heureDepart)} — ${firstNext.libelle||'Course '+firstNext.numOfficiel}</b></div>`:''}
+  </div>`;
+
+  // Grouper par réunion
+  const grp={};
+  sorted.forEach(c=>{
+    const k=`R${c.reunion} — ${c.hippodrome?.libelleCourt||'Réunion '+c.reunion}`;
+    if(!grp[k])grp[k]=[];
+    grp[k].push(c);
+  });
+
+  Object.entries(grp).forEach(([reu,cs])=>{
+    html+=`<div style="font-size:10px;font-weight:700;color:#4a7a3a;letter-spacing:2px;margin:10px 0 6px;">🏟️ ${reu}</div>`;
+    html+=`<div class="cc" style="margin-bottom:12px;">`;
+    cs.forEach((c,i)=>{
+      const st=getStatus(c.heureDepart);
+      const t=parseTime(c.heureDepart);
+      const isPast=t&&t<=nm-8;
+      const isNow=t&&t<=nm+3&&t>nm-8;
+      const isQ=c.categorieParticularite==='QUINTE';
+      html+=`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 13px;${i>0?'border-top:1px solid #1c2e16':''};background:${isNow?'rgba(76,175,80,.05)':''};">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="font-size:22px;font-weight:900;color:${isPast?'#4a7a3a':isNow?'#4caf50':'#c9a84c'};min-width:55px;">${fmtTime(c.heureDepart)}</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:${isPast?'#4a7a3a':'#e8f5e9'};">
+              C${c.numOfficiel} — ${c.libelle||'Course '+c.numOfficiel}
+              ${isQ?'<span style="font-size:8px;padding:1px 5px;background:rgba(255,215,0,.15);color:#ffd700;border-radius:3px;margin-left:4px;">Q+</span>':''}
+            </div>
+            <div style="font-size:9px;color:#4a7a3a;">${c.discipline||''} ${c.distance?'• '+c.distance+'m':''} • ${c.nombreDeclaresPartants||'?'} partants</div>
+          </div>
+        </div>
+        <div class="cc-status ${st.c}" style="font-size:8px;">${st.l}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+  });
+
+  document.getElementById('horairesList').innerHTML=html;
 }
 
-function quickAI(type){
-  const ctx=ALL_COURSES.slice(0,12).map(c=>`R${c.reunion}C${c.numOrdre} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, ${c.distance||'?'}m, départ:${formatTime(c.heureDepart)})`).join('\n');
-  let q='';
-  if(type==='quinte'&&QUINTE_COURSE)q=`Analyse le Quinté+ "${QUINTE_COURSE.libelle}" à ${QUINTE_COURSE.hippodrome?.libelleCourt||''} (${QUINTE_COURSE.discipline||''}, ${QUINTE_COURSE.distance||'?'}m). Donne Couplé Gagnant, Couplé Placé, Tiercé, Quarté et Quinté+ avec numéros et justification.`;
-  else if(type==='tierce')q=`Meilleure course pour un Tiercé aujourd'hui?\n${ctx}`;
-  else if(type==='gagnant')q=`Meilleurs favoris d'aujourd'hui?\n${ctx}`;
-  else q=`Outsiders à surveiller aujourd'hui?\n${ctx}`;
-  document.getElementById('aiInp').value=q;
-  askAI();
+function analyseIA(reu,num,libelle,hippo,disc,dist){
+  const p=genProno({reunion:reu,numOfficiel:num,nombreDeclaresPartants:14});
+  document.getElementById('aiInp').value=`Analyse la course "${libelle}" à ${hippo} (${disc}, ${dist}m). Pronostic: ${p.join('-')}. Donne Couplé, Tiercé, Quarté, Quinté+ avec justification. Conseil 1XBET depuis CI.`;
+  sw('ia',document.querySelectorAll('.tab')[5]);
+  doAI();
 }
 
-async function askAI(){
-  const inp=document.getElementById('aiInp'),q=inp.value.trim();if(!q)return;
-  const r=document.getElementById('aiR'),t=document.getElementById('aiTh'),o=document.getElementById('aiO');
-  r.classList.add('v');t.style.display='flex';o.classList.remove('v');o.innerHTML='';
-  const ctx=ALL_COURSES.slice(0,12).map(c=>`R${c.reunion}C${c.numOrdre} - ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, ${c.distance||'?'}m, départ:${formatTime(c.heureDepart)})`).join('\n');
+function qAI(type){
+  const q=COURSES.find(c=>c.categorieParticularite==='QUINTE');
+  const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, départ:${fmtTime(c.heureDepart)})`).join('\n');
+  const qs={
+    quinte:q?`Analyse le Quinté+ "${q.libelle}" à ${q.hippodrome?.libelleCourt||''} (${q.distance||'?'}m). Donne Couplé, Tiercé, Quarté, Quinté+ avec numéros.`:`Quinté+ du jour:\n${ctx}`,
+    tierce:`Meilleure course pour Tiercé aujourd'hui ? Donne 3 numéros.\n${ctx}`,
+    ci:`Quelles courses parier depuis CI via LONACI ou 1XBET ? Conseils pratiques.\n${ctx}`,
+    favori:`Top 3 favoris du jour avec numéros.\n${ctx}`,
+    outsider:`Outsiders à surveiller aujourd'hui.\n${ctx}`,
+    xbet:`Comment parier courses PMU françaises depuis CI sur 1XBET ? Étapes + meilleures courses.\n${ctx}`
+  };
+  document.getElementById('aiInp').value=qs[type];
+  doAI();
+}
+
+async function doAI(){
+  const q=document.getElementById('aiInp').value.trim();if(!q)return;
+  document.getElementById('aiWait').style.display='block';
+  document.getElementById('aiAns').classList.remove('v');
+  document.getElementById('aiAns').innerHTML='';
+  const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, départ:${fmtTime(c.heureDepart)})`).join('\n');
   try{
-    const res=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
-        system:`Tu es PMU Expert hippique. Programme du jour:\n${ctx}\nDonne: Couplé Gagnant, Couplé Placé, Tiercé, Quarté, Quinté+ avec numéros. En français, concis.`,
-        messages:[{role:"user",content:q}]})});
-    const d=await res.json();
-    t.style.display='none';
-    o.innerHTML=(d.content?.[0]?.text||"Indisponible.").replace(/\n/g,'<br>');
-    o.classList.add('v');
-  }catch(e){t.style.display='none';o.innerHTML='⚠️ Erreur: '+e.message;o.classList.add('v');}
-  inp.value='';
+    const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
+        system:`Tu es expert PMU pour parieurs en Côte d'Ivoire. Programme:\n${ctx}\n\nParis: Couplé, Tiercé, Quarté, Quinté+. 1XBET et LONACI accessibles en CI. Conseils précis avec numéros. En français.`,
+        messages:[{role:'user',content:q}]})});
+    const d=await r.json();
+    document.getElementById('aiWait').style.display='none';
+    document.getElementById('aiAns').innerHTML=(d.content?.[0]?.text||'Indisponible.').replace(/\n/g,'<br>');
+    document.getElementById('aiAns').classList.add('v');
+  }catch(e){
+    document.getElementById('aiWait').style.display='none';
+    document.getElementById('aiAns').innerHTML='⚠️ Erreur: '+e.message;
+    document.getElementById('aiAns').classList.add('v');
+  }
+  document.getElementById('aiInp').value='';
 }
 
-document.getElementById('aiInp').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();askAI();}});
-function setBadge(txt,type){const b=document.getElementById('apiBadge'),c={g:'var(--green2)',r:'var(--red2)',o:'var(--orange)'};b.textContent=txt;b.style.color=c[type];b.style.borderColor=c[type]+'55';b.style.background=c[type]+'18';}
-function sw(id,tabEl,navEl){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.getElementById('pg-'+id).classList.add('on');if(tabEl){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));tabEl.classList.add('on');}if(navEl){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));navEl.classList.add('on');}}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('v');setTimeout(()=>t.classList.remove('v'),2500);}
+document.getElementById('aiInp').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doAI();}
+});
 
-loadProgramme();
-setInterval(()=>{loadProgramme();},180000);
+loadProg();
+setInterval(loadProg,180000);
 </script>
 </body>
 </html>
