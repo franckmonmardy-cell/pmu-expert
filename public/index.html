@@ -169,9 +169,8 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
   <div class="ni" onclick="sw('result',null,this)"><div class="ni-i">🏁</div><div class="ni-l">RÉSULTATS</div></div>
   <div class="ni" onclick="sw('horaires',null,this)"><div class="ni-i">🕐</div><div class="ni-l">HORAIRES</div></div>
   <div class="ni" onclick="sw('ia',null,this)"><div class="ni-i">🤖</div><div class="ni-l">IA</div></div>
-</div>script>
-let COURSES=[];
-let CF='all';
+</div><script>
+let COURSES=[],CF='all';
 
 setInterval(()=>{
   const n=new Date();
@@ -227,17 +226,12 @@ async function loadProg(){
     if(!data.programme?.reunions)throw new Error('Données invalides');
     COURSES=[];
     data.programme.reunions.forEach(reu=>{
-      reu.courses.forEach(c=>{
-        COURSES.push({...c,hippodrome:reu.hippodrome,reunion:reu.numOfficiel});
-      });
+      reu.courses.forEach(c=>{COURSES.push({...c,hippodrome:reu.hippodrome,reunion:reu.numOfficiel});});
     });
     updateStats();
     document.getElementById('hSub').textContent=`${COURSES.length} courses • ${data.programme.reunions.length} réunions`;
     renderProg();
-  }catch(e){
-    useDemoCourses();
-    renderProg();
-  }
+  }catch(e){useDemoCourses();renderProg();}
 }
 
 function useDemoCourses(){
@@ -256,14 +250,12 @@ function useDemoCourses(){
 }
 
 function updateStats(){
-  const n=new Date(),nm=n.getHours()*60+n.getMinutes();
+  const nm=new Date().getHours()*60+new Date().getMinutes();
   let live=0,next=0,done=0;
   COURSES.forEach(c=>{
     const t=parseTime(c.heureDepart);
     if(!t)return;
-    if(t<=nm-8)done++;
-    else if(t<=nm+3)live++;
-    else next++;
+    if(t<=nm-8)done++;else if(t<=nm+3)live++;else next++;
   });
   document.getElementById('pLive').textContent=`⚡ ${live} LIVE`;
   document.getElementById('pNext').textContent=`⏳ ${next} À VENIR`;
@@ -271,12 +263,7 @@ function updateStats(){
   document.getElementById('heroTitle').textContent=`COURSES DU ${new Date().toLocaleDateString('fr-FR')}`;
 }
 
-function fC(f,el){
-  CF=f;
-  document.querySelectorAll('[data-f]').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
-  renderProg();
-}
+function fC(f,el){CF=f;document.querySelectorAll('[data-f]').forEach(b=>b.classList.remove('on'));el.classList.add('on');renderProg();}
 
 function renderProg(){
   let cs=COURSES;
@@ -307,7 +294,7 @@ function buildCard(c){
   const st=getStatus(c.heureDepart);
   const isQ=c.categorieParticularite==='QUINTE';
   const isDone=st.c==='s-done';
-  const prono=genProno(c);
+  const p=genProno(c);
   return`<div class="cc ${isQ?'quinte':''}">
     <div class="cc-hdr" onclick="tgl('cd-${c.reunion}-${c.numOfficiel}')">
       <div>
@@ -325,56 +312,41 @@ function buildCard(c){
     <div id="cd-${c.reunion}-${c.numOfficiel}" style="display:none;padding:12px 13px;border-top:1px solid #1c2e16;">
       <div class="prono-box">
         <div class="prono-title">🎯 PRONOSTIC — ${isQ?'QUINTÉ+':'TIERCÉ'}</div>
-        <div class="prono-nums">${prono.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+        <div class="prono-nums">${p.map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
         <div style="font-size:9px;color:#4a7a3a;line-height:1.8;">
-          💛 Couplé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}</b> •
-          🥉 Tiercé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}-${prono[2]}</b>
-          ${isQ?`<br>4️⃣ Quarté: <b style="color:#ff9800">${prono.slice(0,4).join('-')}</b> • 🏆 Quinté: <b style="color:#ffd700">${prono.join('-')}</b>`:''}
+          💛 Couplé: <b style="color:#c9a84c">${p[0]}-${p[1]}</b> •
+          🥉 Tiercé: <b style="color:#c9a84c">${p[0]}-${p[1]}-${p[2]}</b>
+          ${isQ?`<br>4️⃣ Quarté: <b style="color:#ff9800">${p.slice(0,4).join('-')}</b> • 🏆 Quinté: <b style="color:#ffd700">${p.join('-')}</b>`:''}
         </div>
       </div>
-      ${isDone?`<div class="result-box">
-        <div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
+      ${isDone?`<div class="result-box"><div class="result-title">🏁 ARRIVÉE OFFICIELLE</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">${genResult(c).map((n,i)=>`<div class="pnum pn${i+1}" style="width:32px;height:32px;font-size:14px;">${n}</div>`).join('')}</div>
       </div>`:''}
-      <button class="btn-xbet" onclick="parier('${(c.libelle||'').replace(/'/g,'')}')">🎰 PARIER SUR 1XBET</button>
+      <button class="btn-xbet" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER SUR 1XBET</button>
       <button class="btn-ia" onclick="analyseIA(${c.reunion},${c.numOfficiel},'${(c.libelle||'').replace(/'/g,'')}','${c.hippodrome?.libelleCourt||''}','${c.discipline||''}',${c.distance||0})">🤖 ANALYSE IA</button>
-    </div>
-  </div>`;
-}
-
-function tgl(id){
-  const el=document.getElementById(id);
-  if(el)el.style.display=el.style.display==='none'?'block':'none';
-}
-
-function parier(course){window.open('https://1xbet.com/fr/live/horse-racing/','_blank');}
-</script><script>
-function renderCI(){
+    </div>function renderCI(){
   if(!COURSES.length){document.getElementById('ciList').innerHTML='<div class="loading"><div class="spin"></div><br>Chargement...</div>';setTimeout(renderCI,1000);return;}
   document.getElementById('ciList').innerHTML=COURSES.slice(0,8).map(c=>{
-    const prono=genProno(c);
-    const isQ=c.categorieParticularite==='QUINTE';
+    const p=genProno(c),isQ=c.categorieParticularite==='QUINTE';
     return`<div class="cc ${isQ?'quinte':'ci'}">
-      <div class="cc-hdr">
-        <div>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
-            ${isQ?'<span class="badge-q">QUINTÉ+</span>':'<span class="badge-ci">🇨🇮 CI</span>'}
-          </div>
-          <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
+      <div class="cc-hdr"><div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+          ${isQ?'<span class="badge-q">QUINTÉ+</span>':'<span class="badge-ci">🇨🇮 CI</span>'}
         </div>
-      </div>
+        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
+      </div></div>
       <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
         <div class="prono-box">
           <div class="prono-title">🎯 SÉLECTION POUR CI</div>
-          <div class="prono-nums">${prono.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
+          <div class="prono-nums">${p.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}">${n}</div>`).join('')}</div>
           <div style="font-size:10px;color:#4a7a3a;line-height:1.8;">
-            🥇 Gagnant: <b style="color:#ffd700">N°${prono[0]}</b><br>
-            🎯 Tiercé: <b style="color:#c9a84c">${prono[0]}-${prono[1]}-${prono[2]}</b><br>
+            🥇 Gagnant: <b style="color:#ffd700">N°${p[0]}</b><br>
+            🎯 Tiercé: <b style="color:#c9a84c">${p[0]}-${p[1]}-${p[2]}</b><br>
             📍 Via: LONACI ou 1XBET
           </div>
         </div>
-        <button class="btn-xbet" onclick="parier('${(c.libelle||'').replace(/'/g,'')}')">🎰 PARIER SUR 1XBET</button>
+        <button class="btn-xbet" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER SUR 1XBET</button>
       </div>
     </div>`;
   }).join('');
@@ -398,21 +370,22 @@ function renderProno(){
         4️⃣ Quarté: <b style="color:#ff9800">${p[0]}-${p[1]}-${p[2]}-${p[3]}</b><br>
         🏆 Quinté+: <b style="color:#ffd700">${p.join('-')}</b>
       </div>
-      <button class="btn-xbet" style="margin-top:10px;" onclick="parier('${(q.libelle||'').replace(/'/g,'')}')">🎰 PARIER LE QUINTÉ+ SUR 1XBET</button>
+      <button class="btn-xbet" style="margin-top:10px;" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER LE QUINTÉ+ SUR 1XBET</button>
     </div>`;
   }
   html+=COURSES.filter(c=>c.categorieParticularite!=='QUINTE').slice(0,6).map(c=>{
     const p=genProno(c);
-    return`<div class="cc">
-      <div class="cc-hdr"><div><div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div><div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div></div></div>
-      <div style="padding:10px 13px;border-top:1px solid #1c2e16;">
-        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
-          ${p.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
-          <div style="font-size:9px;color:#4a7a3a;margin-left:4px;">Tiercé conseillé</div>
-        </div>
-        <button class="btn-xbet" onclick="parier('${(c.libelle||'').replace(/'/g,'')}')">🎰 PARIER SUR 1XBET</button>
+    return`<div class="cc"><div class="cc-hdr"><div>
+      <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+      <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
+    </div></div>
+    <div style="padding:10px 13px;border-top:1px solid #1c2e16;">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+        ${p.slice(0,3).map((n,i)=>`<div class="pnum pn${i+1}" style="width:34px;height:34px;font-size:15px;">${n}</div>`).join('')}
+        <div style="font-size:9px;color:#4a7a3a;margin-left:4px;">Tiercé conseillé</div>
       </div>
-    </div>`;
+      <button class="btn-xbet" onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">🎰 PARIER SUR 1XBET</button>
+    </div></div>`;
   }).join('');
   document.getElementById('pronoList').innerHTML=html;
 }
@@ -423,9 +396,12 @@ function renderResult(){
   const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;});
   if(!done.length){document.getElementById('resultList').innerHTML='<div class="loading">Aucune course terminée pour le moment</div>';return;}
   document.getElementById('resultList').innerHTML=done.map(c=>{
-    const res=genResult(c),prono=genProno(c),hits=prono.filter(n=>res.includes(n));
+    const res=genResult(c),p=genProno(c),hits=p.filter(n=>res.includes(n));
     return`<div class="cc">
-      <div class="cc-hdr"><div><div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div><div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div></div><span class="cc-status s-done">✅ Terminée</span></div>
+      <div class="cc-hdr"><div>
+        <div class="cc-name">${c.libelle||'Course '+c.numOfficiel}</div>
+        <div class="cc-sub">${c.hippodrome?.libelleCourt||''} • ${fmtTime(c.heureDepart)}</div>
+      </div><span class="cc-status s-done">✅ Terminée</span></div>
       <div style="padding:12px 13px;border-top:1px solid #1c2e16;">
         <div style="font-size:9px;color:#4a7a3a;margin-bottom:6px;">🏁 ARRIVÉE OFFICIELLE</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
@@ -434,7 +410,7 @@ function renderResult(){
         <div style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;padding:8px;">
           <div style="font-size:9px;color:#4a7a3a;margin-bottom:4px;">📊 IA VS RÉSULTAT</div>
           <div style="font-size:11px;line-height:1.8;">
-            ${prono.map(n=>res.includes(n)?`<span style="color:#4caf50">N°${n}✅</span>`:`<span style="color:#f44336">N°${n}❌</span>`).join(' ')}
+            ${p.map(n=>res.includes(n)?`<span style="color:#4caf50">N°${n}✅</span>`:`<span style="color:#f44336">N°${n}❌</span>`).join(' ')}
             <br><span style="color:${hits.length>=3?'#4caf50':hits.length>=2?'#ff9800':'#f44336'}">
               ${hits.length}/5 ${hits.length>=4?'🎉 Excellent!':hits.length>=3?'👍 Bon!':hits.length>=2?'🤔 Passable':'😔 À améliorer'}
             </span>
@@ -452,43 +428,24 @@ function renderHoraires(){
   const live=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm+3&&t>nm-8;}).length;
   const next=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t>nm+3;}).length;
   const done=COURSES.filter(c=>{const t=parseTime(c.heureDepart);return t&&t<=nm-8;}).length;
-  const firstNext=sorted.find(c=>{const t=parseTime(c.heureDepart);return t&&t>nm;});
-
+  const fn=sorted.find(c=>{const t=parseTime(c.heureDepart);return t&&t>nm;});
   let html=`<div style="background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;padding:12px;margin-bottom:12px;">
     <div style="font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px;">📊 RÉSUMÉ JOURNÉE</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-      <div style="text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px;">
-        <div style="font-size:9px;color:#f44336;">EN COURS</div>
-        <div style="font-size:22px;font-weight:900;color:#f44336;">${live}</div>
-      </div>
-      <div style="text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px;">
-        <div style="font-size:9px;color:#42a5f5;">À VENIR</div>
-        <div style="font-size:22px;font-weight:900;color:#42a5f5;">${next}</div>
-      </div>
-      <div style="text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px;">
-        <div style="font-size:9px;color:#c9a84c;">TERMINÉES</div>
-        <div style="font-size:22px;font-weight:900;color:#c9a84c;">${done}</div>
-      </div>
+      <div style="text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px;"><div style="font-size:9px;color:#f44336;">EN COURS</div><div style="font-size:22px;font-weight:900;color:#f44336;">${live}</div></div>
+      <div style="text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px;"><div style="font-size:9px;color:#42a5f5;">À VENIR</div><div style="font-size:22px;font-weight:900;color:#42a5f5;">${next}</div></div>
+      <div style="text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px;"><div style="font-size:9px;color:#c9a84c;">TERMINÉES</div><div style="font-size:22px;font-weight:900;color:#c9a84c;">${done}</div></div>
     </div>
-    ${firstNext?`<div style="margin-top:8px;font-size:10px;color:#4a7a3a;">⏭️ Prochaine: <b style="color:#c9a84c">${fmtTime(firstNext.heureDepart)} — ${firstNext.libelle||'Course '+firstNext.numOfficiel}</b></div>`:''}
+    ${fn?`<div style="margin-top:8px;font-size:10px;color:#4a7a3a;">⏭️ Prochaine: <b style="color:#c9a84c">${fmtTime(fn.heureDepart)} — ${fn.libelle||'Course '+fn.numOfficiel}</b></div>`:''}
   </div>`;
-
-  // Grouper par réunion
   const grp={};
-  sorted.forEach(c=>{
-    const k=`R${c.reunion} — ${c.hippodrome?.libelleCourt||'Réunion '+c.reunion}`;
-    if(!grp[k])grp[k]=[];
-    grp[k].push(c);
-  });
-
+  sorted.forEach(c=>{const k=`R${c.reunion} — ${c.hippodrome?.libelleCourt||'Réunion '+c.reunion}`;if(!grp[k])grp[k]=[];grp[k].push(c);});
   Object.entries(grp).forEach(([reu,cs])=>{
     html+=`<div style="font-size:10px;font-weight:700;color:#4a7a3a;letter-spacing:2px;margin:10px 0 6px;">🏟️ ${reu}</div>`;
     html+=`<div class="cc" style="margin-bottom:12px;">`;
     cs.forEach((c,i)=>{
-      const st=getStatus(c.heureDepart);
-      const t=parseTime(c.heureDepart);
-      const isPast=t&&t<=nm-8;
-      const isNow=t&&t<=nm+3&&t>nm-8;
+      const st=getStatus(c.heureDepart),t=parseTime(c.heureDepart);
+      const isPast=t&&t<=nm-8,isNow=t&&t<=nm+3&&t>nm-8;
       const isQ=c.categorieParticularite==='QUINTE';
       html+=`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 13px;${i>0?'border-top:1px solid #1c2e16':''};background:${isNow?'rgba(76,175,80,.05)':''};">
         <div style="display:flex;align-items:center;gap:10px;">
@@ -506,15 +463,13 @@ function renderHoraires(){
     });
     html+=`</div>`;
   });
-
   document.getElementById('horairesList').innerHTML=html;
 }
 
 function analyseIA(reu,num,libelle,hippo,disc,dist){
   const p=genProno({reunion:reu,numOfficiel:num,nombreDeclaresPartants:14});
-  document.getElementById('aiInp').value=`Analyse la course "${libelle}" à ${hippo} (${disc}, ${dist}m). Pronostic: ${p.join('-')}. Donne Couplé, Tiercé, Quarté, Quinté+ avec justification. Conseil 1XBET depuis CI.`;
-  sw('ia',document.querySelectorAll('.tab')[5]);
-  doAI();
+  document.getElementById('aiInp').value=`Analyse "${libelle}" à ${hippo} (${disc}, ${dist}m). Pronostic: ${p.join('-')}. Couplé, Tiercé, Quarté, Quinté+. Conseil 1XBET depuis CI.`;
+  sw('ia',document.querySelectorAll('.tab')[5]);doAI();
 }
 
 function qAI(type){
@@ -522,14 +477,13 @@ function qAI(type){
   const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, départ:${fmtTime(c.heureDepart)})`).join('\n');
   const qs={
     quinte:q?`Analyse le Quinté+ "${q.libelle}" à ${q.hippodrome?.libelleCourt||''} (${q.distance||'?'}m). Donne Couplé, Tiercé, Quarté, Quinté+ avec numéros.`:`Quinté+ du jour:\n${ctx}`,
-    tierce:`Meilleure course pour Tiercé aujourd'hui ? Donne 3 numéros.\n${ctx}`,
-    ci:`Quelles courses parier depuis CI via LONACI ou 1XBET ? Conseils pratiques.\n${ctx}`,
+    tierce:`Meilleure course pour Tiercé ? Donne 3 numéros.\n${ctx}`,
+    ci:`Quelles courses parier depuis CI via LONACI ou 1XBET ?\n${ctx}`,
     favori:`Top 3 favoris du jour avec numéros.\n${ctx}`,
     outsider:`Outsiders à surveiller aujourd'hui.\n${ctx}`,
-    xbet:`Comment parier courses PMU françaises depuis CI sur 1XBET ? Étapes + meilleures courses.\n${ctx}`
+    xbet:`Comment parier courses PMU depuis CI sur 1XBET ? Étapes + meilleures courses.\n${ctx}`
   };
-  document.getElementById('aiInp').value=qs[type];
-  doAI();
+  document.getElementById('aiInp').value=qs[type];doAI();
 }
 
 async function doAI(){
@@ -537,11 +491,11 @@ async function doAI(){
   document.getElementById('aiWait').style.display='block';
   document.getElementById('aiAns').classList.remove('v');
   document.getElementById('aiAns').innerHTML='';
-  const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (${c.discipline||''}, départ:${fmtTime(c.heureDepart)})`).join('\n');
+  const ctx=COURSES.slice(0,8).map(c=>`R${c.reunion}C${c.numOfficiel} ${c.libelle||''} à ${c.hippodrome?.libelleCourt||''} (départ:${fmtTime(c.heureDepart)})`).join('\n');
   try{
     const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
-        system:`Tu es expert PMU pour parieurs en Côte d'Ivoire. Programme:\n${ctx}\n\nParis: Couplé, Tiercé, Quarté, Quinté+. 1XBET et LONACI accessibles en CI. Conseils précis avec numéros. En français.`,
+        system:`Tu es expert PMU pour parieurs en Côte d'Ivoire. Programme:\n${ctx}\nParis: Couplé, Tiercé, Quarté, Quinté+. 1XBET et LONACI accessibles en CI. Conseils précis avec numéros. En français.`,
         messages:[{role:'user',content:q}]})});
     const d=await r.json();
     document.getElementById('aiWait').style.display='none';
@@ -564,3 +518,7 @@ setInterval(loadProg,180000);
 </script>
 </body>
 </html>
+  </div>`;
+}
+
+function tgl(id){const el=document.getElementById(id);if(el)el.style.display=el.style.display==='none'?'block':'none';}
