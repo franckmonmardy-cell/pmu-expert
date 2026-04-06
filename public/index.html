@@ -174,7 +174,7 @@ function showPg(id){
 }
 
 // UTILS
-function pt(h){if(!h)return null;if(h>86400000){var d=new Date(h);return d.getHours()*60+d.getMinutes();}return Math.floor(h/60000);}
+function pt(h){if(!h)return null;var d=new Date(h);return d.getHours()*60+d.getMinutes();}
 function ft(h){var m=pt(h);if(m===null)return"--:--";return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");}
 function gs(h){var nm=new Date().getHours()*60+new Date().getMinutes(),t=pt(h);if(!t)return{l:"Programme",c:"next"};if(t<=nm-8)return{l:"Terminee",c:"done"};if(t<=nm+3)return{l:"En cours",c:"live"};if(t<=nm+15)return{l:"Dans "+(t-nm)+"min",c:"soon"};return{l:ft(h),c:"next"};}
 function gp(c){var n=c.nombreDeclaresPartants||10,s=(c.reunion||1)*100+(c.numOfficiel||1),r=[];while(r.length<5){var x=Math.floor(Math.abs(Math.sin(s+r.length*7))*n)+1;if(r.indexOf(x)<0)r.push(x);}return r;}
