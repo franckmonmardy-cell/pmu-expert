@@ -16,24 +16,26 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 .pg.on{display:block;}
 .card{background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;margin-bottom:10px;overflow:hidden;}
 .card.q{border-color:#ffd700;}
-.chdr{padding:10px 13px;border-bottom:1px solid #1c2e16;display:flex;justify-content:space-between;cursor:pointer;}
+.card.ci{border-color:#00b300;}
+.chdr{padding:10px 13px;border-bottom:1px solid #1c2e16;display:flex;justify-content:space-between;cursor:pointer;align-items:center;}
 .cname{font-size:13px;font-weight:900;color:#c9a84c;}
 .csub{font-size:9px;color:#4a7a3a;margin-top:2px;}
 .ctime{font-size:18px;font-weight:900;color:#e8f5e9;text-align:right;}
 .cst{font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;display:inline-block;margin-top:3px;}
-.live{background:rgba(76,175,80,.1);color:#4caf50;border:1px solid rgba(76,175,80,.3);}
-.soon{background:rgba(244,67,54,.1);color:#f44336;border:1px solid rgba(244,67,54,.3);}
-.next{background:rgba(66,165,245,.1);color:#42a5f5;border:1px solid rgba(66,165,245,.3);}
-.done{background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.3);}
+.slive{background:rgba(76,175,80,.1);color:#4caf50;border:1px solid rgba(76,175,80,.3);}
+.ssoon{background:rgba(244,67,54,.1);color:#f44336;border:1px solid rgba(244,67,54,.3);}
+.snext{background:rgba(66,165,245,.1);color:#42a5f5;border:1px solid rgba(66,165,245,.3);}
+.sdone{background:rgba(201,168,76,.1);color:#c9a84c;border:1px solid rgba(201,168,76,.3);}
 .pbx{background:#0a1f06;border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:12px;margin-bottom:10px;}
+.pnums{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
 .pnum{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;}
 .p1{background:#ffd700;color:#000;}
 .p2{background:#c0c0c0;color:#000;}
 .p3{background:#cd7f32;color:#000;}
 .p4{background:rgba(201,168,76,.2);color:#c9a84c;}
 .p5{background:rgba(201,168,76,.1);color:#4a7a3a;}
-.xbet{width:100%;padding:11px;background:linear-gradient(135deg,#1a6b1a,#0d4a0d);border:1px solid rgba(0,200,0,.3);border-radius:9px;color:#00ff44;font-size:12px;font-weight:900;cursor:pointer;margin-bottom:6px;}
-.iabtn{width:100%;padding:9px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:9px;color:#c9a84c;font-size:10px;cursor:pointer;}
+.xbet{width:100%;padding:11px;background:linear-gradient(135deg,#1a6b1a,#0d4a0d);border:1px solid rgba(0,200,0,.3);border-radius:9px;color:#00ff44;font-size:12px;font-weight:900;cursor:pointer;margin-bottom:6px;display:block;}
+.iabtn{width:100%;padding:9px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:9px;color:#c9a84c;font-size:10px;cursor:pointer;display:block;}
 .aibox{background:#0d1a09;border:1px solid #c9a84c;border-radius:11px;padding:12px;margin-bottom:12px;}
 .airow{display:flex;gap:6px;}
 .aiinp{flex:1;background:rgba(255,255,255,.04);border:1px solid #1c2e16;border-radius:7px;padding:9px;color:#e8f5e9;font-size:13px;outline:none;resize:none;height:40px;}
@@ -41,10 +43,6 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 .aigo{background:#c9a84c;color:#000;border:none;border-radius:7px;width:40px;height:40px;font-size:18px;font-weight:900;cursor:pointer;}
 .aians{font-size:12px;line-height:1.7;margin-top:10px;display:none;}
 .aians.v{display:block;}
-.dot{display:inline-block;width:5px;height:5px;background:#c9a84c;border-radius:50%;animation:bo .8s infinite;margin:0 2px;}
-.dot2{animation-delay:.15s;}
-.dot3{animation-delay:.3s;}
-@keyframes bo{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .qg{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;}
 .qb{padding:10px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:8px;color:#c9a84c;font-size:10px;cursor:pointer;text-align:center;}
 .frow{display:flex;gap:5px;margin-bottom:10px;overflow-x:auto;}
@@ -52,14 +50,10 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 .fb.on{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.1);color:#c9a84c;}
 .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#020601;border-top:1px solid #1c2e16;display:flex;padding:6px 0 12px;}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;}
-.ni-l{font-size:8px;font-weight:700;color:#4a7a3a;}
-.ni.on .ni-l{color:#c9a84c;}
+.nil{font-size:8px;font-weight:700;color:#4a7a3a;}
+.ni.on .nil{color:#c9a84c;}
 .sp{height:72px;}
-.spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(201,168,76,.2);border-top-color:#c9a84c;border-radius:50%;animation:sp .7s linear infinite;}
-@keyframes sp{to{transform:rotate(360deg)}}
-.ldg{text-align:center;padding:30px;color:#4a7a3a;font-size:12px;}
 .hero{background:#0a1f06;border:1px solid rgba(201,168,76,.3);border-radius:13px;padding:13px;margin-bottom:12px;}
-.pnums{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -98,7 +92,7 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
     <div class="fb" onclick="fC('trot',this)">Trot</div>
     <div class="fb" onclick="fC('obstacle',this)">Obstacle</div>
   </div>
-  <div id="progList"><div class="ldg"><div class="spin"></div></div></div>
+  <div id="progList"></div>
   <div class="sp"></div>
 </div>
 
@@ -108,25 +102,25 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
     <div style="font-size:17px;font-weight:900;color:#00ff44;">PARIS PMU CI</div>
     <div style="font-size:11px;color:#4a7a3a;margin-top:4px;">Via LONACI et 1XBET</div>
   </div>
-  <div id="ciList"><div class="ldg"><div class="spin"></div></div></div>
+  <div id="ciList"></div>
   <div class="sp"></div>
 </div>
 
 <div class="pg" id="pg-prono">
   <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">PRONOSTICS DU JOUR</div>
-  <div id="pronoList"><div class="ldg"><div class="spin"></div></div></div>
+  <div id="pronoList"></div>
   <div class="sp"></div>
 </div>
 
 <div class="pg" id="pg-result">
   <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">RESULTATS OFFICIELS</div>
-  <div id="resultList"><div class="ldg"><div class="spin"></div></div></div>
+  <div id="resultList"></div>
   <div class="sp"></div>
 </div>
 
 <div class="pg" id="pg-horaires">
   <div style="font-size:15px;font-weight:900;color:#c9a84c;margin-bottom:10px;">HORAIRES DES COURSES</div>
-  <div id="horairesList"><div class="ldg"><div class="spin"></div></div></div>
+  <div id="horairesList"></div>
   <div class="sp"></div>
 </div>
 
@@ -135,9 +129,9 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
     <div style="font-size:9px;color:#c9a84c;margin-bottom:6px;">IA EXPERT PMU CI</div>
     <div class="airow">
       <textarea class="aiinp" id="aiInp" placeholder="Ex: Analyse le Quinte+ du jour..."></textarea>
-      <button class="aigo" onclick="doAI()">-&gt;</button>
+      <button class="aigo" onclick="doAI()">GO</button>
     </div>
-    <div id="aiWait" style="display:none;margin-top:8px;"><div class="dot"></div><div class="dot dot2"></div><div class="dot dot3"></div></div>
+    <div id="aiWait" style="display:none;color:#4a7a3a;font-size:12px;margin-top:8px;">Analyse en cours...</div>
     <div class="aians" id="aiAns"></div>
   </div>
   <div style="font-size:13px;font-weight:900;margin-bottom:8px;">ANALYSE RAPIDE</div>
@@ -153,35 +147,439 @@ body{background:#060c04;color:#e8f5e9;font-family:system-ui,sans-serif;max-width
 </div>
 
 <div class="nav">
-  <div class="ni on" onclick="sw('prog',null,this)"><div>P</div><div class="ni-l">PROG</div></div>
-  <div class="ni" onclick="sw('ci',null,this)"><div>CI</div><div class="ni-l">CI</div></div>
-  <div class="ni" onclick="sw('prono',null,this)"><div>T</div><div class="ni-l">PRONOS</div></div>
-  <div class="ni" onclick="sw('result',null,this)"><div>R</div><div class="ni-l">RESULT</div></div>
-  <div class="ni" onclick="sw('horaires',null,this)"><div>H</div><div class="ni-l">HORAIRES</div></div>
-  <div class="ni" onclick="sw('ia',null,this)"><div>IA</div><div class="ni-l">IA</div></div>
+  <div class="ni on" onclick="sw('prog',null,this)"><div>P</div><div class="nil">PROG</div></div>
+  <div class="ni" onclick="sw('ci',null,this)"><div>CI</div><div class="nil">CI</div></div>
+  <div class="ni" onclick="sw('prono',null,this)"><div>T</div><div class="nil">PRONOS</div></div>
+  <div class="ni" onclick="sw('result',null,this)"><div>R</div><div class="nil">RESULT</div></div>
+  <div class="ni" onclick="sw('horaires',null,this)"><div>H</div><div class="nil">HORAIRES</div></div>
+  <div class="ni" onclick="sw('ia',null,this)"><div>IA</div><div class="nil">IA</div></div>
 </div>
 
 <script>
-var C=[],CF="all";
-setInterval(function(){var n=new Date(),h=String(n.getHours()).padStart(2,"0"),m=String(n.getMinutes()).padStart(2,"0"),s=String(n.getSeconds()).padStart(2,"0");document.getElementById("hClock").textContent=h+":"+m+":"+s;},1000);
-function sw(id,tEl,nEl){document.querySelectorAll(".pg").forEach(function(p){p.classList.remove("on");});document.getElementById("pg-"+id).classList.add("on");if(tEl){document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("on");});tEl.classList.add("on");}if(nEl){document.querySelectorAll(".ni").forEach(function(n){n.classList.remove("on");});nEl.classList.add("on");}if(id=="ci")rCI();if(id=="prono")rProno();if(id=="result")rResult();if(id=="horaires")rHoraires();}
-function pt(h){if(!h)return null;if(h>86400000){var d=new Date(h);return d.getHours()*60+d.getMinutes();}return Math.floor(h/60000);}
-function ft(h){var m=pt(h);if(m===null)return"--:--";return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");}
-function gs(h){var nm=new Date().getHours()*60+new Date().getMinutes(),t=pt(h);if(!t)return{l:"Programme",c:"next"};if(t<=nm-8)return{l:"Terminee",c:"done"};if(t<=nm+3)return{l:"En cours",c:"live"};if(t<=nm+15)return{l:"Dans "+(t-nm)+"min",c:"soon"};return{l:ft(h),c:"next"};}
-function gp(c){var n=c.nombreDeclaresPartants||10,s=(c.reunion||1)*100+(c.numOfficiel||1),r=[];while(r.length<5){var x=Math.floor(Math.abs(Math.sin(s+r.length*7))*n)+1;if(r.indexOf(x)<0)r.push(x);}return r;}
-function gr(c){var n=c.nombreDeclaresPartants||10,s=(c.reunion||1)*50+(c.numOfficiel||1)*3,r=[];while(r.length<5){var x=Math.floor(Math.abs(Math.sin(s+r.length*11))*n)+1;if(r.indexOf(x)<0)r.push(x);}return r;}
-function fC(f,el){CF=f;document.querySelectorAll(".fb").forEach(function(b){b.classList.remove("on");});el.classList.add("on");rProg();}
-function tgl(id){var el=document.getElementById(id);if(el)el.style.display=el.style.display=="none"?"block":"none";}
-function loadProg(){var b=Date.now();C=[{numOfficiel:1,reunion:1,libelle:"PRIX DE DIANE",discipline:"PLAT",distance:2100,heureDepart:b+30*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:14,categorieParticularite:"QUINTE"},{numOfficiel:2,reunion:1,libelle:"PRIX ROYAL OAK",discipline:"PLAT",distance:3100,heureDepart:b+90*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:12,categorieParticularite:null},{numOfficiel:3,reunion:1,libelle:"PRIX MORNY",discipline:"PLAT",distance:1200,heureDepart:b+150*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:9,categorieParticularite:null},{numOfficiel:4,reunion:1,libelle:"PRIX LUPIN",discipline:"PLAT",distance:1800,heureDepart:b-45*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:11,categorieParticularite:null},{numOfficiel:1,reunion:2,libelle:"GRAND PRIX DE PARIS",discipline:"TROT",distance:2700,heureDepart:b-30*60000,hippodrome:{libelleCourt:"VINCENNES"},nombreDeclaresPartants:10,categorieParticularite:null},{numOfficiel:2,reunion:2,libelle:"PRIX CAMILLE",discipline:"TROT",distance:1700,heureDepart:b+60*60000,hippodrome:{libelleCourt:"VINCENNES"},nombreDeclaresPartants:11,categorieParticularite:null},{numOfficiel:1,reunion:3,libelle:"PRIX JOCKEY CLUB",discipline:"PLAT",distance:2400,heureDepart:b+180*60000,hippodrome:{libelleCourt:"CHANTILLY"},nombreDeclaresPartants:16,categorieParticularite:null},{numOfficiel:2,reunion:3,libelle:"PRIX SAINT-ALARY",discipline:"PLAT",distance:2000,heureDepart:b+240*60000,hippodrome:{libelleCourt:"CHANTILLY"},nombreDeclaresPartants:13,categorieParticularite:null},{numOfficiel:1,reunion:4,libelle:"PRIX DE LA FORET",discipline:"OBSTACLE",distance:3200,heureDepart:b-90*60000,hippodrome:{libelleCourt:"AUTEUIL"},nombreDeclaresPartants:11,categorieParticularite:null},{numOfficiel:2,reunion:4,libelle:"PRIX DU CADRAN",discipline:"HAIES",distance:4000,heureDepart:b-120*60000,hippodrome:{libelleCourt:"AUTEUIL"},nombreDeclaresPartants:8,categorieParticularite:null}];var nm=new Date().getHours()*60+new Date().getMinutes(),lv=0,nx=0,dn=0;C.forEach(function(c){var t=pt(c.heureDepart);if(!t)return;if(t<=nm-8)dn++;else if(t<=nm+3)lv++;else nx++;});document.getElementById("pL").textContent=lv+" LIVE";document.getElementById("pN").textContent=nx+" VENIR";document.getElementById("pD").textContent=dn+" TERM.";document.getElementById("hTitle").textContent="COURSES DU "+new Date().toLocaleDateString("fr-FR");document.getElementById("hInfo").textContent=C.length+" courses - 4 reunions";document.getElementById("hSub").textContent=C.length+" courses chargees";rProg();}
-function rProg(){var cs=C.slice();if(CF=="quinte")cs=cs.filter(function(c){return c.categorieParticularite=="QUINTE";});else if(CF=="plat")cs=cs.filter(function(c){return c.discipline=="PLAT";});else if(CF=="trot")cs=cs.filter(function(c){return c.discipline=="TROT"||c.discipline=="ATTELE";});else if(CF=="obstacle")cs=cs.filter(function(c){return c.discipline=="OBSTACLE"||c.discipline=="HAIES";});cs.sort(function(a,b){return(pt(a.heureDepart)||0)-(pt(b.heureDepart)||0);});if(!cs.length){document.getElementById("progList").innerHTML="<div class=ldg>Aucune course</div>";return;}document.getElementById("progList").innerHTML=cs.map(function(c){var st=gs(c.heureDepart),isQ=c.categorieParticularite=="QUINTE",isDone=st.c=="done",p=gp(c),id="cd-"+(c.reunion||1)+"-"+(c.numOfficiel||1);var h="<div class=card"+(isQ?" q":"")+">";h+="<div class=chdr onclick="tgl('"+id+"')"><div><div class=cname>R"+(c.reunion||1)+"C"+(c.numOfficiel||1)+" - "+(c.libelle||"Course")+(isQ?" [Q+]":"")+"</div><div class=csub>"+(c.hippodrome?c.hippodrome.libelleCourt:"")+" - "+(c.discipline||"")+" "+(c.distance?c.distance+"m":"")+" - "+(c.nombreDeclaresPartants||"?")+" partants</div></div><div><div class=ctime>"+ft(c.heureDepart)+"</div><div class="cst "+st.c+"">"+st.l+"</div></div></div>";h+="<div id="+id+" style=display:none;padding:12px 13px;border-top:1px_solid_#1c2e16>".replace(/_/g," ");h+="<div class=pbx><div style=font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px>PRONOSTIC "+(isQ?"QUINTE+":"TIERCE")+"</div><div class=pnums>"+p.map(function(n,i){return"<div class="pnum p"+(i+1)+"">"+n+"</div>";}).join("")+"</div><div style=font-size:9px;color:#4a7a3a;line-height:1.8>Couple: <b style=color:#c9a84c>"+p[0]+"-"+p[1]+"</b> - Tierce: <b style=color:#c9a84c>"+p[0]+"-"+p[1]+"-"+p[2]+"</b>"+(isQ?" - Quinte: <b style=color:#ffd700>"+p.join("-")+"</b>":"")+"</div></div>";if(isDone){var res=gr(c);h+="<div style=background:rgba(76,175,80,.06);border:1px_solid_rgba(76,175,80,.2);border-radius:10px;padding:10px;margin-bottom:10px>".replace(/_/g," ");h+="<div style=font-size:10px;color:#4caf50;font-weight:700;margin-bottom:6px>ARRIVEE OFFICIELLE</div><div style=display:flex;gap:6px;flex-wrap:wrap>"+res.map(function(n,i){return"<div class="pnum p"+(i+1)+"" style=width:32px;height:32px;font-size:14px>"+n+"</div>";}).join("")+"</div></div>";}h+="<button class=xbet onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">PARIER SUR 1XBET</button>";h+="<button class=iabtn onclick="aIA('"+c.libelle+"','"+(c.hippodrome?c.hippodrome.libelleCourt:"")+"','"+c.discipline+"',"+c.distance+")">ANALYSE IA</button>";h+="</div></div>";return h;}).join("");}
-function rCI(){if(!C.length){setTimeout(rCI,300);return;}document.getElementById("ciList").innerHTML=C.slice(0,6).map(function(c){var p=gp(c),isQ=c.categorieParticularite=="QUINTE";return"<div class=card"+(isQ?" q":"")+" style=border-color:"+(isQ?"#ffd700":"#00b300")+"><div class=chdr><div><div class=cname>"+(c.libelle||"Course")+(isQ?" [Q+]":"")+"</div><div class=csub>"+(c.hippodrome?c.hippodrome.libelleCourt:"")+" - "+ft(c.heureDepart)+"</div></div></div><div style=padding:12px_13px;border-top:1px_solid_#1c2e16>".replace(/_/g," ")+"<div class=pbx><div style=font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px>SELECTION CI</div><div class=pnums>"+p.slice(0,3).map(function(n,i){return"<div class="pnum p"+(i+1)+"">"+n+"</div>";}).join("")+"</div><div style=font-size:10px;color:#4a7a3a;line-height:1.8>Gagnant: <b style=color:#ffd700>N"+p[0]+"</b><br>Tierce: <b style=color:#c9a84c>"+p[0]+"-"+p[1]+"-"+p[2]+"</b><br>Via: LONACI ou 1XBET</div></div><button class=xbet onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">PARIER SUR 1XBET</button></div></div>";}).join("");}
-function rProno(){if(!C.length){setTimeout(rProno,300);return;}var q=null;for(var i=0;i<C.length;i++){if(C[i].categorieParticularite=="QUINTE"){q=C[i];break;}}var h="";if(q){var p=gp(q);h+="<div style=background:linear-gradient(135deg,#1a1200,#0d0900);border:2px_solid_#ffd700;border-radius:12px;padding:13px;margin-bottom:12px>".replace(/_/g," ")+"<div style=font-size:9px;color:#ffd700;margin-bottom:6px>QUINTE+ DU JOUR</div><div style=font-size:15px;font-weight:900;color:#ffd700>"+q.libelle+"</div><div style=font-size:10px;color:#4a7a3a;margin:4px_0_10px>".replace(/_/g," ")+(q.hippodrome?q.hippodrome.libelleCourt:"")+" - "+ft(q.heureDepart)+" - "+(q.distance||"?")+"m</div><div class=pnums>"+p.map(function(n,i){return"<div class="pnum p"+(i+1)+"">"+n+"</div>";}).join("")+"</div><div style=font-size:10px;color:#4a7a3a;margin-top:8px;line-height:1.9>Couple Gagnant: <b style=color:#ffd700>"+p[0]+" - "+p[1]+"</b><br>Tierce: <b style=color:#42a5f5>"+p[0]+"-"+p[1]+"-"+p[2]+"</b><br>Quarte: <b style=color:#ff9800>"+p[0]+"-"+p[1]+"-"+p[2]+"-"+p[3]+"</b><br>Quinte+: <b style=color:#ffd700>"+p.join("-")+"</b></div><button class=xbet style=margin-top:10px onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">PARIER LE QUINTE+ SUR 1XBET</button></div>";}h+=C.filter(function(c){return c.categorieParticularite!="QUINTE";}).slice(0,5).map(function(c){var p=gp(c);return"<div class=card><div class=chdr><div><div class=cname>"+(c.libelle||"Course")+"</div><div class=csub>"+(c.hippodrome?c.hippodrome.libelleCourt:"")+" - "+ft(c.heureDepart)+"</div></div></div><div style=padding:10px_13px;border-top:1px_solid_#1c2e16>".replace(/_/g," ")+"<div class=pnums>"+p.slice(0,3).map(function(n,i){return"<div class="pnum p"+(i+1)+"" style=width:34px;height:34px;font-size:15px>"+n+"</div>";}).join("")+"<span style=font-size:9px;color:#4a7a3a;margin-left:4px>Tierce</span></div><button class=xbet onclick="window.open('https://1xbet.com/fr/live/horse-racing/','_blank')">PARIER SUR 1XBET</button></div></div>";}).join("");document.getElementById("pronoList").innerHTML=h;}
-function rResult(){if(!C.length){setTimeout(rResult,300);return;}var nm=new Date().getHours()*60+new Date().getMinutes(),dn=C.filter(function(c){var t=pt(c.heureDepart);return t&&t<=nm-8;});if(!dn.length){document.getElementById("resultList").innerHTML="<div class=ldg>Aucune course terminee</div>";return;}document.getElementById("resultList").innerHTML=dn.map(function(c){var res=gr(c),p=gp(c),hits=p.filter(function(n){return res.indexOf(n)>=0;});return"<div class=card><div class=chdr><div><div class=cname>"+(c.libelle||"Course")+"</div><div class=csub>"+(c.hippodrome?c.hippodrome.libelleCourt:"")+" - "+ft(c.heureDepart)+"</div></div><span class="cst done">Terminee</span></div><div style=padding:12px_13px;border-top:1px_solid_#1c2e16>".replace(/_/g," ")+"<div style=font-size:9px;color:#4a7a3a;margin-bottom:6px>ARRIVEE OFFICIELLE</div><div style=display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px>"+res.map(function(n,i){return"<div class="pnum p"+(i+1)+"" style=width:34px;height:34px;font-size:15px>"+n+"</div>";}).join("")+"</div><div style=background:rgba(201,168,76,.06);border:1px_solid_rgba(201,168,76,.15);border-radius:8px;padding:8px>".replace(/_/g," ")+"<div style=font-size:9px;color:#4a7a3a;margin-bottom:4px>IA VS RESULTAT</div><div style=font-size:11px;line-height:1.8>"+p.map(function(n){return res.indexOf(n)>=0?"<span style=color:#4caf50>N"+n+" OK</span>":"<span style=color:#f44336>N"+n+" X</span>";}).join(" ")+"<br><span style=color:"+(hits.length>=3?"#4caf50":hits.length>=2?"#ff9800":"#f44336")+">"+hits.length+"/5 "+(hits.length>=4?"Excellent!":hits.length>=3?"Bon!":hits.length>=2?"Passable":"A ameliorer")+"</span></div></div></div></div>";}).join("");}
-function rHoraires(){if(!C.length){setTimeout(rHoraires,300);return;}var nm=new Date().getHours()*60+new Date().getMinutes(),sorted=C.slice().sort(function(a,b){return(pt(a.heureDepart)||0)-(pt(b.heureDepart)||0);}),lv=0,nx=0,dn=0;C.forEach(function(c){var t=pt(c.heureDepart);if(!t)return;if(t<=nm-8)dn++;else if(t<=nm+3)lv++;else nx++;});var fn=null;for(var i=0;i<sorted.length;i++){var t=pt(sorted[i].heureDepart);if(t&&t>nm){fn=sorted[i];break;}}var h="<div style=background:#0d1a09;border:1px_solid_#1c2e16;border-radius:12px;padding:12px;margin-bottom:12px>".replace(/_/g," ")+"<div style=font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px>RESUME JOURNEE</div><div style=display:grid;grid-template-columns:1fr_1fr_1fr;gap:8px>".replace(/_/g," ")+"<div style=text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px><div style=font-size:9px;color:#f44336>EN COURS</div><div style=font-size:22px;font-weight:900;color:#f44336>"+lv+"</div></div><div style=text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px><div style=font-size:9px;color:#42a5f5>A VENIR</div><div style=font-size:22px;font-weight:900;color:#42a5f5>"+nx+"</div></div><div style=text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px><div style=font-size:9px;color:#c9a84c>TERMINEES</div><div style=font-size:22px;font-weight:900;color:#c9a84c>"+dn+"</div></div></div>"+(fn?"<div style=margin-top:8px;font-size:10px;color:#4a7a3a>Prochaine: <b style=color:#c9a84c>"+ft(fn.heureDepart)+" - "+(fn.libelle||"Course")+"</b></div>":"")+"</div>";var grp={};sorted.forEach(function(c){var k="R"+(c.reunion||1)+" "+(c.hippodrome?c.hippodrome.libelleCourt:"");if(!grp[k])grp[k]=[];grp[k].push(c);});Object.keys(grp).forEach(function(reu){h+="<div style=font-size:10px;font-weight:700;color:#4a7a3a;margin:10px_0_6px>".replace(/_/g," ")+reu+"</div><div class=card style=margin-bottom:12px>";grp[reu].forEach(function(c,i){var st=gs(c.heureDepart),t=pt(c.heureDepart),isPast=t&&t<=nm-8,isNow=t&&t<=nm+3&&t>nm-8,isQ=c.categorieParticularite=="QUINTE";h+="<div style=display:flex;align-items:center;justify-content:space-between;padding:9px_13px;background:"+(isNow?"rgba(76,175,80,.05)":"transparent")+">".replace(/_/g," ")+"<div style=display:flex;align-items:center;gap:10px><div style=font-size:20px;font-weight:900;color:"+(isPast?"#4a7a3a":isNow?"#4caf50":"#c9a84c")+";min-width:55px>"+ft(c.heureDepart)+"</div><div><div style=font-size:12px;font-weight:700;color:"+(isPast?"#4a7a3a":"#e8f5e9")+">C"+(c.numOfficiel||1)+" - "+(c.libelle||"Course")+(isQ?" [Q+]":"")+"</div><div style=font-size:9px;color:#4a7a3a>"+(c.discipline||"")+" "+(c.distance?c.distance+"m":"")+"</div></div></div><div class="cst "+st.c+"">"+st.l+"</div></div>";});h+="</div>";});document.getElementById("horairesList").innerHTML=h;}
-function aIA(lib,hip,dis,dst){document.getElementById("aiInp").value="Analyse la course "+lib+" a "+hip+" ("+dis+", "+dst+"m). Donne Couple, Tierce, Quarte, Quinte+ avec justification. Conseil 1XBET depuis CI.";sw("ia",document.querySelectorAll(".tab")[5]);doAI();}
-function qAI(i){var q=null;for(var j=0;j<C.length;j++){if(C[j].categorieParticularite=="QUINTE"){q=C[j];break;}}var ctx=C.slice(0,6).map(function(c){return(c.libelle||"")+"("+ft(c.heureDepart)+")";}).join(", ");var qs=["Analyse le Quinte+ "+(q?q.libelle:"")+" avec numeros Couple Tierce Quarte Quinte+. "+ctx,"Meilleure course pour Tierce ? Donne 3 numeros. "+ctx,"Quelles courses parier depuis CI via LONACI ou 1XBET ? "+ctx,"Top 3 favoris du jour avec numeros. "+ctx,"Outsiders a surveiller. "+ctx,"Comment parier courses PMU depuis CI sur 1XBET ? "+ctx];document.getElementById("aiInp").value=qs[i];doAI();}
-async function doAI(){var q=document.getElementById("aiInp").value.trim();if(!q)return;document.getElementById("aiWait").style.display="block";document.getElementById("aiAns").classList.remove("v");document.getElementById("aiAns").innerHTML="";var ctx=C.slice(0,6).map(function(c){return(c.libelle||"")+"("+ft(c.heureDepart)+")";}).join(", ");try{var r=await fetch("/api/ai",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:800,system:"Tu es expert PMU pour parieurs en Cote d Ivoire. Courses: "+ctx+". En francais.",messages:[{role:"user",content:q}]})});var d=await r.json();document.getElementById("aiWait").style.display="none";var txt=d.content&&d.content[0]?d.content[0].text:"Indisponible.";document.getElementById("aiAns").innerHTML=txt.replace(/\n/g,"<br>");document.getElementById("aiAns").classList.add("v");}catch(e){document.getElementById("aiWait").style.display="none";document.getElementById("aiAns").innerHTML="Erreur: "+e.message;document.getElementById("aiAns").classList.add("v");}document.getElementById("aiInp").value="";}
-document.getElementById("aiInp").addEventListener("keydown",function(e){if(e.key=="Enter"&&!e.shiftKey){e.preventDefault();doAI();}});
+var C = [], CF = "all";
+
+// HORLOGE
+setInterval(function() {
+  var n = new Date();
+  document.getElementById("hClock").textContent =
+    String(n.getHours()).padStart(2,"0") + ":" +
+    String(n.getMinutes()).padStart(2,"0") + ":" +
+    String(n.getSeconds()).padStart(2,"0");
+}, 1000);
+
+// NAVIGATION
+function sw(id, tEl, nEl) {
+  document.querySelectorAll(".pg").forEach(function(p) { p.classList.remove("on"); });
+  document.getElementById("pg-" + id).classList.add("on");
+  if (tEl) { document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("on"); }); tEl.classList.add("on"); }
+  if (nEl) { document.querySelectorAll(".ni").forEach(function(n) { n.classList.remove("on"); }); nEl.classList.add("on"); }
+  if (id === "ci") rCI();
+  if (id === "prono") rProno();
+  if (id === "result") rResult();
+  if (id === "horaires") rHoraires();
+}
+
+// TEMPS
+function pt(h) {
+  if (!h) return null;
+  if (h > 86400000) { var d = new Date(h); return d.getHours() * 60 + d.getMinutes(); }
+  return Math.floor(h / 60000);
+}
+function ft(h) {
+  var m = pt(h);
+  if (m === null) return "--:--";
+  return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+}
+function gs(h) {
+  var nm = new Date().getHours() * 60 + new Date().getMinutes(), t = pt(h);
+  if (!t) return { l: "Programme", c: "snext" };
+  if (t <= nm - 8) return { l: "Terminee", c: "sdone" };
+  if (t <= nm + 3) return { l: "En cours", c: "slive" };
+  if (t <= nm + 15) return { l: "Dans " + (t - nm) + "min", c: "ssoon" };
+  return { l: ft(h), c: "snext" };
+}
+
+// PRONOSTICS
+function gp(c) {
+  var n = c.nombreDeclaresPartants || 10, s = (c.reunion || 1) * 100 + (c.numOfficiel || 1), r = [];
+  while (r.length < 5) { var x = Math.floor(Math.abs(Math.sin(s + r.length * 7)) * n) + 1; if (r.indexOf(x) < 0) r.push(x); }
+  return r;
+}
+function gr(c) {
+  var n = c.nombreDeclaresPartants || 10, s = (c.reunion || 1) * 50 + (c.numOfficiel || 1) * 3, r = [];
+  while (r.length < 5) { var x = Math.floor(Math.abs(Math.sin(s + r.length * 11)) * n) + 1; if (r.indexOf(x) < 0) r.push(x); }
+  return r;
+}
+
+// FILTRE
+function fC(f, el) {
+  CF = f;
+  document.querySelectorAll(".fb").forEach(function(b) { b.classList.remove("on"); });
+  el.classList.add("on");
+  rProg();
+}
+
+// TOGGLE CARTE
+function tgl(id) {
+  var el = document.getElementById(id);
+  if (el) el.style.display = el.style.display === "none" ? "block" : "none";
+}
+
+// CHARGER COURSES
+function loadProg() {
+  var b = Date.now();
+  C = [
+    {numOfficiel:1,reunion:1,libelle:"PRIX DE DIANE",discipline:"PLAT",distance:2100,heureDepart:b+30*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:14,categorieParticularite:"QUINTE"},
+    {numOfficiel:2,reunion:1,libelle:"PRIX ROYAL OAK",discipline:"PLAT",distance:3100,heureDepart:b+90*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:12,categorieParticularite:null},
+    {numOfficiel:3,reunion:1,libelle:"PRIX MORNY",discipline:"PLAT",distance:1200,heureDepart:b+150*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:9,categorieParticularite:null},
+    {numOfficiel:4,reunion:1,libelle:"PRIX LUPIN",discipline:"PLAT",distance:1800,heureDepart:b-45*60000,hippodrome:{libelleCourt:"LONGCHAMP"},nombreDeclaresPartants:11,categorieParticularite:null},
+    {numOfficiel:1,reunion:2,libelle:"GRAND PRIX DE PARIS",discipline:"TROT",distance:2700,heureDepart:b-30*60000,hippodrome:{libelleCourt:"VINCENNES"},nombreDeclaresPartants:10,categorieParticularite:null},
+    {numOfficiel:2,reunion:2,libelle:"PRIX CAMILLE",discipline:"TROT",distance:1700,heureDepart:b+60*60000,hippodrome:{libelleCourt:"VINCENNES"},nombreDeclaresPartants:11,categorieParticularite:null},
+    {numOfficiel:1,reunion:3,libelle:"PRIX JOCKEY CLUB",discipline:"PLAT",distance:2400,heureDepart:b+180*60000,hippodrome:{libelleCourt:"CHANTILLY"},nombreDeclaresPartants:16,categorieParticularite:null},
+    {numOfficiel:2,reunion:3,libelle:"PRIX SAINT-ALARY",discipline:"PLAT",distance:2000,heureDepart:b+240*60000,hippodrome:{libelleCourt:"CHANTILLY"},nombreDeclaresPartants:13,categorieParticularite:null},
+    {numOfficiel:1,reunion:4,libelle:"PRIX DE LA FORET",discipline:"OBSTACLE",distance:3200,heureDepart:b-90*60000,hippodrome:{libelleCourt:"AUTEUIL"},nombreDeclaresPartants:11,categorieParticularite:null},
+    {numOfficiel:2,reunion:4,libelle:"PRIX DU CADRAN",discipline:"HAIES",distance:4000,heureDepart:b-120*60000,hippodrome:{libelleCourt:"AUTEUIL"},nombreDeclaresPartants:8,categorieParticularite:null}
+  ];
+  var nm = new Date().getHours() * 60 + new Date().getMinutes(), lv = 0, nx = 0, dn = 0;
+  C.forEach(function(c) {
+    var t = pt(c.heureDepart);
+    if (!t) return;
+    if (t <= nm - 8) dn++; else if (t <= nm + 3) lv++; else nx++;
+  });
+  document.getElementById("pL").textContent = lv + " LIVE";
+  document.getElementById("pN").textContent = nx + " VENIR";
+  document.getElementById("pD").textContent = dn + " TERM.";
+  document.getElementById("hTitle").textContent = "COURSES DU " + new Date().toLocaleDateString("fr-FR");
+  document.getElementById("hInfo").textContent = C.length + " courses - 4 reunions";
+  document.getElementById("hSub").textContent = C.length + " courses chargees";
+  rProg();
+}
+
+// AFFICHER PROGRAMME
+function rProg() {
+  var cs = C.slice();
+  if (CF === "quinte") cs = cs.filter(function(c) { return c.categorieParticularite === "QUINTE"; });
+  else if (CF === "plat") cs = cs.filter(function(c) { return c.discipline === "PLAT"; });
+  else if (CF === "trot") cs = cs.filter(function(c) { return c.discipline === "TROT" || c.discipline === "ATTELE"; });
+  else if (CF === "obstacle") cs = cs.filter(function(c) { return c.discipline === "OBSTACLE" || c.discipline === "HAIES"; });
+  cs.sort(function(a, b) { return (pt(a.heureDepart) || 0) - (pt(b.heureDepart) || 0); });
+  var el = document.getElementById("progList");
+  el.innerHTML = "";
+  if (!cs.length) { el.textContent = "Aucune course"; return; }
+  cs.forEach(function(c) {
+    var st = gs(c.heureDepart), isQ = c.categorieParticularite === "QUINTE";
+    var isDone = st.c === "sdone", p = gp(c);
+    var id = "cd-" + (c.reunion || 1) + "-" + (c.numOfficiel || 1);
+    var div = document.createElement("div");
+    div.className = "card" + (isQ ? " q" : "");
+    // Header
+    var hdr = document.createElement("div");
+    hdr.className = "chdr";
+    hdr.onclick = function() { tgl(id); };
+    var left = document.createElement("div");
+    var nm2 = document.createElement("div");
+    nm2.className = "cname";
+    nm2.textContent = "R" + (c.reunion||1) + "C" + (c.numOfficiel||1) + " - " + (c.libelle||"Course") + (isQ ? " [Q+]" : "");
+    var sub = document.createElement("div");
+    sub.className = "csub";
+    sub.textContent = (c.hippodrome ? c.hippodrome.libelleCourt : "") + " - " + (c.discipline||"") + " " + (c.distance ? c.distance+"m" : "") + " - " + (c.nombreDeclaresPartants||"?") + " partants";
+    left.appendChild(nm2); left.appendChild(sub);
+    var right = document.createElement("div");
+    var ct = document.createElement("div"); ct.className = "ctime"; ct.textContent = ft(c.heureDepart);
+    var cst = document.createElement("div"); cst.className = "cst " + st.c; cst.textContent = st.l;
+    right.appendChild(ct); right.appendChild(cst);
+    hdr.appendChild(left); hdr.appendChild(right);
+    div.appendChild(hdr);
+    // Body
+    var body = document.createElement("div");
+    body.id = id;
+    body.style.display = "none";
+    body.style.padding = "12px 13px";
+    body.style.borderTop = "1px solid #1c2e16";
+    // Prono box
+    var pbx = document.createElement("div"); pbx.className = "pbx";
+    var ptit = document.createElement("div");
+    ptit.style = "font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px";
+    ptit.textContent = "PRONOSTIC " + (isQ ? "QUINTE+" : "TIERCE");
+    var pnums = document.createElement("div"); pnums.className = "pnums";
+    p.forEach(function(n, i) {
+      var ball = document.createElement("div");
+      ball.className = "pnum p" + (i+1);
+      ball.textContent = n;
+      pnums.appendChild(ball);
+    });
+    var pinfo = document.createElement("div");
+    pinfo.style = "font-size:9px;color:#4a7a3a;line-height:1.8";
+    pinfo.innerHTML = "Couple: <b style='color:#c9a84c'>" + p[0] + "-" + p[1] + "</b> - Tierce: <b style='color:#c9a84c'>" + p[0] + "-" + p[1] + "-" + p[2] + "</b>" + (isQ ? " - Quinte: <b style='color:#ffd700'>" + p.join("-") + "</b>" : "");
+    pbx.appendChild(ptit); pbx.appendChild(pnums); pbx.appendChild(pinfo);
+    body.appendChild(pbx);
+    // Result
+    if (isDone) {
+      var res = gr(c);
+      var rbx = document.createElement("div");
+      rbx.style = "background:rgba(76,175,80,.06);border:1px solid rgba(76,175,80,.2);border-radius:10px;padding:10px;margin-bottom:10px";
+      var rtit = document.createElement("div");
+      rtit.style = "font-size:10px;color:#4caf50;font-weight:700;margin-bottom:6px";
+      rtit.textContent = "ARRIVEE OFFICIELLE";
+      var rnums = document.createElement("div");
+      rnums.style = "display:flex;gap:6px;flex-wrap:wrap";
+      res.forEach(function(n, i) {
+        var ball = document.createElement("div");
+        ball.className = "pnum p" + (i+1);
+        ball.style = "width:32px;height:32px;font-size:14px";
+        ball.textContent = n;
+        rnums.appendChild(ball);
+      });
+      rbx.appendChild(rtit); rbx.appendChild(rnums);
+      body.appendChild(rbx);
+    }
+    // Boutons
+    var bx = document.createElement("button");
+    bx.className = "xbet";
+    bx.textContent = "PARIER SUR 1XBET";
+    bx.onclick = function() { window.open("https://1xbet.com/fr/live/horse-racing/", "_blank"); };
+    var bi = document.createElement("button");
+    bi.className = "iabtn";
+    bi.textContent = "ANALYSE IA";
+    bi.onclick = (function(cc) { return function() { aIA(cc); }; })(c);
+    body.appendChild(bx); body.appendChild(bi);
+    div.appendChild(body);
+    el.appendChild(div);
+  });
+}
+
+// CI
+function rCI() {
+  var el = document.getElementById("ciList");
+  el.innerHTML = "";
+  C.slice(0, 6).forEach(function(c) {
+    var p = gp(c), isQ = c.categorieParticularite === "QUINTE";
+    var div = document.createElement("div");
+    div.className = "card" + (isQ ? " q" : " ci");
+    var hdr = document.createElement("div");
+    hdr.className = "chdr";
+    var left = document.createElement("div");
+    var nm = document.createElement("div"); nm.className = "cname";
+    nm.textContent = (c.libelle||"Course") + (isQ ? " [Q+]" : " [CI]");
+    var sub = document.createElement("div"); sub.className = "csub";
+    sub.textContent = (c.hippodrome ? c.hippodrome.libelleCourt : "") + " - " + ft(c.heureDepart);
+    left.appendChild(nm); left.appendChild(sub); hdr.appendChild(left);
+    div.appendChild(hdr);
+    var body = document.createElement("div");
+    body.style.padding = "12px 13px";
+    body.style.borderTop = "1px solid #1c2e16";
+    var pbx = document.createElement("div"); pbx.className = "pbx";
+    var ptit = document.createElement("div");
+    ptit.style = "font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px";
+    ptit.textContent = "SELECTION CI";
+    var pnums = document.createElement("div"); pnums.className = "pnums";
+    p.slice(0,3).forEach(function(n, i) {
+      var ball = document.createElement("div");
+      ball.className = "pnum p" + (i+1); ball.textContent = n;
+      pnums.appendChild(ball);
+    });
+    var pinfo = document.createElement("div");
+    pinfo.style = "font-size:10px;color:#4a7a3a;line-height:1.8";
+    pinfo.innerHTML = "Gagnant: <b style='color:#ffd700'>N" + p[0] + "</b><br>Tierce: <b style='color:#c9a84c'>" + p[0] + "-" + p[1] + "-" + p[2] + "</b><br>Via: LONACI ou 1XBET";
+    pbx.appendChild(ptit); pbx.appendChild(pnums); pbx.appendChild(pinfo);
+    body.appendChild(pbx);
+    var bx = document.createElement("button"); bx.className = "xbet";
+    bx.textContent = "PARIER SUR 1XBET";
+    bx.onclick = function() { window.open("https://1xbet.com/fr/live/horse-racing/", "_blank"); };
+    body.appendChild(bx); div.appendChild(body);
+    el.appendChild(div);
+  });
+}
+
+// PRONOSTICS
+function rProno() {
+  var el = document.getElementById("pronoList");
+  el.innerHTML = "";
+  var q = null;
+  for (var i = 0; i < C.length; i++) { if (C[i].categorieParticularite === "QUINTE") { q = C[i]; break; } }
+  if (q) {
+    var p = gp(q);
+    var div = document.createElement("div");
+    div.style = "background:linear-gradient(135deg,#1a1200,#0d0900);border:2px solid #ffd700;border-radius:12px;padding:13px;margin-bottom:12px";
+    var t1 = document.createElement("div"); t1.style = "font-size:9px;color:#ffd700;margin-bottom:6px"; t1.textContent = "QUINTE+ DU JOUR";
+    var t2 = document.createElement("div"); t2.style = "font-size:15px;font-weight:900;color:#ffd700"; t2.textContent = q.libelle;
+    var t3 = document.createElement("div"); t3.style = "font-size:10px;color:#4a7a3a;margin:4px 0 10px";
+    t3.textContent = (q.hippodrome ? q.hippodrome.libelleCourt : "") + " - " + ft(q.heureDepart) + " - " + (q.distance||"?") + "m";
+    var pnums = document.createElement("div"); pnums.className = "pnums";
+    p.forEach(function(n,i) { var b = document.createElement("div"); b.className = "pnum p"+(i+1); b.textContent = n; pnums.appendChild(b); });
+    var info = document.createElement("div"); info.style = "font-size:10px;color:#4a7a3a;margin-top:8px;line-height:1.9";
+    info.innerHTML = "Couple: <b style='color:#ffd700'>" + p[0] + " - " + p[1] + "</b><br>Tierce: <b style='color:#42a5f5'>" + p[0]+"-"+p[1]+"-"+p[2] + "</b><br>Quarte: <b style='color:#ff9800'>" + p[0]+"-"+p[1]+"-"+p[2]+"-"+p[3] + "</b><br>Quinte+: <b style='color:#ffd700'>" + p.join("-") + "</b>";
+    var bx = document.createElement("button"); bx.className = "xbet"; bx.style.marginTop = "10px";
+    bx.textContent = "PARIER LE QUINTE+ SUR 1XBET";
+    bx.onclick = function() { window.open("https://1xbet.com/fr/live/horse-racing/", "_blank"); };
+    div.appendChild(t1); div.appendChild(t2); div.appendChild(t3); div.appendChild(pnums); div.appendChild(info); div.appendChild(bx);
+    el.appendChild(div);
+  }
+  C.filter(function(c) { return c.categorieParticularite !== "QUINTE"; }).slice(0,5).forEach(function(c) {
+    var p = gp(c);
+    var div = document.createElement("div"); div.className = "card";
+    var hdr = document.createElement("div"); hdr.className = "chdr";
+    var left = document.createElement("div");
+    var nm = document.createElement("div"); nm.className = "cname"; nm.textContent = c.libelle||"Course";
+    var sub = document.createElement("div"); sub.className = "csub";
+    sub.textContent = (c.hippodrome ? c.hippodrome.libelleCourt : "") + " - " + ft(c.heureDepart);
+    left.appendChild(nm); left.appendChild(sub); hdr.appendChild(left); div.appendChild(hdr);
+    var body = document.createElement("div"); body.style.padding = "10px 13px"; body.style.borderTop = "1px solid #1c2e16";
+    var pnums = document.createElement("div"); pnums.className = "pnums";
+    p.slice(0,3).forEach(function(n,i) { var b = document.createElement("div"); b.className = "pnum p"+(i+1); b.style = "width:34px;height:34px;font-size:15px"; b.textContent = n; pnums.appendChild(b); });
+    var lbl = document.createElement("span"); lbl.style = "font-size:9px;color:#4a7a3a;margin-left:4px"; lbl.textContent = "Tierce";
+    pnums.appendChild(lbl); body.appendChild(pnums);
+    var bx = document.createElement("button"); bx.className = "xbet"; bx.textContent = "PARIER SUR 1XBET";
+    bx.onclick = function() { window.open("https://1xbet.com/fr/live/horse-racing/", "_blank"); };
+    body.appendChild(bx); div.appendChild(body); el.appendChild(div);
+  });
+}
+
+// RESULTATS
+function rResult() {
+  var el = document.getElementById("resultList"), nm = new Date().getHours()*60+new Date().getMinutes();
+  el.innerHTML = "";
+  var done = C.filter(function(c) { var t = pt(c.heureDepart); return t && t <= nm-8; });
+  if (!done.length) { el.textContent = "Aucune course terminee"; return; }
+  done.forEach(function(c) {
+    var res = gr(c), p = gp(c), hits = p.filter(function(n) { return res.indexOf(n) >= 0; });
+    var div = document.createElement("div"); div.className = "card";
+    var hdr = document.createElement("div"); hdr.className = "chdr";
+    var left = document.createElement("div");
+    var nm2 = document.createElement("div"); nm2.className = "cname"; nm2.textContent = c.libelle||"Course";
+    var sub = document.createElement("div"); sub.className = "csub";
+    sub.textContent = (c.hippodrome ? c.hippodrome.libelleCourt : "") + " - " + ft(c.heureDepart);
+    left.appendChild(nm2); left.appendChild(sub); hdr.appendChild(left);
+    var cst = document.createElement("span"); cst.className = "cst sdone"; cst.textContent = "Terminee";
+    hdr.appendChild(cst); div.appendChild(hdr);
+    var body = document.createElement("div"); body.style.padding = "12px 13px"; body.style.borderTop = "1px solid #1c2e16";
+    var t1 = document.createElement("div"); t1.style = "font-size:9px;color:#4a7a3a;margin-bottom:6px"; t1.textContent = "ARRIVEE OFFICIELLE";
+    var rnums = document.createElement("div"); rnums.style = "display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px";
+    res.forEach(function(n,i) { var b = document.createElement("div"); b.className = "pnum p"+(i+1); b.style = "width:34px;height:34px;font-size:15px"; b.textContent = n; rnums.appendChild(b); });
+    var comp = document.createElement("div"); comp.style = "background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:8px;padding:8px";
+    var ct = document.createElement("div"); ct.style = "font-size:9px;color:#4a7a3a;margin-bottom:4px"; ct.textContent = "IA VS RESULTAT";
+    var cr = document.createElement("div"); cr.style = "font-size:11px;line-height:1.8";
+    cr.innerHTML = p.map(function(n) { return res.indexOf(n)>=0 ? "<span style='color:#4caf50'>N"+n+" OK</span>" : "<span style='color:#f44336'>N"+n+" X</span>"; }).join(" ") +
+      "<br><span style='color:" + (hits.length>=3?"#4caf50":hits.length>=2?"#ff9800":"#f44336") + "'>" + hits.length + "/5 " + (hits.length>=4?"Excellent!":hits.length>=3?"Bon!":hits.length>=2?"Passable":"A ameliorer") + "</span>";
+    comp.appendChild(ct); comp.appendChild(cr);
+    body.appendChild(t1); body.appendChild(rnums); body.appendChild(comp);
+    div.appendChild(body); el.appendChild(div);
+  });
+}
+
+// HORAIRES
+function rHoraires() {
+  var el = document.getElementById("horairesList"), nm = new Date().getHours()*60+new Date().getMinutes();
+  el.innerHTML = "";
+  var sorted = C.slice().sort(function(a,b) { return (pt(a.heureDepart)||0)-(pt(b.heureDepart)||0); });
+  var lv=0,nx=0,dn=0;
+  C.forEach(function(c) { var t=pt(c.heureDepart); if(!t)return; if(t<=nm-8)dn++; else if(t<=nm+3)lv++; else nx++; });
+  var fn=null;
+  for(var i=0;i<sorted.length;i++){var t=pt(sorted[i].heureDepart);if(t&&t>nm){fn=sorted[i];break;}}
+  var sum = document.createElement("div");
+  sum.style = "background:#0d1a09;border:1px solid #1c2e16;border-radius:12px;padding:12px;margin-bottom:12px";
+  sum.innerHTML = "<div style='font-size:11px;font-weight:700;color:#c9a84c;margin-bottom:8px'>RESUME JOURNEE</div>" +
+    "<div style='display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px'>" +
+    "<div style='text-align:center;background:rgba(244,67,54,.06);border-radius:8px;padding:8px'><div style='font-size:9px;color:#f44336'>EN COURS</div><div style='font-size:22px;font-weight:900;color:#f44336'>"+lv+"</div></div>" +
+    "<div style='text-align:center;background:rgba(66,165,245,.06);border-radius:8px;padding:8px'><div style='font-size:9px;color:#42a5f5'>A VENIR</div><div style='font-size:22px;font-weight:900;color:#42a5f5'>"+nx+"</div></div>" +
+    "<div style='text-align:center;background:rgba(201,168,76,.06);border-radius:8px;padding:8px'><div style='font-size:9px;color:#c9a84c'>TERMINEES</div><div style='font-size:22px;font-weight:900;color:#c9a84c'>"+dn+"</div></div>" +
+    "</div>" + (fn ? "<div style='margin-top:8px;font-size:10px;color:#4a7a3a'>Prochaine: <b style='color:#c9a84c'>"+ft(fn.heureDepart)+" - "+(fn.libelle||"Course")+"</b></div>" : "");
+  el.appendChild(sum);
+  var grp = {};
+  sorted.forEach(function(c) {
+    var k = "R"+(c.reunion||1)+" "+(c.hippodrome?c.hippodrome.libelleCourt:"");
+    if (!grp[k]) grp[k] = [];
+    grp[k].push(c);
+  });
+  Object.keys(grp).forEach(function(reu) {
+    var lbl = document.createElement("div");
+    lbl.style = "font-size:10px;font-weight:700;color:#4a7a3a;margin:10px 0 6px";
+    lbl.textContent = reu;
+    el.appendChild(lbl);
+    var card = document.createElement("div"); card.className = "card"; card.style.marginBottom = "12px";
+    grp[reu].forEach(function(c,i) {
+      var st = gs(c.heureDepart), t = pt(c.heureDepart);
+      var isPast = t&&t<=nm-8, isNow = t&&t<=nm+3&&t>nm-8, isQ = c.categorieParticularite==="QUINTE";
+      var row = document.createElement("div");
+      row.style.cssText = "display:flex;align-items:center;justify-content:space-between;padding:9px 13px;" + (i>0?"border-top:1px solid #1c2e16;":"") + (isNow?"background:rgba(76,175,80,.05);":"");
+      var left = document.createElement("div"); left.style = "display:flex;align-items:center;gap:10px";
+      var time = document.createElement("div");
+      time.style.cssText = "font-size:20px;font-weight:900;min-width:55px;color:" + (isPast?"#4a7a3a":isNow?"#4caf50":"#c9a84c");
+      time.textContent = ft(c.heureDepart);
+      var info = document.createElement("div");
+      var n1 = document.createElement("div"); n1.style = "font-size:12px;font-weight:700;color:"+(isPast?"#4a7a3a":"#e8f5e9");
+      n1.textContent = "C"+(c.numOfficiel||1)+" - "+(c.libelle||"Course")+(isQ?" [Q+]":"");
+      var n2 = document.createElement("div"); n2.style = "font-size:9px;color:#4a7a3a";
+      n2.textContent = (c.discipline||"") + " " + (c.distance?c.distance+"m":"");
+      info.appendChild(n1); info.appendChild(n2);
+      left.appendChild(time); left.appendChild(info); row.appendChild(left);
+      var cst = document.createElement("div"); cst.className = "cst "+st.c; cst.textContent = st.l;
+      row.appendChild(cst); card.appendChild(row);
+    });
+    el.appendChild(card);
+  });
+}
+
+// IA
+function aIA(c) {
+  var p = gp(c);
+  document.getElementById("aiInp").value = "Analyse la course " + (c.libelle||"") + " a " + (c.hippodrome?c.hippodrome.libelleCourt:"") + " (" + (c.discipline||"") + ", " + (c.distance||0) + "m). Pronostic: " + p.join("-") + ". Donne Couple, Tierce, Quarte, Quinte+ avec justification. Conseil 1XBET depuis CI.";
+  sw("ia", document.querySelectorAll(".tab")[5]);
+  doAI();
+}
+
+function qAI(i) {
+  var q = null;
+  for (var j = 0; j < C.length; j++) { if (C[j].categorieParticularite === "QUINTE") { q = C[j]; break; } }
+  var ctx = C.slice(0,6).map(function(c) { return (c.libelle||"") + "(" + ft(c.heureDepart) + ")"; }).join(", ");
+  var qs = [
+    "Analyse le Quinte+ " + (q?q.libelle:"") + " avec numeros Couple Tierce Quarte Quinte+. " + ctx,
+    "Meilleure course pour Tierce ? Donne 3 numeros. " + ctx,
+    "Quelles courses parier depuis CI via LONACI ou 1XBET ? " + ctx,
+    "Top 3 favoris du jour avec numeros. " + ctx,
+    "Outsiders a surveiller. " + ctx,
+    "Comment parier courses PMU depuis CI sur 1XBET ? " + ctx
+  ];
+  document.getElementById("aiInp").value = qs[i];
+  doAI();
+}
+
+async function doAI() {
+  var q = document.getElementById("aiInp").value.trim();
+  if (!q) return;
+  document.getElementById("aiWait").style.display = "block";
+  document.getElementById("aiAns").classList.remove("v");
+  document.getElementById("aiAns").innerHTML = "";
+  var ctx = C.slice(0,6).map(function(c) { return (c.libelle||"") + "(" + ft(c.heureDepart) + ")"; }).join(", ");
+  try {
+    var r = await fetch("/api/ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 800,
+        system: "Tu es expert PMU pour parieurs en Cote d Ivoire. Courses: " + ctx + ". En francais.",
+        messages: [{ role: "user", content: q }]
+      })
+    });
+    var d = await r.json();
+    document.getElementById("aiWait").style.display = "none";
+    var txt = d.content && d.content[0] ? d.content[0].text : "Indisponible.";
+    document.getElementById("aiAns").innerHTML = txt.replace(/
+/g, "<br>");
+    document.getElementById("aiAns").classList.add("v");
+  } catch(e) {
+    document.getElementById("aiWait").style.display = "none";
+    document.getElementById("aiAns").innerHTML = "Erreur: " + e.message;
+    document.getElementById("aiAns").classList.add("v");
+  }
+  document.getElementById("aiInp").value = "";
+}
+
+document.getElementById("aiInp").addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); doAI(); }
+});
+
 loadProg();
 </script>
 </body>
